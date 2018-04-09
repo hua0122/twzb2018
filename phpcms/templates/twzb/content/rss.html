@@ -1,0 +1,76 @@
+{template 'member', 'header'}
+<div id="memberArea" >
+{template "member","left"}
+<div id="subscribe_list">
+<div class="sec_cont">
+<div class="re_desc_box" style="width:100%">
+					<h3>我的订阅列表</h3>
+					<div class="gl"><a href="index.php?m=content&c=rss&a=rsslist&siteid=1">返回订阅列表</a></div>
+					<div class="inner_box">
+						<div class="itembox">
+							{php $db = pc_base::load_model('rss_model'); $rss = $db->get_all(array('userid'=>param::get_cookie('_userid'))); }
+							{php $ids = i_array_column($rss, 'catid');}
+
+					
+						
+						{pc:content action="category" catid="0" siteid="$this->siteid" order="listorder ASC"}
+							{loop $data $r}
+							<div class="item rss">
+								<h4>{$r[catname]}</h4>
+								<ul>
+
+								{pc:content action="category" catid="$r[catid]" siteid="$this->siteid" order="listorder ASC"}
+
+									{loop $data $v}
+									
+									{if in_array($v[catid], $ids)}
+										<li data-catid='{$v[catid]}' class='addrss active'>{$v[catname]}</li>
+									{else}
+										<li data-catid='{$v[catid]}' class='addrss'>{$v[catname]}</li>
+									{/if}
+
+									{/loop}
+								{/pc}
+								
+								</ul>
+							</div>
+							{/loop}
+						{/pc}
+						
+						
+						
+						</div>
+					</div>
+				</div>
+</div>
+</div>
+
+<script type="text/javascript">
+$(".rss li").click(function(){
+	
+	if($(this).attr('class')=="addrss active"){
+		$(this).removeClass('active');
+		var catid=$(this).data('catid');
+		$.post("index.php?m=content&c=rss&a=del",{catid:catid},function(data){
+			
+			
+		});
+	}else{
+		$(this).addClass('active');
+		var catid=$(this).data('catid');
+		
+		$.post("index.php?m=content&c=rss&a=add",{catid:catid},function(data){
+			
+			
+		});
+	}
+	
+
+});
+
+
+</script>
+
+
+</div>
+{template "content","footer"}

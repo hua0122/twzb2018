@@ -1,0 +1,55 @@
+	<footer>
+			<ul>
+				<li>
+					<a {if $catid==0} class="home active" {else} class="home" {/if} href="{APP_PATH}index.php">首页</a>
+				</li>
+				<li>
+					<a {if $catid==6} class="news active" {else}class="news"{/if} href="{$CATEGORYS[6][url]}">新闻</a>
+				</li>
+				<li>
+					<a {if $catid==8} class="video active" {else} class="video" {/if} href="{$CATEGORYS[8][url]}">图文直播</a>
+				</li>
+				<li>
+					<a {if $catid==15} class="car active" {else} class="car" {/if} href="{$CATEGORYS[15][url]}">车友会</a>
+				</li>
+				<li>
+					<a class="percenter" href="{APP_PATH}index.php?m=member">个人中心</a>
+				</li>
+			</ul>
+		</footer>
+	</div>
+	<div id="menu-switch">
+		<div class="menu-title">
+			<img src="{APP_PATH}phpcms/templates/twzb_wap/images/nav_del.png" alt="">
+		</div>
+		<ul>
+			<li>
+				<a href="{APP_PATH}index.php">
+					<img src="{APP_PATH}phpcms/templates/twzb_wap/images/nav_home.png" alt="">
+					<p>首页</p>
+				</a>
+			</li>
+			
+			{pc:content action="category" catid="0" num="7" siteid="$siteid" order="listorder ASC"}
+						{loop $data $r}
+					<li>
+						<a href="{$r[url]}">
+							<img src="{APP_PATH}phpcms/templates/twzb_wap/images/nav_{$n}.png" alt="{$r[catname]}">
+							<p>{$r[catname]}</p>
+						</a>
+					</li>
+						{/loop}
+				{/pc}
+				
+					<li>
+						<a href="{APP_PATH}index.php?m=member">
+							<img src="{APP_PATH}phpcms/templates/twzb_wap/images/nav_grzx.png" alt="个人中心">
+							<p>个人中心</p>
+						</a>
+					</li>
+					
+		
+		</ul>
+	</div>
+	</body>
+</html>

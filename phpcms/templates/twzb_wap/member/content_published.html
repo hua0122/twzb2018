@@ -1,0 +1,55 @@
+<title>图文直播 - {L('member','','member').L('manage_center')}</title>
+<link href="{CSS_PATH}reset.css" rel="stylesheet" type="text/css" />
+<link href="{CSS_PATH}member.css" rel="stylesheet" type="text/css" />
+<link href="{CSS_PATH}table_form.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{JS_PATH}jquery.min.js"></script>
+<script type="text/javascript" src="{JS_PATH}member_common.js"></script>
+{if isset($show_validator)}
+<script type="text/javascript" src="{JS_PATH}formvalidator.js" charset="UTF-8"></script>
+<script type="text/javascript" src="{JS_PATH}formvalidatorregex.js" charset="UTF-8"></script>
+{/if}
+
+<?php 
+$sitelist  = getcache('sitelist','commons');
+$default_style = $sitelist[1]['default_style'];
+include template('content','header',$default_style."_wap");
+?>
+
+<link href="{CSS_PATH}dialog.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="{JS_PATH}dialog.js"></script>
+<script language="javascript" type="text/javascript" src="{JS_PATH}content_addtop.js"></script>
+
+<div id="publish" style="margin-top:1rem">
+		<div class="title">
+			<a href="{APP_PATH}index.php?m=member&c=content&a=publish">新增</a>
+		</div>
+		<ul>
+		
+		{loop $datas $info} 
+			<li style="height:1.6rem;">
+				<a href="{$info[url]}">
+					<!--<div class="img-box">
+						<img src="{$info[thumb]}" alt="{$info[title]}">
+					</div>-->
+					<div class="infor-box">
+						<h3>{$info[title]}</h3>
+						
+						<p>{format::date($info['inputtime'], 1)}</p>
+						<p><a href="{if strpos($CATEGORYS[$info['catid']][url],'http://')===false}{$siteurl}{/if}{$CATEGORYS[$info['catid']][url]}" target="_blank">{$CATEGORYS[$info['catid']][catname]}</a></p>
+					</div>
+				</a>
+				<span>{if $info[status]==99}<font style="color:#fff">{L('pass')}</font>{elseif !$info[flag]}<a href="index.php?m=member&c=content&a=edit&catid={$info[catid]}&id={$info[id]}"><font color="red">{L('edit')}</font></a> | <a href="index.php?m=member&c=content&a=delete&catid={$info[catid]}&id={$info[id]}">删除</a>{else}<a href="index.php?m=member&c=content&a=edit&catid={$info[catid]}&id={$info[id]}"><font color="red">{L('edit')}</font></a> | <a href="index.php?m=member&c=content&a=delete&catid={$info[catid]}&id={$info[id]}">删除</a>{/if}</span>
+			</li>
+			{/loop}
+			
+		</ul>
+	</div>
+
+<div class="clear"></div>
+<script language="JavaScript">
+<!--
+	function c_c(catid) {
+		location.href='index.php?m=member&c=content&a=published&siteid={$siteid}&catid='+catid;
+	}
+//-->
+</script>

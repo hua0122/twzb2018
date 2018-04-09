@@ -1,0 +1,28 @@
+<?php defined('IN_PHPCMS') or exit('No permission resources.'); ?><?php include template('member', 'header'); ?>
+
+<div id="memberArea" >
+<?php include template("member","left"); ?>
+<div id="ts_advice">
+<div class="sec_cont">
+<div class="re_desc_box" style="width:100%">
+				
+					<h3>投诉/建议</h3>
+					<div class="inner_box">
+					<form action="<?php echo APP_PATH;?>index.php?m=formguide&c=index&a=show&formid=14&action=js&siteid=1" method="post">
+						<div class="desc">
+							<h2></h2>
+							<textarea name="info[neirong]" placeholder="多行输入"></textarea>
+							
+							<input type="submit" id="dosubmit" name="dosubmit" value="发 布" style="width: 350px;line-height: 40px;font-size: 16px;color: #fff;background: #d03b3d;cursor: pointer;margin-top: 50px;border:none;float:right;"/>
+ 						</div>
+					</form>
+						
+					</div>
+				
+				</div>
+</div>
+</div>
+
+
+</div>
+<?php include template("content","footer"); ?>

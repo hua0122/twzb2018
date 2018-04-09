@@ -1,0 +1,115 @@
+<script type="text/javascript">
+    // borwserRedirect
+    (function browserRedirect() {
+        var sUserAgent = navigator.userAgent.toLowerCase();
+        var bIsIpad = sUserAgent.match(/ipad/i) == 'ipad';
+        var bIsIphone = sUserAgent.match(/iphone os/i) == 'iphone os';
+        var bIsMidp = sUserAgent.match(/midp/i) == 'midp';
+        var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == 'rv:1.2.3.4';
+        var bIsUc = sUserAgent.match(/ucweb/i) == 'web';
+        var bIsCE = sUserAgent.match(/windows ce/i) == 'windows ce';
+        var bIsWM = sUserAgent.match(/windows mobile/i) == 'windows mobile';
+        var bIsAndroid = sUserAgent.match(/android/i) == 'android';
+
+        if (bIsIpad || bIsIphone || bIsMidp || bIsUc7 || bIsUc || bIsCE || bIsWM || bIsAndroid) {
+            window.location.href = '{APP_PATH}index.php?m=content&c=index&a=lists&catid={$catid}';
+        }
+    })();
+</script>
+{template "content","header"}
+<link rel="stylesheet" type="text/css" href="{APP_PATH}css/gouche.css">
+
+
+<div id="news_list">
+    <div class="section">
+        <div class="container news_list_cont">
+            <div class="title_position">
+                <a href="{siteurl($siteid)}">首页</a> <a href="">购车</a> <a > {$brand[name]}</a>
+
+            </div>
+
+            <div class="car-left">
+
+                <div class="tj_car">
+                    <div class="title">所有车型</div>
+                    <div class="content">
+                        <ul>
+                            {pc:get sql="SELECT g.linkageid,g.arrchildid,g.brand,g.title,g.thumb,g.price,g.url FROM
+                            (SELECT
+                            a.arrchildid,
+                            a.`name`,
+                            a.linkageid,
+                            a.description,
+                            b.title,
+                            b.brand,
+                            b.thumb,
+                            b.price,
+                            b.url
+                            FROM
+                            newt_linkage a,
+                            newt_car b
+                            WHERE
+                            a.keyid = 3360
+                            AND a.parentid = 0
+                            AND FIND_IN_SET(b.brand, a.arrchildid)) g WHERE g.arrchildid =$brand_id or g.brand =$brand_id
+                            "  page="$page" return="data2"}
+                            {loop $data2 $r}
+                            <li>
+                                <a href="{$r[url]}">
+                                    <img src="{$r[thumb]}" />
+                                    <span class="tit">{$r[title]}</span>
+                                    <span class="price">参考价：{if $r[price]}￥{$r[price]}{else}暂无报价{/if}</span>
+                                </a>
+                            </li>
+                            {/loop}
+                            {/pc}
+
+
+                        </ul>
+
+                    </div>
+                    <div style="clear: both;"></div>
+                    <div class="page" id="pages">
+                        {$pages}
+                    </div>
+                </div>
+            </div>
+            <div class="car-right" style="margin-top: 20px;min-height:300px;border: none">
+                <div class="truck_range_block">
+                    <div class="hot_model_title_bg">
+                        <ul>
+
+                            <li class="hot_model_menu hot_model_menu_tab hot_model_menu_show">
+                                <a href="javascript:;" class="hot_model_menu_name hot_model_menu_name_show">按车系查找</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hot_model_cnt_block hot_model_range">
+
+                        <div class="truck_range_cnt_range truck_range_cnt" style="display: block;">
+
+                            <div class="truck_range_search_list">
+                                <div class="truck_range_cnt_list_name_area">
+                                    {loop $cx $r}
+                                    <a href="{APP_PATH}index.php?m=content&c=index&a=cx_list&id={$r[linkageid]}"  title="{$r[name]}" class="truck_range_cnt_list_name">{$r[name]}</a>
+                                    {/loop}
+
+                                </div>
+
+
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+    </div>
+</div>
+{template "content","footer"}

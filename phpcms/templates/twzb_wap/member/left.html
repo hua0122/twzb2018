@@ -1,0 +1,140 @@
+<div class="re_user_all" style="margin-right:20px;">
+					<h5>全部功能</h5>
+					<div class="itembox">
+						<div class="item">
+							<span>个人资料</span>
+							<ul class="active">
+								<li><a href="index.php?m=member&c=index&a=account_manage_info&t=1" {if ROUTE_A=="account_manage_info"} class="active"{/if}>编辑信息</a></li>
+								<li><a href="index.php?m=member&c=index&a=account_manage_password&t=1" {if ROUTE_A=="account_manage_password"} class="active"{/if}>修改密码</a></li>
+								<li><a href="index.php?m=member&c=index&a=account_manage_avatar&t=1" {if ROUTE_A=="account_manage_avatar"} class="active"{/if}>编辑头像</a></li>
+							</ul>
+						</div>
+						<div class="item">
+							<span>我的收藏</span>
+							<ul class="active">
+								<li><a href="index.php?m=member&c=index&a=favorite&t=2" {if ROUTE_A=="favorite"} class="active"{/if}>收藏列表</a></li>
+								
+							</ul>
+						</div>
+						<div class="item">
+							<span >我的订阅</span>
+							<ul class="active">
+								<li ><a href="index.php?m=content&c=rss&a=rsslist&siteid=1" {if ROUTE_A=="rsslist" } class="active"{/if}>订阅列表</a></li>
+								<li ><a href="index.php?m=content&c=rss&siteid=1" {if ROUTE_C=="rss" && ROUTE_A!="rsslist"} class="active"{/if}>订阅管理</a></li>
+								
+							</ul>
+						</div>
+						<div class="item">
+							<span>我的评论</span>
+							<ul class="active">
+								<li><a href="index.php?m=member&c=index&a=commentlist" {if ROUTE_A=="commentlist" } class="active"{/if}>评论列表</a></li>
+							
+							</ul>
+						</div>
+						<div class="item">
+							<span>投诉/建议</span>
+							<ul class="active">
+								<li><a href="index.php?m=member&c=index&a=tousu" {if ROUTE_A=="tousu" } class="active"{/if}>提交投诉</a></li>
+								
+							</ul>
+						</div>
+						
+						{if $memberinfo[groupid]==2}
+						
+						{else}
+						<div class="item">
+							<span>我的发布</span>
+							<ul class="active">
+								<li><a href="index.php?m=member&c=content&a=publish">在线投稿</a></li>
+								<li><a href="index.php?m=member&c=content&a=published">已发布稿件</a></li>
+								
+							</ul>
+						</div>
+						{/if}
+						<div class="item">
+							<span>系统设置</span>
+							<ul class="active">
+								<li><a href="{APP_PATH}index.php?m=member&c=index&a=logout">退出登录</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+
+
+
+
+
+<!--
+<div class="col-left col-1 left-memu">
+ <h5 class="title">个人资料</h5>
+  <ul>
+            	<li{if ROUTE_A=="account_manage_info" && ROUTE_C=="index"} class="on"{/if}><a href="index.php?m=member&c=index&a=account_manage_info&t=1"> 编辑信息</a></li>
+                <li{if ROUTE_A=="account_manage_avatar" && ROUTE_C=="index"} class="on"{/if}><a href="index.php?m=member&c=index&a=account_manage_avatar&t=1">编辑头像</a></li>
+                <li{if ROUTE_A=="account_manage_password" && ROUTE_C=="index"} class="on"{/if}><a href="index.php?m=member&c=index&a=account_manage_password&t=1">修改密码</a></li>
+
+      </ul>
+	  <h6 class="title">我的收藏</h6>
+		<ul>
+		<li{if ROUTE_A=="favorite" && ROUTE_C=="index"} class="on"{/if}><a href="index.php?m=member&c=index&a=favorite&t=2"> 收藏列表</a></li>
+                
+		 </ul>
+		 
+		 <h6 class="title">我的订阅</h6>
+		<ul>
+		<li{if ROUTE_C=="rss"} class="on"{/if}><a href="index.php?m=content&c=rss&siteid=1"> 订阅列表</a></li>
+                
+		 </ul>
+		 
+		 <h6 class="title">我的评论</h6>
+		<ul>
+		<li{if ROUTE_A=="favorite" && ROUTE_C=="index"} class="on"{/if}><a href="index.php?m=member&c=index&a=favorite&t=2"> 评论列表</a></li>
+                
+		 </ul>
+		 <h6 class="title">投诉/建议</h6>
+		<ul>
+		<li{if ROUTE_A=="favorite" && ROUTE_C=="index"} class="on"{/if}><a href="index.php?m=member&c=index&a=favorite&t=2"> 投诉列表</a></li>
+                
+		 </ul>
+		 <!--
+		 <h6 class="title">车友会(卡车用户)</h6>
+		<ul>
+		    <li{if ROUTE_A=="published"} class="on"{/if}><a href="index.php?m=member&c=content&a=published"> 故事列表</a></li>
+            <li{if ROUTE_A=="publish"} class="on"{/if}><a href="index.php?m=member&c=content&a=publish"> 发布故事</a></li>
+         
+		 </ul>
+		 
+{if $memberinfo[groupid]==2}{else}
+        	<h6 class="title">我的发布</h6>
+            <ul>
+       	    <li {if ROUTE_A=="publish"} class="on"{/if}><a href="index.php?m=member&c=content&a=publish"> {L('online_publish')}</a></li>
+            <li {if ROUTE_A=="published"} class="on"{/if}><a href="index.php?m=member&c=content&a=published"> {L('published_content')}</a></li>
+            </ul>
+{/if}	
+		
+<h6 class="title">系统设置</h6>
+ <ul>
+ <li><a href="{APP_PATH}index.php?m=member&c=index&a=logout">退出登录</a></li>
+ </ul>
+			
+            {if module_exists('pay')}
+<h6 class="title">{L('financial_management')}</h6>
+            <ul>
+            	<li{if ROUTE_A=="pay" && ROUTE_C=="deposit"} class="on"{/if}><a href="index.php?m=pay&c=deposit&a=pay"><img src="{IMG_PATH}icon/m_4.png" width="15" height="16" /> {L('online_charge')}</a></li>
+                <li{if ROUTE_A!="pay" && ROUTE_C=="deposit"} class="on"{/if}><a href="index.php?m=pay&c=deposit&a=init"><img src="{IMG_PATH}icon/m_8.png" width="16" height="16" /> {L('pay_log')}</a></li>
+                <li{if ROUTE_A!="pay" && ROUTE_C=="spend_list"} class="on"{/if}><a href="index.php?m=pay&c=spend_list&a=init"><img src="{IMG_PATH}icon/table-information.png" width="16" height="16" /> {L('cost_log')}</a></li>
+				<li{if ROUTE_A=="change_credit"} class="on"{/if}><a href="index.php?m=member&c=index&a=change_credit"><img src="{IMG_PATH}icon/coins_add.png" width="16" height="16" /> {L('credit_change')}</a></li>
+      </ul>
+      {/if}
+{pc:message action="check_new"}
+{php $new_arr = $data;}
+{/pc}
+      <h6 class="title">{L('message')}</h6>
+          <ul>
+           	  <li{if ROUTE_A=="send"} class="on"{/if}><a href="index.php?m=message&c=index&a=send"><img src="{IMG_PATH}icon/m_9.png" width="16" height="14" /> {L('send_message')}</a></li>
+           	  <li{if ROUTE_A=="inbox"} class="on"{/if}><a href="index.php?m=message&c=index&a=inbox"><img src="{IMG_PATH}icon/m_11.png" width="16" height="16" /> {L('input_box')}{if $new_arr['new_count'] >0}<font color=red>({$new_arr['new_count']})</font>{/if}</a></li>
+              <li{if ROUTE_A=="outbox"} class="on"{/if}><a href="index.php?m=message&c=index&a=outbox"><img src="{IMG_PATH}icon/m_10.png" width="16" height="16" /> {L('output_box')}</a></li>
+			   <li{if ROUTE_A=="group"} class="on"{/if}><a href="index.php?m=message&c=index&a=group"><img src="{IMG_PATH}icon/lightbulb.png" width="16" height="16" /> {L('system_message')}{if $new_arr['new_group_count'] >0}<font color=red>({$new_arr['new_group_count']})</font>{/if}</a></li>
+          </ul>
+      <span class="o1"></span><span class="o2"></span><span class="o3"></span><span class="o4"></span>
+</div>-->

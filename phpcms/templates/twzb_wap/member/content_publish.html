@@ -1,0 +1,335 @@
+<title>图文直播 - {L('member','','member').L('manage_center')}</title>
+<!--<link href="{CSS_PATH}reset.css" rel="stylesheet" type="text/css" />
+<link href="{CSS_PATH}member.css" rel="stylesheet" type="text/css" />
+<link href="{CSS_PATH}table_form.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{JS_PATH}jquery.min.js"></script>
+<script type="text/javascript" src="{JS_PATH}member_common.js"></script>
+{if isset($show_validator)}
+<script type="text/javascript" src="{JS_PATH}formvalidator.js" charset="UTF-8"></script>
+<script type="text/javascript" src="{JS_PATH}formvalidatorregex.js" charset="UTF-8"></script>
+{/if}
+-->
+<?php 
+$sitelist  = getcache('sitelist','commons');
+$default_style = $sitelist[1]['default_style'];
+include template('content','header',$default_style."_wap");
+?>
+
+<script type="text/javascript">
+<!--
+	var charset = '{CHARSET}';
+	var uploadurl = '{php echo pc_base::load_config('system','upload_url')}';
+//-->
+</script>
+<link href="{CSS_PATH}dialog.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="{JS_PATH}dialog.js"></script>
+<script language="javascript" type="text/javascript" src="{JS_PATH}content_addtop.js"></script>
+
+
+<div id="publish_add" style="margin-top:1rem;">
+<form action="{APP_PATH}index.php?m=member&c=index&a=publish_add" method="post" enctype="multipart/form-data">
+		<ul>
+			<li>
+				<label for="">标题：</label>
+				<input type="text" placeholder="单行输入" name="title">
+			</li>
+			<li>
+				<label for="">栏目：</label>
+				<select style="height:0.6rem;margin-left: 0.26rem;" name="catid" id="selectcatid">
+					<option>--请选择--</option>
+					{pc:content action="category" catid="0" siteid="$this->siteid" order="listorder ASC"}
+						{loop $data $r}
+					<option value="{$r[catid]}" disabled="true"> {$r[catname]}</option>
+						{pc:content action="category" catid="$r[catid]" siteid="$this->siteid" order="listorder ASC"}
+							{loop $data $r}
+						<option value="{$r[catid]}"> ├ {$r[catname]}</option>
+							{/loop}
+						{/pc}
+						{/loop}
+					{/pc}
+				</select>
+			</li>
+			<li class="zhiboli">
+				<label for="">直播时间：</label>
+				<input type="text" placeholder="单行输入" name="shijian">
+			</li>
+			
+			<li class="zhiboli">
+				<label for="">直播地点：</label>
+				<input type="text" placeholder="单行输入" name="address">
+			</li>
+			<li class="zhiboli">
+				<label for="">音频文件：</label>
+				<input type="file" name="yinpin" accept="audio/*" capture="microphone" />
+				
+			</li>
+			<li class="zhiboli shipinli">
+				<label for="">视频文件：</label>
+				<input type="file" accept="video/*" capture="camcorder" name="shipin">
+			</li>
+			
+			<li>
+				<label for="">来源：</label>
+				<input type="text" placeholder="单行输入" name="copyfrom">
+			</li>
+			<li>
+				<label for="">内容：</label>
+				<div class="write-area">
+					
+					<textarea name="neirong" placeholder="多行输入"></textarea>
+				</div>
+			</li>
+			
+			<li class="imgs">
+				<label for="">缩略图：</label>
+				<img src="{IMG_PATH}icon/upload-pic.png" width="150" height="105">
+				<input type="file" name="face" accept="image/*" capture="camera" style="display: none;"/>
+			</li>
+			<li class="tjw">
+				<label for="">推荐位：</label>
+				<div class="feedback_variety_area feedback_function">
+							<div class="feedback_variety_item">
+								<div class="feedback_fang">
+									<div class="feedback_fanginner"></div>
+								</div>
+								<p class="feedback_info">头条</p>
+							</div>
+							<div class="feedback_variety_item">
+								<div class="feedback_fang">
+									<div class=""></div>
+								</div>
+								<p class="feedback_info">原创</p>
+							</div>
+							<div class="feedback_variety_item">
+								<div class="feedback_fang">
+									<div class=""></div>
+								</div>
+								<p class="feedback_info">热门</p>
+							</div>
+							
+						</div>
+			</li>
+			
+			<li>
+				<button>发 布</button>
+			</li>
+		</ul>
+		</form>
+	</div>
+<style>
+#publish_add ul li label{min-width:0.94rem;width:auto;}
+#publish_add .cbox{width:13px;height:13px;float:none;}
+.zhiboli{display:none;}
+.feedback_variety_item{
+		width:50%;
+		float:left;
+	}
+	
+	.feedback_fang{
+		display: block;
+		float:left;
+		width:2em;
+		height:2em;
+		background:#fff;
+		border:1px solid #cacaca;
+		margin: 2% 0.6em 0.5em 0em;
+	}
+	
+	.feedback_fanginner{
+		display: block;
+		/*width: 0.9em;
+		height: 0.9em;*/
+		/*margin: 0.1em 0.1em;*/
+		/*margin:0.05em 0.05em 0.05em 0.05em;*/
+		background:#d03b3d;
+		width:90%;
+		height:90%;
+		margin:1px;
+	}
+	
+	.feedback_info{
+		color: #737373;
+		font-size: 1.6em;
+		line-height: 2em;
+		font-family: "华文细黑";
+	}
+	
+	.feedback_content_region{
+		margin-left:0.1em;
+		width:99%;;
+		height:6em;;
+		resize:none
+	}
+	
+	.feedback_function{
+		overflow: hidden;
+		/*margin-top:0.5em;*/
+		margin-bottom: 1em
+	}
+	
+	.feedback_contact{
+		margin-bottom:1em;
+	}
+	
+	.feedback_content{
+		margin-bottom:0.8em;
+	}
+	
+</style>
+
+<!--
+<div id="memberArea" style="margin-top:1rem;width:100%;">
+	
+	<div class="col-auto">
+		<div class="col-1 " style="border:none;background:none;">
+			<h5 class="title">{L('online_publish')}</h5>
+			<div class="content">
+				
+			<form method="post" action="" id="myform" name="myform">
+				<table width="100%" cellspacing="0" class="table_form">
+				{if ROUTE_A=='publish'}
+				<script language="JavaScript">
+				<!--
+					function c_c(catid) {
+						location.href='index.php?m=member&c=content&a=publish&siteid={$siteid}&catid='+catid;
+					}
+				//--
+				</script>
+					<tr>
+						<th>{L('please_select_cat')}：</th>
+						<td>{form::select_category('', $catid, 'name="info[catid]" onchange="javascript:c_c(this.value);"','','',0,1,$siteid,'1')}</td>
+					</tr>
+				{/if}
+					{loop $forminfos $k $v}
+					<tr>
+						<th >{if $v['star']} <font color="red">*</font>{/if} {$v['name']}：</th> 
+						<td>{$v['form']}{if $v['tips']}{$v['tips']}{/if}</td>
+					</tr>
+					{/loop}
+					<tr>
+						<th></th>
+						<td>
+						<input name="forward" type="hidden" value="{HTTP_REFERER}">
+						<input name="id" type="hidden" value="{$id}">
+						<input name="dosubmit" type="submit" id="dosubmit" value="{L('submit')}" class="button"></td>
+					</tr>
+				</table>
+			</form>
+
+			</div>
+			<span class="o1"></span><span class="o2"></span><span class="o3"></span><span class="o4"></span>
+		</div>
+	</div>
+</div>
+-->
+
+
+<div class="clear"></div>
+<script type="text/javascript"> 
+$(document).ready(function(){
+	$('.feedback_fang').click(function(){
+		$(".feedback_fang").children().removeClass("feedback_fanginner");
+		$(this).children().addClass('feedback_fanginner');
+		
+	});
+	$(".reuse_btn").click(function(){
+		var title = "";
+		$(".feedback_fang").each(function(){
+			if('feedback_fanginner' == $(this).children().attr("class"))
+			{
+				title = $(this).next().html();
+			}
+		});
+		url = "mailto:master@yunshuren.com?subject="+title;
+		$(this).attr("href", url)
+	});
+});
+
+
+$(function () {
+            //member.info.setinfo();
+            //city.change.exec();
+            $(".imgs").find("img").click(function () {
+                var li = $(this).next();
+                li.click();
+                li.on("change", function () {
+                    var objUrl = getObjectURL(this.files[0]);
+                    if (objUrl) {
+                        $(this).prev().attr("src", objUrl);
+                    }
+                });
+            })
+        })
+
+        function getObjectURL(file) {
+            var url = null;
+            if (window.createObjectURL != undefined) {
+                url = window.createObjectURL(file);
+            } else if (window.URL != undefined) {
+                url = window.URL.createObjectURL(file);
+            } else if (window.webkitURL != undefined) {
+                url = window.webkitURL.createObjectURL(file);
+            }
+            return url;
+        }
+		
+
+		
+		$(function(){
+		
+			$("#selectcatid").change(function(){
+			
+				$catid = $(this).val();
+				if($catid ==17||$catid==18||$catid==19){
+					$('.tjw').hide();
+					$('.zhiboli').show();
+				
+				}
+				
+				if($catid ==20||$catid==21||$catid==22){
+					$('.tjw').hide();
+					$('.shipinli').show();
+				
+				}
+				
+				
+			});
+			
+			if($("#selectcatid").val()==17||$("#selectcatid").val()==18||$("#selectcatid").val()==19){
+				$('.tjw').hide();
+				$('.zhiboli').show();
+			}
+			
+			if($("#selectcatid").val()==20||$("#selectcatid").val()==21||$("#selectcatid").val()==22){
+				$('.tjw').hide();
+				$('.shipinli').show();
+			}
+			
+			
+			
+			
+		
+		})
+		
+<!--
+//只能放到最下面
+$(function(){
+	$.formValidator.initConfig({formid:"myform",autotip:true,onerror:function(msg,obj){window.top.art.dialog({content:msg,lock:true,width:'200',height:'50'}, 	function(){$(obj).focus();
+	boxid = $(obj).attr('id');
+	if($('#'+boxid).attr('boxid')!=undefined) {
+		check_content(boxid);
+	}
+	})}});
+	{$formValidator}
+})
+//-->
+
+
+		
+		
+
+		
+</script>
+<style>
+
+</style>

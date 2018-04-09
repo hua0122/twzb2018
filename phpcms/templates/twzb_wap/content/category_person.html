@@ -1,0 +1,69 @@
+<?php 
+$sitelist  = getcache('sitelist','commons');
+$default_style = $sitelist[$siteid]['default_style'];
+include template('content','top',$default_style."_wap");
+?>
+
+	<div id="interview_person">
+		
+		<section style="margin-top:1.74rem;" class="another-style">
+			<nav>
+				<div class="nav-inner">
+					<h3>人物访谈</h3>
+					<ul>
+					{pc:content action="category" catid="7" num="7" siteid="$siteid" order="listorder ASC"}
+						{loop $data $r}
+						<li {if $n==1}class="active"{/if}>
+							<a>{$r[catname]}</a>
+						</li>
+						{/loop}
+					{/pc}
+					
+					</ul>
+				</div>
+			</nav>
+			<div class="person">
+			{pc:content action="category" catid="7" num="7" siteid="$siteid" order="listorder ASC"}
+						{loop $data $r}
+				<div class="nav-item">
+					<ul>
+					{pc:content action="lists" catid="$r[catid]" num="16" siteid="$siteid" order="inputtime desc"}
+										{loop $data $r}
+						<li>
+							<a href="{$r[url]}">
+								<img src="{$r[thumb]}" alt="{$r[title]}">
+								<p>{$r[title]}</p>
+							</a>
+						</li>
+						
+								{/loop}
+					{/pc}
+						
+						
+					</ul>
+				</div>
+							{/loop}
+					{/pc}
+			</div>
+		</section>
+	</div>
+
+<?php 
+$sitelist  = getcache('sitelist','commons');
+$default_style = $sitelist[$siteid]['default_style'];
+include template('content','menu',$default_style."_wap");
+?>
+
+
+	<script type="text/javascript">
+		$(function(){
+			CommonFun.init();
+			$("#interview_person section nav ul li").on("click",function(){
+				var index = $(this).index();
+				$("#interview_person section  nav ul li").removeClass("active");
+				$(this).addClass("active");
+				$("#interview_person section .nav-item").hide();
+				$("#interview_person section .nav-item").eq(index).show();
+			})
+		})
+	</script>

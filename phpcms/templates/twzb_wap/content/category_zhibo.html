@@ -1,0 +1,153 @@
+<?php 
+$sitelist  = getcache('sitelist','commons');
+$default_style = $sitelist[$siteid]['default_style'];
+include template('content','top',$default_style."_wap");
+?>
+
+	<div id="twsp_video">
+		
+		<section style="margin-top:1.74rem;padding-bottom: 1.18rem;" class="another-style">
+			<nav>
+				<div class="nav-inner">
+					<ul>
+					{pc:content action="category" catid="8" num="7" siteid="$siteid" order="listorder ASC"}
+						{loop $data $r}
+						<li {if $catid==$r[catid]} class="active" {/if} {if $catid==8 && $n==1} class="active" {/if}><a>{$r[catname]}</a></li>
+						{/loop}
+					{/pc}
+					</ul>
+				</div>
+			</nav>
+			<div class="video">
+			
+				<div class="nav-item">
+					<ul>
+					{pc:get sql="SELECT * FROM newt_zhibo WHERE catid =17 group by title order by inputtime desc" num="15" page="$page" return="data"}
+								{loop $data $r1}
+								{php $db = pc_base::load_model('hits_model');   $_r = $db->get_one(array('hitsid'=>'c-1-'.$r1[id])); $views = $_r[views]; }
+								{php $comment_tag = pc_base::load_app_class("comment_tag", "comment"); $comment_total = $comment_tag->count(array('commentid'=>'content_'.$r1[catid].'-'.$r1[id].'-1'));}
+								{php list($copyfrom) = explode('|', $r1['copyfrom'])}		
+								{php $posdb = pc_base::load_model('position_data_model'); $pos = $posdb->get_all(array('catid'=>$r1[catid],'id'=>$r1[id])); }
+								{php $a=string2array($r1[pictureurls])}
+						<li>
+							<a href="{$r1[url]}">
+								<!--<div class="tags">
+									<div class="hot">热门</div>
+									<div class="tt">头条</div>
+									<div class="yc">原创</div>
+								</div>-->
+								
+								<div class="video-infor">
+									<img src="{$r1[thumb]}" alt="{$r1[title]}">
+									<!--<i></i>-->
+									<h3>{$r1[title]}</h3>
+								</div>
+								<div class="video-time">
+									<span class="time"> {date("m-d",$r1[inputtime])} </span>
+									<span class="seen">{$views}</span>
+									<span class="repeat">{if $comment_total}{$comment_total}{else}0{/if}</span>
+									<span class="user" style="margin-right: 0.16rem;">  作者：{$r1[username]}</span>
+									<span class="from"> 来源：{$copyfrom}</span>
+								</div>
+							</a>
+						</li>
+						{/loop}
+					{/pc}
+						
+					</ul>
+				</div>
+				<div class="nav-item">
+					<ul>
+					{pc:get sql="SELECT * FROM newt_zhibo WHERE catid =18 group by title order by inputtime desc" num="15" page="$page" return="data"}
+								{loop $data $r1}
+								{php $db = pc_base::load_model('hits_model');   $_r = $db->get_one(array('hitsid'=>'c-1-'.$r1[id])); $views = $_r[views]; }
+								{php $comment_tag = pc_base::load_app_class("comment_tag", "comment"); $comment_total = $comment_tag->count(array('commentid'=>'content_'.$r1[catid].'-'.$r1[id].'-1'));}
+								{php list($copyfrom) = explode('|', $r1['copyfrom'])}		
+								{php $posdb = pc_base::load_model('position_data_model'); $pos = $posdb->get_all(array('catid'=>$r1[catid],'id'=>$r1[id])); }
+								{php $a=string2array($r1[pictureurls])}
+						<li>
+							<a href="{$r1[url]}">
+								<!--<div class="tags">
+									<div class="hot">热门</div>
+									<div class="tt">头条</div>
+									<div class="yc">原创</div>
+								</div>-->
+								
+								<div class="video-infor">
+									<img src="{$r1[thumb]}" alt="{$r1[title]}">
+									<!--<i></i>-->
+									<h3>{$r1[title]}</h3>
+								</div>
+								<div class="video-time">
+									<span class="time"> {date("m-d",$r1[inputtime])} </span>
+									<span class="seen">{$views}</span>
+									<span class="repeat">{if $comment_total}{$comment_total}{else}0{/if}</span>
+									<span class="user" style="margin-right: 0.16rem;">  作者：{$r1[username]}</span>
+									<span class="from"> 来源：{$copyfrom}</span>
+								</div>
+							</a>
+						</li>
+						{/loop}
+					{/pc}
+						
+					</ul>
+				</div>
+				<div class="nav-item">
+					<ul>
+					{pc:get sql="SELECT * FROM newt_zhibo WHERE catid =19 group by title order by inputtime desc" num="15" page="$page" return="data"}
+								{loop $data $r1}
+								{php $db = pc_base::load_model('hits_model');   $_r = $db->get_one(array('hitsid'=>'c-1-'.$r1[id])); $views = $_r[views]; }
+								{php $comment_tag = pc_base::load_app_class("comment_tag", "comment"); $comment_total = $comment_tag->count(array('commentid'=>'content_'.$r1[catid].'-'.$r1[id].'-1'));}
+								{php list($copyfrom) = explode('|', $r1['copyfrom'])}		
+								{php $posdb = pc_base::load_model('position_data_model'); $pos = $posdb->get_all(array('catid'=>$r1[catid],'id'=>$r1[id])); }
+								{php $a=string2array($r1[pictureurls])}
+						<li>
+							<a href="{$r1[url]}">
+								<!--<div class="tags">
+									<div class="hot">热门</div>
+									<div class="tt">头条</div>
+									<div class="yc">原创</div>
+								</div>-->
+								
+								<div class="video-infor">
+									<img src="{$r1[thumb]}" alt="{$r1[title]}">
+									<!--<i></i>-->
+									<h3>{$r1[title]}</h3>
+								</div>
+								<div class="video-time">
+									<span class="time"> {date("m-d",$r1[inputtime])} </span>
+									<span class="seen">{$views}</span>
+									<span class="repeat">{if $comment_total}{$comment_total}{else}0{/if}</span>
+									<span class="user" style="margin-right: 0.16rem;">  作者：{$r1[username]}</span>
+									<span class="from"> 来源：{$copyfrom}</span>
+								</div>
+							</a>
+						</li>
+						{/loop}
+					{/pc}
+						
+					</ul>
+				</div>
+			
+			</div>
+		</section>
+	
+
+<?php 
+$sitelist  = getcache('sitelist','commons');
+$default_style = $sitelist[$siteid]['default_style'];
+include template('content','footer',$default_style."_wap");
+?>
+	
+	<script type="text/javascript">
+		$(function(){
+			CommonFun.init();
+			$("#twsp_video section nav ul li").on("click",function(){
+				var index = $(this).index();
+				$("#twsp_video section  nav ul li").removeClass("active");
+				$(this).addClass("active");
+				$("#twsp_video section .nav-item").hide();
+				$("#twsp_video section .nav-item").eq(index).show();
+			})
+		})
+	</script>

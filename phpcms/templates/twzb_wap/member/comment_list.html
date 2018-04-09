@@ -1,0 +1,55 @@
+<title>图文直播 - {L('member','','member').L('manage_center')}</title>
+<link href="{CSS_PATH}reset.css" rel="stylesheet" type="text/css" />
+<link href="{CSS_PATH}member.css" rel="stylesheet" type="text/css" />
+<link href="{CSS_PATH}table_form.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{JS_PATH}jquery.min.js"></script>
+<script type="text/javascript" src="{JS_PATH}member_common.js"></script>
+{if isset($show_validator)}
+<script type="text/javascript" src="{JS_PATH}formvalidator.js" charset="UTF-8"></script>
+<script type="text/javascript" src="{JS_PATH}formvalidatorregex.js" charset="UTF-8"></script>
+{/if}
+
+<?php 
+$sitelist  = getcache('sitelist','commons');
+$default_style = $sitelist[1]['default_style'];
+include template('content','header',$default_style."_wap");
+?>
+<div id="comment" style="margin-top:1rem">
+
+		<ul>
+		{php $userid=param::get_cookie('_userid');}
+							{pc:get sql="SELECT * FROM newt_comment_data_1 WHERE userid=$userid" return="data" num="10" page="$page"}
+								 {loop $data $val}
+								{if $data}
+									{php $comment_db = pc_base::load_model('comment_model');}
+									{php $comment_info = $comment_db->get_one(array('commentid'=>$val['commentid']));}
+									
+									{php $avatar= get_memberavatar($userid,'','90');}	
+			<li>
+				<div class="my">
+					<div class="my-head">
+						<img src="{$avatar}" alt="{$val[username]}">
+					</div>
+					<div class="my-infor">
+						<h3>{$val[username]}</h3>
+						<span>{date("Y-m-d H:i:s",$val[creat_at])}</span>
+					</div>
+				</div>
+				<dl>
+					<dd>
+						<p>回复：{$val[content]}</p>
+						<!--<span>{date("Y-m-d H:i:s",$val[creat_at])}</span>-->
+					</dd>
+					
+				</dl>
+				<a class="origin" href="{$comment_info['url']}">原帖：{$comment_info['title']}</a>
+			</li>
+			{else}
+			<li>暂无任何评论</li>
+			{/if}
+						{/loop}
+		{/pc}
+			
+		</ul>
+	</div>
+	

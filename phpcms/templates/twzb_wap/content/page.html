@@ -1,0 +1,29 @@
+<?php 
+$sitelist  = getcache('sitelist','commons');
+$default_style = $sitelist[$siteid]['default_style'];
+include template('content','header',$default_style."_wap");
+?>
+	<div id="news_detail">
+		
+		<section style="padding-top:0.82rem;padding-bottom: 0.7rem;">
+			<div class="news-infor">
+				<h3>{$title}</h3>
+				
+				<ul>
+					<li class="imgli">
+						<p>{$content}</p>
+					</li>
+					
+				</ul>
+			</div>
+			
+			
+		</section>
+	</div>
+
+<?php 
+$sitelist  = getcache('sitelist','commons');
+$default_style = $sitelist[$siteid]['default_style'];
+include template('content','menu',$default_style."_wap");
+?>
+

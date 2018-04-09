@@ -1,0 +1,268 @@
+<?php
+return array (
+  0 => 
+  array (
+    'id' => '133',
+    'catid' => '31',
+    'title' => '三亚80辆纯电动旅游大巴订单花落比亚迪和宇通客车',
+    'url' => 'http://www.ev817.com/html/busnews/caigou/2017/1026/133.html',
+    'username' => '张立华',
+    'sysadd' => '0',
+    'inputtime' => '1508983319',
+    'status' => '99',
+  ),
+  1 => 
+  array (
+    'id' => '123',
+    'catid' => '31',
+    'title' => '厦门金龙和中通客车中标，马鞍山公交80辆采购结果公布',
+    'url' => 'http://www.ev817.com/html/busnews/caigou/2017/1024/123.html',
+    'username' => '张立华',
+    'sysadd' => '0',
+    'inputtime' => '1508833020',
+    'status' => '99',
+  ),
+  2 => 
+  array (
+    'id' => '122',
+    'catid' => '31',
+    'title' => '金龙客车拿下大单，宁波象山县公交车采购结果公布',
+    'url' => 'http://www.ev817.com/html/busnews/caigou/2017/1024/122.html',
+    'username' => '张立华',
+    'sysadd' => '0',
+    'inputtime' => '1508829960',
+    'status' => '99',
+  ),
+  3 => 
+  array (
+    'id' => '120',
+    'catid' => '31',
+    'title' => '乳山公交加速新能源发展，对外招标采购102辆纯电动车',
+    'url' => 'http://www.ev817.com/html/busnews/caigou/2017/1024/120.html',
+    'username' => '张立华',
+    'sysadd' => '0',
+    'inputtime' => '1508819700',
+    'status' => '99',
+  ),
+  4 => 
+  array (
+    'id' => '119',
+    'catid' => '31',
+    'title' => '中标金额1.03亿元，金旅一举拿下衡水公交150台纯电动订单',
+    'url' => 'http://www.ev817.com/html/busnews/caigou/2017/1023/119.html',
+    'username' => '张立华',
+    'sysadd' => '0',
+    'inputtime' => '1508728413',
+    'status' => '99',
+  ),
+  5 => 
+  array (
+    'id' => '111',
+    'catid' => '31',
+    'title' => '3200万元，云南保山招标采购一批85辆纯电动公交',
+    'url' => 'http://www.ev817.com/html/busnews/caigou/2017/1014/111.html',
+    'username' => '张立华',
+    'sysadd' => '0',
+    'inputtime' => '1507980559',
+    'status' => '99',
+  ),
+  6 => 
+  array (
+    'id' => '110',
+    'catid' => '31',
+    'title' => '赤峰公交再采购一批新能源，这次是快充型纯电动车！',
+    'url' => 'http://www.ev817.com/html/busnews/caigou/2017/1014/110.html',
+    'username' => '张立华',
+    'sysadd' => '0',
+    'inputtime' => '1507977915',
+    'status' => '99',
+  ),
+  7 => 
+  array (
+    'id' => '94',
+    'catid' => '31',
+    'title' => '1.1亿元，晋江公交公开招标采购200台新能源车辆',
+    'url' => 'http://www.ev817.com/html/busnews/caigou/2017/0930/94.html',
+    'username' => '张立华',
+    'sysadd' => '0',
+    'inputtime' => '1506740329',
+    'status' => '99',
+  ),
+  8 => 
+  array (
+    'id' => '43',
+    'catid' => '12',
+    'title' => '校车上升18%、新能源增长43%，宇通客车7月销量大增',
+    'url' => 'http://www.ev817.com/html/busnews/data/2017/0816/43.html',
+    'username' => '张立华',
+    'sysadd' => '0',
+    'inputtime' => '1502866320',
+    'status' => '99',
+  ),
+  9 => 
+  array (
+    'id' => '42',
+    'catid' => '49',
+    'title' => '中国重汽：1-7月重卡销售7.8万辆 同比增长82.68%',
+    'url' => 'http://www.ev817.com/html/trucknews/data/2017/0813/42.html',
+    'username' => '张立华',
+    'sysadd' => '0',
+    'inputtime' => '1502606880',
+    'status' => '99',
+  ),
+  10 => 
+  array (
+    'id' => '41',
+    'catid' => '49',
+    'title' => '东风商用车：7月中重卡销售1.1万辆，全年欲冲刺16万辆！',
+    'url' => 'http://www.ev817.com/html/trucknews/data/2017/0813/41.html',
+    'username' => '张立华',
+    'sysadd' => '0',
+    'inputtime' => '1502606700',
+    'status' => '99',
+  ),
+  11 => 
+  array (
+    'id' => '40',
+    'catid' => '12',
+    'title' => '宇通客车：1-7月累计销售大、中、轻型客车2.68万辆',
+    'url' => 'http://www.ev817.com/html/busnews/data/2017/0807/40.html',
+    'username' => '张立华',
+    'sysadd' => '0',
+    'inputtime' => '1502088060',
+    'status' => '99',
+  ),
+  12 => 
+  array (
+    'id' => '39',
+    'catid' => '12',
+    'title' => '安凯客车：1-7月累计销售大、中、轻型客车4710辆',
+    'url' => 'http://www.ev817.com/html/busnews/data/2017/0807/39.html',
+    'username' => '张立华',
+    'sysadd' => '0',
+    'inputtime' => '1502087940',
+    'status' => '99',
+  ),
+  13 => 
+  array (
+    'id' => '38',
+    'catid' => '12',
+    'title' => '轻型客车增长明显 安凯客车1-6月客车销量基本平稳',
+    'url' => 'http://www.ev817.com/html/busnews/data/2017/0705/38.html',
+    'username' => '张立华',
+    'sysadd' => '0',
+    'inputtime' => '1499236620',
+    'status' => '99',
+  ),
+  14 => 
+  array (
+    'id' => '36',
+    'catid' => '49',
+    'title' => '“六大亮点” 陕汽2017上半年销量破7万台',
+    'url' => 'http://www.ev817.com/html/trucknews/data/2017/0701/36.html',
+    'username' => '张立华',
+    'sysadd' => '0',
+    'inputtime' => '1498890780',
+    'status' => '99',
+  ),
+  15 => 
+  array (
+    'id' => '29',
+    'catid' => '31',
+    'title' => '宇通、福田、上饶客车齐中标，赣州90台公交车采购结果公布',
+    'url' => 'http://www.ev817.com/html/busnews/caigou/2017/0904/29.html',
+    'username' => '张立华',
+    'sysadd' => '0',
+    'inputtime' => '1504495655',
+    'status' => '99',
+  ),
+  16 => 
+  array (
+    'id' => '27',
+    'catid' => '31',
+    'title' => '新能源为主，扬州9月公开招标采购200台公交车',
+    'url' => 'http://www.ev817.com/html/busnews/caigou/2017/0903/27.html',
+    'username' => '张立华',
+    'sysadd' => '0',
+    'inputtime' => '1504408980',
+    'status' => '99',
+  ),
+  17 => 
+  array (
+    'id' => '26',
+    'catid' => '31',
+    'title' => '宇通客车斩获山东泰安公交全部50台纯电动订单',
+    'url' => 'http://www.ev817.com/html/busnews/caigou/2017/0831/26.html',
+    'username' => '张立华',
+    'sysadd' => '0',
+    'inputtime' => '1504149600',
+    'status' => '99',
+  ),
+  18 => 
+  array (
+    'id' => '25',
+    'catid' => '31',
+    'title' => '纯电动为主！三亚公开招标采购一批54辆公交车',
+    'url' => 'http://www.ev817.com/html/busnews/caigou/2017/0828/25.html',
+    'username' => '张立华',
+    'sysadd' => '0',
+    'inputtime' => '1503890220',
+    'status' => '99',
+  ),
+  19 => 
+  array (
+    'id' => '24',
+    'catid' => '31',
+    'title' => '申龙客车收获上海嘉定42台新能源公交采购订单',
+    'url' => 'http://www.ev817.com/html/busnews/caigou/2017/0825/24.html',
+    'username' => '张立华',
+    'sysadd' => '0',
+    'inputtime' => '1503630600',
+    'status' => '99',
+  ),
+  20 => 
+  array (
+    'id' => '23',
+    'catid' => '31',
+    'title' => '中通客车收获江苏阜宁60台纯电动公交订单',
+    'url' => 'http://www.ev817.com/html/busnews/caigou/2017/0825/23.html',
+    'username' => '张立华',
+    'sysadd' => '0',
+    'inputtime' => '1503630240',
+    'status' => '99',
+  ),
+  21 => 
+  array (
+    'id' => '21',
+    'catid' => '31',
+    'title' => '宇通中标甘肃民勤绿洲公交20台纯电动订单',
+    'url' => 'http://www.ev817.com/html/busnews/caigou/2017/0824/21.html',
+    'username' => '张立华',
+    'sysadd' => '0',
+    'inputtime' => '1503542700',
+    'status' => '99',
+  ),
+  22 => 
+  array (
+    'id' => '19',
+    'catid' => '31',
+    'title' => '拉萨、江阴、烟台8月纷纷启动公交招标！几亿新能源大单不要错过！',
+    'url' => 'http://www.ev817.com/html/busnews/caigou/2017/0823/19.html',
+    'username' => '张立华',
+    'sysadd' => '0',
+    'inputtime' => '1503455760',
+    'status' => '99',
+  ),
+  23 => 
+  array (
+    'id' => '17',
+    'catid' => '31',
+    'title' => '厦门金龙和中车时代共同拿下福清公交3700万订单',
+    'url' => 'http://www.ev817.com/html/busnews/caigou/2017/0823/17.html',
+    'username' => '张立华',
+    'sysadd' => '0',
+    'inputtime' => '1503455220',
+    'status' => '99',
+  ),
+);
+?>

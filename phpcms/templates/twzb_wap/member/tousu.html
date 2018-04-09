@@ -1,0 +1,50 @@
+<title>图文直播 - {L('member','','member').L('manage_center')}</title>
+<link href="{CSS_PATH}reset.css" rel="stylesheet" type="text/css" />
+<link href="{CSS_PATH}member.css" rel="stylesheet" type="text/css" />
+<link href="{CSS_PATH}table_form.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{JS_PATH}jquery.min.js"></script>
+<script type="text/javascript" src="{JS_PATH}member_common.js"></script>
+{if isset($show_validator)}
+<script type="text/javascript" src="{JS_PATH}formvalidator.js" charset="UTF-8"></script>
+<script type="text/javascript" src="{JS_PATH}formvalidatorregex.js" charset="UTF-8"></script>
+{/if}
+
+<?php 
+$sitelist  = getcache('sitelist','commons');
+$default_style = $sitelist[1]['default_style'];
+include template('content','header',$default_style."_wap");
+?>
+
+<div id="ts_advice" style="margin-top:1rem">
+<form action="{APP_PATH}index.php?m=formguide&c=index&a=show&formid=14&action=js&siteid=1" method="post">
+		<!--<div class="title">
+			<a href="ts_advice_list.html">我的投诉</a>
+		</div>-->
+		<div class="write-area">
+			
+			<textarea name="info[neirong]" id="neirong" placeholder="请输入您的反馈意见" style="background:none;"></textarea>
+		</div>
+		<div class="submit-btn">
+			
+			<input type="submit" id="dosubmit" name="dosubmit" value="提交" class="button"/>
+		</div>
+		</form>
+	</div>
+	
+<link rel="stylesheet" type="text/css" href="{APP_PATH}phpcms/templates/twzb_wap/css/mdialog.css">
+<script type="text/javascript" src="{APP_PATH}phpcms/templates/twzb_wap/js/zepto.min.js"></script>
+<script type="text/javascript" src="{APP_PATH}phpcms/templates/twzb_wap/js/mdialog.js"></script>
+	<script>
+	 $(function(){
+		$("#dosubmit").click(function(){
+			if(!$("#neirong").val()){
+				new TipBox({type:'error',str:'内容不能为空!',hasBtn:true});  
+				return false;
+			}
+		
+		});
+		
+		
+	 })
+	</script>
+

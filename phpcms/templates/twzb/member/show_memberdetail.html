@@ -1,0 +1,142 @@
+<title>车友会--会员详情</title>
+{template "content","header"}
+		<div id="interview_desc">
+		<div class="section">
+			<div class="container sec_cont">
+				<div class="title_position">
+				<a href="{siteurl($siteid)}">首页</a>
+				<a>会员详情</a>
+					
+				</div>
+				<div class="person">
+					<div class="imgBox">
+						{if $m[groupid]==4}
+						<img src="{$img}" alt="{$m[nickname]}" onerror="src='images/club_head.jpg'">
+						{else}
+						<img src="{$img}" alt="{$m[nickname]}" onerror="src='images/index_publis_head.png'">
+						{/if}
+						
+					</div>
+					<div class="infor">
+						<div class="name">
+							<h3>{if $m[nickname]} {$m[nickname]}{else} {$m[username]} {/if}</h3>
+							{php $uid=param::get_cookie('_userid');}
+							{php $caredb = pc_base::load_model('careinfo_model'); $iscare = $caredb->get_one(array('uid'=>$m[userid],'userid'=>$uid));}
+											{if $iscare}
+											<a href="javascript:;" data-userid="{$uid}" data-uid="{$m[userid]}" class="focus addcare">已关注</a>
+											{else}
+											<a href="javascript:;" data-userid="{$uid}" data-uid="{$m[userid]}" class="focus">加关注</a>
+											{/if}
+											
+											
+							 {php $caredb = pc_base::load_model('careinfo_model'); $care = $caredb->get_all(array('uid'=>$m[userid])); }
+							
+							<i style="background: url({APP_PATH}images/club_per.png) no-repeat;width:18px;height:18px;display:block;float:left;padding-left:20px;margin-top:12px;margin-left:5px;font-style: normal;font-size:14px;color:#666">{count($care)}</i>
+							
+						</div>
+						{if $m[groupid]==4}
+						<p>
+						所在城市：{$citypro}<br/>
+						职业：{$m_d[zhiye]}<br/>
+						所在公司：{$m_d[gongsi]}<br/>
+						关注信息：{$m_d[guanzhu]}<br/>
+						驾龄：{$m_d[jial]}年<br/>
+						驾驶累计里程：{$m_d[licheng]}公里<br/>
+						曾驾驶车辆：{$m_d[cjs]}<br/>
+						现驾驶车辆：{$m_d[xjs]}<br/>
+						主要运输路线：{$m_d[luxian]}<br/>
+						工作经历：{$m_d[jingli]}<br/>
+						获得荣誉：{$m_d[rongyu]}<br/>
+						个人宣言：{$m_d[xuanyan]}<br/>
+						</p>
+						{else}
+						<p>
+						所在城市：{$citypro}<br/>
+						职业：{$m_d[zhiye]}<br/>
+						所在公司：{$m_d[gongsi]}<br/>
+						关注信息：{$m_d[guanzhu]}<br/>
+						从业年限：{$m_d[nianxian]}<br/>
+						工作经历：{$m_d[jingli]}<br/>
+					
+						</p>
+						{/if}
+					</div>
+					
+					
+				</div>
+				<!--<div style="margin-top:20px;line-height:25px;min-height:300px;">{$content}</div>-->
+				
+				<div class="relate_article relate" style="min-height:200px;">
+					<h5>相关文章</h5>
+					<ul>
+						
+						{pc:get sql="SELECT * FROM newt_news WHERE username='$m[username]' order by inputtime desc" return="data"}
+							{if $data}
+							{loop $data $r}
+							{php $db = pc_base::load_model('hits_model');   $_r = $db->get_one(array('hitsid'=>'c-1-'.$r[id])); $views = $_r[views]; }
+							{php $comment_tag = pc_base::load_app_class("comment_tag", "comment"); $comment_total = $comment_tag->count(array('commentid'=>'content_'.$r[catid].'-'.$r[id].'-'.$modelid));}
+							{php list($copyfrom) = explode('|', $r['copyfrom'])}
+							
+							{php $posdb = pc_base::load_model('position_data_model'); $pos = $posdb->get_all(array('catid'=>$r[catid],'id'=>$r[id])); }
+															
+						<li>
+							<div class="imgbox">
+								<a href="{$r[url]}"><img src="{$r[thumb]}" alt="{$r[title]}"></a>
+							</div>
+							<div class="right">
+								<h6><a href="{$r[url]}">{$r[title]}</a><?php  if($pos) foreach($pos as $v){ if($v[posid]==1){echo "<i>原创</i>";}elseif($v[posid]==2){echo "<i>头条</i>";}else{echo "<i>热门</i>";} };?></h6>
+								<p>
+								{$r[description]} <a href="{$r[url]}">[详细]</a></p>
+								<div class="timebox">
+									<span class="time"> {date("Y-m-d H:i",$r[inputtime])}</span>
+									<span class="user"> 作者：{$r[username]}</span>
+									<span class="from"> 来源：{if $copyfrom} {$copyfrom} {else} 环球商用车 {/if}</span>
+									<i class="repeat">{if $comment_total}{$comment_total}{else}0{/if}</i>
+									<i class="seen">{$views}</i>
+								</div>
+							</div>
+						</li>
+						{/loop}
+						{/if}
+						{/pc}
+						
+					</ul>
+				</div>
+				
+			</div>
+		</div>
+{template "content","footer"}
+
+<script>
+$(".infor .name a").click(function(){
+	var $userid=$(this).data('userid');
+	if($userid){
+		
+		
+		if($(this).attr('class')=="focus addcare"){
+			$(this).html('加关注');
+			
+			var uid=$(this).data('uid');//被关注用户id  uid
+			$.post("index.php?m=content&c=rss&a=delcare",{uid:uid},function(data){
+				
+				$(this).removeClass('addcare');
+			});
+			location.reload();
+		}else{
+			$(this).html("已关注");
+			var uid=$(this).data('uid');//被关注用户id  uid
+			
+			$.post("index.php?m=content&c=rss&a=addcare",{uid:uid},function(data){
+				$(this).addClass('addcare');
+			});
+			location.reload();
+		}
+	
+	}else{
+		
+		location.href="index.php?m=member&c=index&a=login";
+	}
+	
+
+});
+</script>

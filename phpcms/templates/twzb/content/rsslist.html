@@ -1,0 +1,97 @@
+{template 'member', 'header'}
+{php $db = pc_base::load_model('member_model'); $memberinfo = $db->get_one(array('userid'=>param::get_cookie('_userid'))); }
+
+
+<div id="memberArea" >
+{template "member","left"}
+<div id="subscribe">
+<div class="sec_cont">
+<div class="re_desc_box" style="width:100%">
+					
+					<h3>我的订阅</h3>
+					<div class="gl"><a href="index.php?m=content&c=rss&siteid=1">管理订阅</a></div>
+					<div class="inner_box">
+						<ul>
+							{php $db = pc_base::load_model('rss_model'); $rss = $db->get_all(array('userid'=>param::get_cookie('_userid'))); }
+							{php $ids = i_array_column($rss, 'catid'); $catids=implode(',',$ids);}
+							
+							{if !$catids}
+							<li>暂无订阅，请先到<a href="index.php?m=content&c=rss&siteid=1" style="display:inline;color:red">订阅管理</a>中去订阅！</li>
+							{else}
+							
+							{pc:get sql="SELECT * FROM newt_news WHERE catid in($catids) order by updatetime desc" num="5" page="$page" return="data"}
+								{loop $data $r}
+					
+								<li>
+									<a href="{$r[url]}">
+										<div class="imgBox"><img src="{$r[thumb]}" alt="{$r[title]}"></div>
+										<div class="infor">
+											<h5>{$r[title]}</h5>
+											<p>{$r[description]}</p>
+										</div>
+									</a>
+								</li>
+								{/loop}
+							{/pc}
+							
+							{pc:get sql="SELECT * FROM newt_picture WHERE catid in($catids) order by updatetime desc" num="5" page="$page" return="data"}
+								{loop $data $r}
+					
+								<li>
+									<a href="{$r[url]}">
+										<div class="imgBox"><img src="{$r[thumb]}" alt="{$r[title]}"></div>
+										<div class="infor">
+											<h5>{$r[title]}</h5>
+											<p>{$r[description]}</p>
+										</div>
+									</a>
+								</li>
+								{/loop}
+							{/pc}
+							{pc:get sql="SELECT * FROM newt_video WHERE catid in($catids) order by updatetime desc" num="5" page="$page" return="data"}
+								{loop $data $r}
+					
+								<li>
+									<a href="{$r[url]}">
+										<div class="imgBox"><img src="{$r[thumb]}" alt="{$r[title]}"></div>
+										<div class="infor">
+											<h5>{$r[title]}</h5>
+											<p>{$r[description]}</p>
+										</div>
+									</a>
+								</li>
+								{/loop}
+							{/pc}
+							
+							{pc:get sql="SELECT * FROM newt_zhibo WHERE catid in($catids) group by title order by updatetime desc" num="5" page="$page" return="data"}
+								{loop $data $r}
+					
+								<li>
+									<a href="{$r[url]}">
+										<div class="imgBox"><img src="{$r[thumb]}" alt="{$r[title]}"></div>
+										<div class="infor">
+											<h5>{$r[title]}</h5>
+											<p>{$r[description]}</p>
+										</div>
+									</a>
+								</li>
+								{/loop}
+							{/pc}
+							
+							{/if}
+							
+							
+						</ul>
+						<div class="page" id="pages">
+							{$pages}
+						</div>
+					</div>
+				
+				</div>
+</div>
+</div>
+
+
+
+</div>
+{template "content","footer"}

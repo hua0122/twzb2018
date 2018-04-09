@@ -1,0 +1,2359 @@
+.section .container{
+	overflow: hidden;
+}
+.section .car-left{
+	width:77%;
+	float: left;
+	min-height: 800px;
+}
+.section .car-right{
+	width:21%;
+	float: right;
+	border: 1px solid #ddd;
+	min-height: 675px;
+}
+
+.brand .contbox .publish .pub_l{
+	float: left;
+	width:72%;
+}
+.brand .contbox .publish .pub_l .menu_item{
+	width:100%;
+	height: 35px;
+	border:1px solid #dcdcdc;
+}
+.brand .pub_l .menu_item li{
+	float: left;
+	width:85px;
+	text-align: center;
+	line-height:33px ;
+	font-size:14px;
+	color:#4f4f4f;
+	cursor: pointer;
+	position: relative;
+	margin-right:5px;
+	padding:0px;
+}
+.brand .pub_l .menu_item li:before{
+	content: '';
+	position: absolute;
+	right: 0;
+	top:9px;
+	width: 1px;
+	height: 15px;
+	background: #b5b5b5;
+}
+.brand .pub_l .menu_item li:last-child:before,#index .pub_l .menu_item li.active:before,#index .pub_l .menu_item li:hover:before{
+	background: transparent;
+}
+.brand .pub_l .menu_item li.active,#index .pub_l .menu_item li:hover{
+	background:#d03b3d ;
+	color:#fff;
+}
+.brand .pub_l .detail{
+	width: 100%;
+	height: 275px;
+	border:1px solid #dcdcdc;
+	border-top:none;
+	position: relative;
+}
+.brand .pub_l .detail .item{
+	position: absolute;
+	top:0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	border-top: 1px solid #dcdcdc;
+}
+.brand .pub_l .detail .item.active{
+	display: block;
+}
+.brand .pub_l .detail .item li{
+	width: 131px;
+	height: 131px;
+
+	overflow: hidden;
+	display: -webkit-flex;
+	display: flex;
+	float:left;
+}
+.brand .pub_l .detail .item li:last-child{
+	border-bottom: none;
+}
+.brand .pub_l .detail .item li .head{
+	width: 100px;
+	height: 100px;
+	overflow: hidden;
+	border-radius:50%;
+	border:#ddd 1px solid;
+	margin-left: 15px;
+	margin-top: 20px;
+}
+.brand .pub_l .detail .item li .head img{
+	display: block;
+	width:89px;
+	margin:10px auto;
+}
+.brand .pub_l .detail li .head a{
+	display: block;
+	margin:0 auto;
+	width:50px;
+	height: 18px;
+	border:1px solid #d03b3d;
+	border-radius: 18px;
+	font-size:12px;
+	text-align: center;
+	line-height: 18px;
+	color:#d03b3d;
+}
+.brand .pub_l .detail li .head a:hover{
+	background: #d03b3d;
+	color:#fff;
+}
+
+.brand .pub_l .detail .desc{
+	-webkit-flex:1;
+	flex:1;
+	height: 100%;
+	overflow: hidden;
+	padding-right:30px;
+	float:left;
+}
+
+
+
+.brand .pub_l .detail .desc h5{
+	font-size:14px;
+	color:#0c0b0b;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	width: 72%;
+	margin-top:22px;
+}
+.brand .pub_l .detail .desc p{
+	font-size:12px;
+	color:#0c0b0b;
+	overflow : hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	margin-top:14px;
+	line-height: 20px;
+}
+
+@media screen and (min-width: 1024px){
+	.brand_topbox{
+		float:right;
+		width:250px;
+		margin-bottom:20px;
+		overflow:hidden;
+	}
+	.letter_check_box{
+		width:250px;
+		background-color:#f2f2f2;
+		overflow:hidden;
+	}
+	.letter_check_box_innerblock{
+		width:100%;
+		margin:4px 0px 6px 4px;
+	}
+	.letter_check_box_each{
+		float:left;
+		display: block;
+		width: 26px;
+		line-height: 18px;
+		text-align: center;
+		color: #323232;
+		background-color:#e5e5e5;
+		font-size:12px;
+		font-family:"Helvetica Neue","Microsoft YaHei","Simsun","Arial";
+		margin-bottom:7px;
+		margin-right:8.5px;
+	}
+	.letter_check_box_nonclick{
+		float: left;
+		display: block;
+		width:26px;
+		line-height:18px;
+		text-align:center;
+		color: #8b8b8b;
+		background-color: #e5e5e5;
+		font-size: 12px;
+		font-family: "Helvetica Neue","Microsoft YaHei","Simsun","Arial";
+		margin-bottom: 7px;
+		margin-right: 8.5px;
+		border:0;
+		border-radius:0px;
+	}
+	.letter_check_box_scrollbox{
+		width: 100%;
+		height: 530px;
+		overflow-y: scroll;
+	}
+	.letter_check_box_scrollbox_item{
+		overflow: hidden;
+		margin: 20px 0px 20px 10px;
+	}
+	.letter_check_box_scrollbox_item ul li{
+		float: left;
+		margin-right: 10px;
+		line-height: 16px;
+		font-family: "Helvetica Neue","Microsoft YaHei","Simsun","Arial";
+	}
+	.letter_check_box_scrollbox_item .scrollitem_options{
+		width: 150px;
+		margin-right: 0;
+		color: #00aa90;
+		background-color: #f2f8f8;
+	}
+	.letter_check_box_scrollbox_item .scrollitem_options_name{
+		color: rgb(19,88,157);
+	}
+	.item_fir_large_sign{
+		color: #cacaca;
+		font-size: 12px;
+	}
+	.item_sec_item_sort{
+		color: rgb(19,88,157);
+		font-size: 13px;
+	}
+	.item_third_item_name{
+		font-size: 13px;
+	}
+	.item_fourth_amount{
+		color: #7f7f7f;
+		font-size: 12px;
+		margin-left:5px;
+	}
+	.letter_check_box_each_effect{
+		background: rgb(19,88,157);
+		color:#fff;
+	}
+	.letter_check_box_each:hover{
+		background:rgb(19,88,157);
+		color:#fff;
+	}
+	.clear_right{
+		margin-right: 0px;
+	}
+}
+
+
+
+
+.section .car-left .tj_car{
+	border: 1px solid #ddd;
+	margin-top:20px;
+	height:800px;
+}
+.section .car-left .tj_car .title{
+	font-size:18px;
+	border-left:5px solid rgb(208,59,61);
+	padding-left: 10px;
+	margin: 10px;
+}
+.section .car-left .tj_car .content{
+	padding: 10px;
+}
+.section .car-left .tj_car .content ul li{
+	border: 1px solid #ddd;
+	width:280px;
+	height:340px;
+	float:left;
+	margin-right:30px;
+	margin-bottom: 20px;
+
+}
+.section .car-left .tj_car .content ul li img{
+	width:280px;
+	height:240px;
+}
+.section .car-left .tj_car .content ul li span{
+	margin-top:10px;
+	display: block;
+	padding-left: 20px;
+	text-align: left;
+	font-weight:800;
+}
+.section .car-left .tj_car .content ul li .tit{
+
+
+}
+.section .car-left .tj_car .content ul li .price{
+
+	color:rgb(208,59,61);
+}
+
+
+
+/*chexi */
+.four_btn a{
+	width: 76px;
+	margin: 0;
+	margin-left: 5px;
+}
+.four_btn a:first-child{
+	margin: 0;
+}
+.four_btn a img{
+	margin: 5px;
+}
+.manual_btn {
+	color: #fff;
+	background: #949494;
+	display: block;
+	float: left;
+	width: 98px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+	font-family: "Helvetica Neue","Microsoft YaHei","Simsun","Arial";
+}
+.manual_btn img{
+	display: inline-block;
+	float: left;
+	width: 20px;
+	height: 20px;
+}
+@media all and (min-width:1024px){
+	.reuse_brand_block{
+		float: left;
+		width: 665px;
+		background: #f8f8f8;
+	}
+	.reuse_brand_titlemark_bg{
+		width:665px;
+		height:36px;
+		background-color:#078d83;
+	}
+	.reuse_brand_titlemark{
+		display: block;
+		float:left;
+		line-height: 30px;
+		color: #078d83;
+		background-color: #f2f2f2;
+		font-size: 18px;
+		padding: 0 10px;
+		margin:6px 0 0 19px;
+		font-family: "Helvetica Neue","Microsoft YaHei","Simsun","Arial";
+	}
+	.rss_brand_num{
+		display: block;
+		float:left;
+		padding:0 10px;
+		line-height:25px;
+		color:#ffffff;
+		font-size:12px;
+		font-family: "Helvetica Neue","Microsoft YaHei","Simsun","Arial";
+		margin-top:10px;
+	}
+	.reuse_rss_brand_title{
+		float:right;
+		display:block;
+		width:78px;
+		line-height:22px;
+		color:#a5a5a5;
+		font-size:12px;
+		font-family: "Helvetica Neue","Microsoft YaHei","Simsun","Arial";
+		border-radius:15px;
+		-webkit-border-radius:15px;
+		-moz-border-radius:15px;
+		margin:6px 10px 0;
+	}
+	.reuse_rss_brand_title img{
+		width:100%;
+	}
+	.reuse_rss_brand_title_show{
+		color:#ffffff;
+		background-color:#ff8a00;
+		transition:.3s;
+		-webkit-transition:.3s;
+		-moz-transition:.3s;
+	}
+	.reuse_rss_brand_title > span{
+		display: block;
+		float:left;
+		width:27px;
+		height:18px;
+		background-color:#dddddd;
+		border:1px solid #d1d1d1;
+		border-radius:15px;
+		-webkit-border-radius:15px;
+		-moz-border-radius:15px;
+		margin:1px 8px 1px 1px;
+	}
+	.reuse_rss_brand_title_span_show{
+		transform: translate(45px,0px);
+		-ms-transform: translate(45px,0px);
+		-moz-transform: translate(45px,0px);
+		-webkit-transform: translate(45px,0px);
+		-o-transform: translate(45px,0px);
+	}
+	.reuse_brand_morebrand{
+		display: block;
+		float:right;
+		color:#ffffff;
+		line-height: 36px;
+		font-size:12px;
+		font-family: "Helvetica Neue","Microsoft YaHei","Simsun","Arial";
+		padding-right:15px;
+		margin-right:5px;
+		background:url("../images/album_menu_icon.png") no-repeat 100% 50%;
+	}
+	.brand_menu_green_box{
+		float:left;
+		background-color: #f2f2f2;
+	}
+	a.bmg_menu_item{
+		color: #7c7c7c;
+		padding:0 8px;
+	}
+	li.bmg_menu,li.bmg_menu_h3,.bmg_menu_item_line{
+		float:left;
+	}
+	a.bmg_menu_item{
+		height:22px;
+		line-height: 22px;
+		margin:3px 0 3px 5px;
+	}
+	.bmg_menu_item_line{
+		line-height: 22px;
+		margin:3px 0 3px 0px;
+	}
+	.reuse_brand_center{
+		width: 665px;
+		overflow: hidden;
+		background: #fff;
+	}
+	.reuse_brand_center_img{
+		display: block;
+		width: 120px;
+		height: 120px;
+		float: left;
+		margin: 15px 10px;
+	}
+	.reuse_brand_center_right{
+		width: 503px;
+		float: left;
+		overflow: hidden;
+		margin: 10px 10px 0 10px;
+	}
+	.reuse_brand_center_brief{
+		width: 505px;
+		font-size: 12px;
+		color: #969696;
+		font-family: "Helvetica Neue","Microsoft YaHei","Simsun","Arial";
+		line-height: 25px;
+	}
+	.reuse_brand_center_readdetails{
+		display: block;
+		line-height: 33px;
+		float: right;
+		color: #089a97;
+		font-size: 12px;
+		font-family: "Helvetica Neue","Microsoft YaHei","Simsun","Arial";
+	}
+	.reuse_brand_center_readmore{
+		display: block;
+		line-height: 33px;
+		float: right;
+		color: #089a97;
+		font-size: 12px;
+		font-family: "Helvetica Neue","Microsoft YaHei","Simsun","Arial";
+	}
+	.truck_range_block{
+		float:right;
+		width:250px;
+		overflow: hidden;
+	}
+	.truck_range_block > .hot_model_title_bg{
+		width:310px;
+		padding-left:0;
+	}
+	.truck_range_block .hot_model_title_bg .hot_model_menu ,.truck_range_block .hot_model_title_bg .hot_model_menu_name{
+		width:250px;
+		background-color:rgb(19,88,157);
+		text-align:center;
+		color:#fff;
+		border:none;
+		}
+	.truck_range_cnt_list{
+		width:310px;
+		margin:5px 0;
+		overflow: hidden;
+	}
+	.truck_range_cnt_list_title{
+		text-indent:5px;
+		line-height:30px;
+		color:#2d2d2d;
+		font-size:12px;
+		font-family: "Helvetica Neue","Microsoft YaHei","Simsun","Arial";
+	}
+	.truck_range_cnt_range .truck_range_cnt_list_name_area a{
+		height:49px;
+		line-height: 49px;
+		border-bottom:1px solid #ddd;
+	}
+	.truck_range_cnt_range .truck_range_cnt_list_name_area a:hover{
+		color:rgb(19,88,157);
+	}
+	.truck_range_cnt_list_name_area{
+		width:310px;
+		overflow: hidden;
+		border-top:1px solid #d9d9d9;
+	}
+	.truck_range_cnt_list_name{
+		display:block;
+		float:left;
+		width:120px;
+		height:30px;
+		line-height: 30px;
+		color:#888888;
+		font-size:14px;
+		font-family: "Helvetica Neue","Microsoft YaHei","Simsun","Arial";
+		overflow: hidden;
+		margin-right:10px;
+	}
+	.stop_produce_area{
+		display:none;
+		width:100%;
+		overflow:hidden;
+	}
+	.stop_produce_title{
+		height:34px;
+		line-height:34px;
+		font-size:14px;
+		text-indent:10px;
+		color:#a8a8a8;
+		font-family: "Helvetica Neue","Microsoft YaHei","Simsun","Arial";
+		background:#f2f2f2;
+	}
+	.truck_range_morelink{
+		position: relative;
+		height:30px;
+		margin-top:35px;
+		border-top:1px solid #d9d9d9;
+	}
+	.truck_range_morelink_series_uses{
+		position: relative;
+		height:30px;
+		margin-top:35px;
+		border-top:1px solid #d9d9d9;
+	}
+	.truck_range_morelink a{
+		position: absolute;
+		top:-16px;
+		right:33px;
+		float:left;
+		display: block;
+		width:59px;
+		line-height: 30px;
+		color:#089a97;
+		font-size:12px;
+		font-family: "Helvetica Neue","Microsoft YaHei","Simsun","Arial";
+		background-color:#ffffff;
+	}
+	.truck_range_morelink_series_uses a{
+		position: absolute;
+		top:-15px;
+		right:33px;
+		float:left;
+		display: block;
+		width:59px;
+		line-height: 30px;
+		color:#089a97;
+		font-size:12px;
+		font-family: "Helvetica Neue","Microsoft YaHei","Simsun","Arial";
+		background-color:#ffffff;
+	}
+	.brand_right{
+		width:310px;
+		float:right;
+		overflow: hidden;
+	}
+	.truck_attentrate_block{
+		width:310px;
+		float:right;
+		overflow: hidden;
+		margin-bottom:10px;
+	}
+	.truck_attentrate_block > .hot_model_title_bg{
+		width:310px;
+		padding:0px;
+	}
+	.truck_attentrate_block .hot_model_menu{
+		width:310px;
+		border-top:4px solid #078d83;
+	}
+	.truck_attentrate_block .hot_model_menu > .hot_model_menu_name{
+		width:210px;
+		text-indent:10px;
+		text-align: left;
+	}
+	.truck_attentrate_cnt_item{
+		display: block;
+		width:310px;
+		height:48px;
+		line-height:48px;
+		color:#888888;
+		font-size:14px;
+		font-family: "Helvetica Neue","Microsoft YaHei","Simsun","Arial";
+		border-top:1px solid #d9d9d9;
+		overflow: hidden;
+	}
+	.truck_attentrate_cnt_rate,.truck_attentrate_cnt_rategray{
+		display: block;
+		float:left;
+		width:15px;
+		height:15px;
+		line-height:15px;
+		background-color:#ff8a00;
+		color:#ffffff;
+		text-align:center;
+		margin: 17px 9px 17px 6px;
+		font-size:12px;
+	}
+	.truck_attentrate_cnt_rategray{
+		background-color: #d7d7d7;
+		color:#808080;
+	}
+	.truck_attentrate_block .reuse_brand_center_readmore{
+		width:100px;
+		text-align:center;
+		background: url('../images/next_extendicon.png') no-repeat 92% 50%;
+	}
+	.recommend_dealer_list{
+		width:310px;
+		border-bottom:1px solid #d9d9d9;
+		padding:10px 0;
+		overflow: hidden;
+	}
+	.recommend_dealer_list_name,.recommend_dealer_list_tele,.recommend_dealer_list_contacts{
+		width:310px;
+		line-height:30px;
+		color:#5b5b5b;
+		font-size:14px;
+		font-family: "Helvetica Neue","Microsoft YaHei","Simsun","Arial";
+		font-weight:500;
+	}
+	.hot_model_block,.brand_activity_model{
+		float:left;
+		width:665px;
+		background-color:#ffffff;
+		margin-top:20px;
+		overflow: hidden;
+	}
+	.hot_model_title_bg{
+		width:675px;
+		background-color:#f2f2f2;
+		height:38px;
+		overflow: hidden;
+	}
+	.hot_model_menu_first{
+		width: 20px;
+		height: 36px;
+		float: left;
+		border-top: 4px solid #ddd;
+	}
+	.hot_model_menu,.hot_model_morelink{
+		width: 115px;
+		height: 36px;
+		float: left;
+		border-top: 4px solid #ddd;
+	}
+	.hot_model_menu_name{
+		display: block;
+		width: 115px;
+		height: 34px;
+		line-height: 34px;
+		font-size: 14px;
+		font-family: "Helvetica Neue","Microsoft YaHei","Simsun","Arial";
+		text-align: left;
+		float: left;
+		font-weight: bold;
+	}
+	.hot_model_morelink{
+		width: 175px;
+		padding-right: 10px;
+	}
+	.hot_model_cnt_list{
+		float:left;
+		width:323px;
+		overflow: hidden;
+		background-color:#fff;
+		margin:12px 18px 12px 0px;
+	}
+	.hot_model_cnt_list:nth-child(even){
+		margin:12px 0px 12px 0px;
+	}
+	.hot_model_cnt_title_area{
+		width:100%;
+		overflow:hidden;
+	}
+	.hot_model_cnt_title{
+		float:left;
+		display:inline-block;
+		width:100%;
+		height:30px;
+		line-height: 30px;
+		color:#262626;
+		font-size:18px;
+		font-family: "Helvetica Neue","Microsoft YaHei","Simsun","Arial";
+		word-break:break-all;
+		text-overflow:ellipsis;
+		white-space:nowrap;
+		overflow:hidden;
+	}
+	.tip_stop_produce{
+		display:inline;
+		line-height:32px;
+		color:#ff8a00;
+		font-size:12px!important;
+		font-family:"Helvetica Neue","Microsoft YaHei","Simsun","Arial";
+	}
+	.hot_model_cnt_price{
+		width:323px;
+		height:30px;
+		line-height: 30px;
+		color:#686868;
+		font-size:12px;
+		font-family: "Helvetica Neue","Microsoft YaHei","Simsun","Arial";
+		overflow: hidden;
+	}
+	.hot_model_cnt_price span,.recommend_dealer_list_tele a{
+		color:#ff7800;
+		font-size:18px;
+		font-family: "Helvetica Neue","Microsoft YaHei","Simsun","Arial";
+		padding:0 5px;
+	}
+	.hot_model_cnt_typestyle{
+		width:323px;
+		height:30px;
+		line-height:30px;
+		color:#686868;
+		font-size:12px;
+		font-family: "Helvetica Neue","Microsoft YaHei","Simsun","Arial";
+		overflow: hidden;
+	}
+	.hot_model_cnt_typestyle span{
+		color:#1a9e89;
+		font-size:18px;
+		font-family: "Helvetica Neue","Microsoft YaHei","Simsun","Arial";
+		padding:0 5px;
+	}
+	.hot_model_cnt_img{
+		width:322px;
+		height:218px;
+		overflow: hidden;
+	}
+	.hot_model_cnt_img_link{
+		display: block;
+		width:322px;
+		height:218px;
+		overflow: hidden;
+	}
+	.hot_model_cnt_btn{
+		overflow: hidden;
+		display: block;
+		margin-top:10px;
+	}
+	.hot_model_cnt_btn_dealer,.hot_model_cnt_btn_agency,.hot_model_cnt_btn_model{
+		display: block;
+		float: left;
+		width: 98px;
+		height: 30px;
+		line-height: 30px;
+		font-size: 14px;
+		font-family: "Helvetica Neue","Microsoft YaHei","Simsun","Arial";
+	}
+	.hot_model_cnt_btn_agency{
+		color:#fff;
+		background-color:#0a8c80;
+		margin:0 13px;
+	}
+	.hot_model_cnt_btn_agency img,.hot_model_cnt_btn_dealer img,.hot_model_cnt_btn_model img{
+		display: inline-block;
+		float:left;
+		width: 20px;
+		height: 20px;
+		margin: 5px 5px 5px 6px;
+	}
+	.hot_model_cnt_btn_dealer img{
+		margin: 5px 5px 5px 14px;
+	}
+	.hot_model_cnt_btn_model img,.hot_model_cnt_btn_agency img{
+		margin: 5px 5px 5px 16px;
+	}
+	.hot_model_cnt_btn_dealer{
+		color:#fff;
+		background-color: #ff8a00;
+	}
+	.hot_model_cnt_btn_model{
+		color:#00a99d;
+		border:1px solid #e3e3e3;
+		background-color: #f6f6f6;
+		box-sizing:border-box;
+	} 
+	.reuse_content_block_details_list_howotitle{
+		display: block;
+		width:322px;
+		height:28px;
+		line-height: 28px;
+		color:#262626;
+		font-size: 18px;
+		font-family: "Helvetica Neue","Microsoft YaHei","Simsun","Arial";
+		font-weight: 500;
+		margin: 8px 0px;
+		word-break: break-all;
+		overflow: hidden;
+	}
+	.reuse_content_block_details{
+		margin-top:24px;
+	}
+	.reuse_news_block {
+		width: 665px;
+		float: left;
+		margin: 20px auto 0px;
+		overflow: hidden;
+	}
+	.reuse_container_block{
+		width:323px;
+	}
+	.brand_icon{
+		display: block;
+		width: 45px;
+		height: 41px;
+		float: right;
+		background: url("../images/title_right_icon.png") no-repeat;
+		background-size: 100%;
+	}
+	.reuse_container_block_icon_hover {
+		display: block;
+		width: 45px;
+		height: 41px;
+		float: right;
+		background: url("../images/title_right_icon_hover.png") no-repeat;
+		background-size: 100%;
+	}
+	.truck_range_cnt_list_name:hover,.truck_range_morelink a:hover,.truck_attentrate_cnt_item:hover,.hot_model_cnt_title:hover{
+		color:#00a99d;
+	}
+	.hot_model_menu_show{
+		border-top:4px solid rgb(208,59,61);
+	}
+	.hot_model_menu_name_show{
+		background-color:#ffffff;
+	}
+	a.bmg_menu_item:hover,a.bmg_menu_item_show{
+		color:#fff;
+		background-color:#078d83;
+	}
+	.reuse_brand_titlemark_logoarea,.layer_block,.layer_block_btn,.dealers_servicecomp_block{
+		display: none;
+	}
+	li.bmg_menu_hide_move{
+		display: none;
+	}
+	.img_hide_phone{
+		display: none;
+	}
+	.reuse_content_block_details_list{
+		margin: 0 15px 15px 0;
+		width: 323px;
+	}
+	.album_btn{
+		display: none;
+	}
+}
+
+
+@media all and (max-width:768px){
+	.main{
+		width:100%;
+	}
+	.reuse_brand_block{
+		width: 100%;
+		overflow: hidden;
+	}
+	.reuse_brand_titlemark_bg{
+		width:100%;
+		height:5.4em;
+		background-color:#fff;
+	}
+	.reuse_brand_titlemark_logoarea{
+		float:left;
+		width:6.9em;
+	}
+	.reuse_brand_titlemark_logoimg{
+		display: block;
+		float:left;
+		width:5.4em;
+		overflow: hidden;
+	}
+	.reuse_brand_titlemark_logoimg img{
+		margin:0.9em auto;
+		display: block;
+	}
+	.reuse_brand_titlemark_logoimg + span{
+		float: left;
+		background-color: #d9d9d9;
+		width: 0.2em;
+		height: 4.1em;
+		line-height: 4.1em;
+		margin: 0.5em 0.5em;
+	}
+	.reuse_brand_titlemark_bg > .reuse_brand_morebrand{
+		display:none;
+	}
+	.reuse_brand_titlemark{
+		display: block;
+		float:left;
+		line-height: 3.9em;
+		color: #078d83;
+		font-size: 1.4em;
+		font-family: "Microsoft YaHei","å¾®è½¯é›…é»‘","SimHei","é»‘ä½“";
+	}
+	.rss_brand_num{
+		display: block;
+		float: left;
+		padding: 0 0.5%;
+		color: #a4a4a4;
+		font-size: 1em;
+		font-family: "å®‹ä½“";
+		line-height: 5.5em;
+	}
+	.reuse_rss_brand_title{
+		float: right;
+		display: block;
+		width: 5em;
+		height: 5em;
+		margin-right:0.5em;
+	}
+	.reuse_rss_brand_title img{
+		width:100%;
+		margin:40% 0;
+	}
+	.img_hide{display: none;}
+	.reuse_brand_morebrand{
+		display: block;
+		float:right;
+		color:#ffffff;
+		line-height: 36px;
+		font-size:12px;
+		font-family: "å®‹ä½“";
+		padding-right:15px;
+		margin-right:5px;
+		background:url("../images/album_menu_icon.png") no-repeat 100% 50%;
+	}
+	.brand_menu_green_box{
+		background-color: #f2f2f2;
+		border-top:1px solid #d9d9d9;
+		position: relative;
+	}
+	a.bmg_menu_item{
+		color: #7c7c7c;
+	}
+	li.bmg_menu{
+		margin:0 0.5em;
+	}
+	li.bmg_menu,li.bmg_menu_h3{
+		float:left;
+	}
+	li.bmg_menu_hide{
+		display: none;
+	}
+	a.bmg_menu_item{
+		width:auto;
+		height:2.2em;
+		line-height: 2.2em;
+		font-family:"Microsoft YaHei","å¾®è½¯é›…é»‘","SimHei","é»‘ä½“";
+	}
+	.bmg_menu_item_line{
+		display: none;
+	}
+	.reuse_brand_center{
+		display: none;
+	}
+	.reuse_brand_center_readdetails{
+		display: block;
+		width: 36px;
+		line-height: 1.9em;
+		float: right;
+		color: #089a97;
+		font-size: 12px;
+		font-family: "Microsoft YaHei","å¾®è½¯é›…é»‘","SimHei","é»‘ä½“";
+	}
+	.reuse_brand_center_readmore{
+		display: block;
+		line-height: 2.1em;
+		float: right;
+		color: #089a97;
+		font-size: 1em;
+		font-family: "Microsoft YaHei","å¾®è½¯é›…é»‘","SimHei","é»‘ä½“";
+		background-size:10%;
+	}
+	.truck_range_block{
+		width:100%;
+		height:100%;
+		overflow: hidden;
+	}
+	.truck_range_block > .hot_model_title_bg{
+		display: none;
+	}
+	.truck_range_block .hot_model_title_bg .hot_model_menu ,.truck_range_block .hot_model_title_bg .hot_model_menu_name{
+		width:155px;
+	}
+	.truck_range_cnt_list{
+		width:100%;
+		overflow: hidden;
+	}
+	.truck_range_cnt_list_title{
+		text-indent:1em;
+		line-height:2.5em;
+		color:#575757;
+		font-size:1.3em;
+		font-family:"åŽæ–‡ç»†é»‘";
+		background-color:#f2f2f2;
+		border-top:1px solid #dadada;
+		border-bottom:1px solid #dadada;
+	}
+	.stop_produce_area{
+		display:block;
+		width:100%;
+		overflow:hidden;
+	}
+	.stop_produce_title{
+		height:2.5em;
+		line-height:2.5em;
+		font-size:1.5em;
+		text-indent:2%;
+		color:#a8a8a8;
+		font-family:"åŽæ–‡ç»†é»‘";
+		background:#f2f2f2;
+	}
+	.truck_range_cnt_list_name_area{
+		width:100%;
+		overflow: hidden;
+		background-color:#ffffff;
+	}
+	.truck_range_cnt_range .truck_range_cnt_list_name {
+		border-bottom: 1px solid #dadada;
+	}
+	.truck_range_cnt_list_name{
+		display:block;
+		float:left;
+		width:100%;
+		height:3.9em;
+		line-height:3.9em;
+		color:#888888;
+		font-size:1.2em;
+		font-family: "åŽæ–‡ç»†é»‘";
+		overflow: hidden;
+		text-indent:1em;
+	}
+	.truck_range_morelink{
+		display: none;
+	}
+	.truck_range_morelink_series_uses{
+		position: relative;
+		height: 3em;
+		margin-top: 1em;
+		border-top: 1px solid #d9d9d9;
+	}
+	.truck_range_morelink a{
+		display: none;
+	}
+	.truck_range_morelink_series_uses a{
+		position: absolute;
+		top: -70%;
+		right: 5%;
+		float: left;
+		display: block;
+		line-height: 3em;
+		color: #089a97;
+		font-size: 1.2em;
+		font-family: "åŽæ–‡ç»†é»‘";
+		background-color: #ffffff;
+	}
+	.truck_attentrate_block{
+		display: none;
+	}
+	.recommend_dealer_block{
+		display: block;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top:0%;
+		left: 100%;
+		z-index: 18;
+		transition: all .3s;
+		overflow: auto;
+	}
+	.recommend_dealer_cnt{
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 18;
+		background-color: #fff;
+		/*transition: all .3s;
+		overflow: scroll;*/
+	}
+	.truck_attentrate_block > .hot_model_title_bg{
+		display: none;
+	}
+	.truck_attentrate_block .hot_model_menu{
+		width:310px;
+		border-top:4px solid #078d83;
+	}
+	.truck_attentrate_block .hot_model_menu > .hot_model_menu_name{
+		width:210px;
+		text-indent:10px;
+		text-align: left;
+	}
+	.truck_attentrate_cnt_item{
+		display: block;
+		width:310px;
+		height:48px;
+		line-height:48px;
+		color:#888888;
+		font-size:14px;
+		font-family:"å®‹ä½“";
+		border-top:1px solid #d9d9d9;
+		overflow: hidden;
+	}
+	.truck_attentrate_cnt_rate,.truck_attentrate_cnt_rategray{
+		display: block;
+		float:left;
+		width:15px;
+		height:15px;
+		line-height:15px;
+		background-color:#ff8a00;
+		color:#ffffff;
+		text-align:center;
+		margin: 17px 9px 17px 6px;
+		font-size:12px;
+	}
+	.truck_attentrate_cnt_rategray{
+		background-color: #d7d7d7;
+		color:#808080;
+	}
+	.truck_attentrate_block .reuse_brand_center_readmore{
+		display: none;
+	}
+	.recommend_dealer_list{
+		width:100%;
+		border-bottom:1px solid #d9d9d9;
+		overflow: hidden;
+	}
+	.recommend_dealer_list_name,.recommend_dealer_list_tele,.recommend_dealer_list_contacts{
+		width: 100%;
+		line-height: 2.5em;
+		color: #5b5b5b;
+		font-size: 1.3em;
+		font-family: "åŽæ–‡ç»†é»‘";
+		font-weight: 500;
+		text-indent: 5%;
+	}
+	.hot_model_block,.brand_activity_model{
+		width:100%;
+		background-color:#ffffff;
+		margin-top:20px;
+		overflow: hidden;
+	}
+	.hot_model_title_bg{
+		width:100%;
+		background-color:#f2f2f2;
+		/*height:3.5em;*/
+		overflow: hidden;
+	}
+	.hot_model_block .hot_model_morelink .reuse_brand_center_readmore{
+		display: none;
+	}
+	.hot_model_menu_first{
+		display:none;
+		width: 5%;
+		height: 3.2em;
+		float: left;
+		border-top: 4px solid #ddd;
+	}
+	.hot_model_menu,.hot_model_morelink{
+		width:50%;
+		float: left;
+		border-top: 4px solid #ddd;
+	}
+	.hot_model_menu_name{
+		display: block;
+		width:100%;
+		height: 2.1em;
+		line-height: 2.1em;
+		font-size: 1.6em;
+		font-family: "Microsoft YaHei","å¾®è½¯é›…é»‘","SimHei","é»‘ä½“";
+		text-align: center;
+		float: left;
+	}
+	.hot_model_morelink{
+		display: none;
+		width: 35%;
+		float: right;
+	}
+	.hot_model_cnt_list:first-child{
+		border:0;
+	}
+	.hot_model_cnt_list{
+		float:left;
+		width:100%;
+		overflow: hidden;
+		background-color:#fff;
+		border-top:1px solid #d9d9d9;
+	}
+	.hot_model_cnt_title{
+		display:block;
+		text-indent: 3%;
+		width:100%;
+		height:2.5em;
+		line-height: 2.5em;
+		color:#262626;
+		font-size:1.5em;
+		font-family:"Microsoft YaHei","å¾®è½¯é›…é»‘","SimHei","é»‘ä½“";
+		overflow:hidden;
+	}
+	.tip_stop_produce{
+		display:inline;
+		color:#ff8a00;
+		font-size:1em!important;
+		font-family:"åŽæ–‡ç»†é»‘";
+	}
+	.hot_model_cnt_price,.hot_model_cnt_typestyle{
+		width:100%;
+		text-indent: 3%;
+		height:2em;
+		line-height: 2em;
+		color:#686868;
+		font-size:1.2em;
+		font-family:"å®‹ä½“";
+		overflow: hidden;
+	}
+	.hot_model_cnt_price span{
+		color: #ff7800;
+		font-size: 1.4em;
+		font-family: "Arial";
+		padding: 0 1%;
+	}
+	.hot_model_cnt_typestyle span{
+		color: #1a9e89;
+		font-size: 1.4em;
+		font-family: "Arial";
+		padding: 0 1%;
+	}
+	.recommend_dealer_list_tele a{
+		color: #ff7800;
+		font-size: 1.4em;
+		font-family: "Arial";
+	}
+	.hot_model_cnt_img{
+		width:95%;
+		overflow: hidden;
+		margin:2% 2.5%;
+	}
+	.hot_model_cnt_img_link{
+		display: block;
+		width:100%;
+		overflow: hidden;
+	}
+	.hot_model_cnt_btn{
+		display: block;
+		width:92%;
+		overflow: hidden;
+		margin:0 auto;
+		margin-bottom:3em;
+	}
+	.hot_model_cnt_btn_agency,.hot_model_cnt_btn_dealer,.hot_model_cnt_btn_model{
+		display: block;
+		float:left;
+		width:30%;
+		height:2.5em;
+		line-height:2.5em;
+		font-size:1.4em;
+		font-family:"å®‹ä½“";
+		margin:0 1.5%;
+	}
+	.hot_model_cnt_btn a{
+		width:32%;
+		margin:0;
+		margin-left: 2%;
+		box-sizing:border-box;
+	}
+	.hot_model_cnt_btn a:first-child{
+		margin:0;
+	}
+	
+	.manual_btn{
+		height: 2.5em;
+		line-height: 2.5em;
+		font-size: 1.4em;
+		font-family: "å®‹ä½“";
+	}
+	.manual_btn img{
+		display: inline-block;
+		float: left;
+		width: 1.6em;
+		height: 1.6em;
+	}
+	.four_btn a{
+		width: 23.5%;
+		margin: 0;
+		margin-left: 2%;
+	}
+	.four_btn a:first-child{
+		width: 23.5%;
+		margin: 0;
+}
+	.four_btn a{
+		box-sizing:border-box;
+	}
+	.four_btn a img{
+		margin: 0.45em 0.3em;
+	}
+	.hot_model_cnt_btn_agency{
+		color:#fff;
+		background-color: #0a8c80;
+	}
+	.hot_model_cnt_btn_dealer{
+		color:#fff;
+		background-color: #ff8a00;
+	}
+	.hot_model_cnt_btn_model{
+		color:#00a99d;
+		border:1px solid #e3e3e3;
+		background-color: #f6f6f6;
+	}
+	.hot_model_cnt_btn_agency>img,.hot_model_cnt_btn_dealer>img,.hot_model_cnt_btn_model>img{
+		display: inline-block;
+		float:left;
+		width:1.6em;
+		height:1.6em;
+		/*margin:0.45em 0.3em;*/
+	}
+	.hot_model_cnt_btn_dealer>img{
+		margin:0.45em 0.6em;
+	}
+	.hot_model_cnt_btn_agency>img{
+		margin:0.45em 0.3em;
+	}
+	.hot_model_cnt_btn_model>img,.hot_model_cnt_btn_agency>img{
+		margin:0.45em 0.3em 0.45em 1em;
+	}
+	.reuse_content_block_details{
+		width:95%;
+		margin:0 auto;
+		margin-top:2em;
+	}
+	.reuse_news_block {
+		display: none;
+	}
+	.reuse_container_block{
+		width:323px;
+	}
+	.brand_icon{
+		display: block;
+		width: 45px;
+		height: 41px;
+		float: right;
+		background: url("../images/title_right_icon.png") no-repeat;
+		background-size: 100%;
+	}
+	.reuse_container_block_icon_hover {
+		display: block;
+		width: 45px;
+		height: 41px;
+		float: right;
+		background: url("../images/title_right_icon_hover.png") no-repeat;
+		background-size: 100%;
+	}
+	.truck_range_cnt_list_name:hover,.truck_range_morelink a:hover,.truck_attentrate_cnt_item:hover,.hot_model_cnt_title:hover{
+		color:#00a99d;
+	}
+	.hot_model_menu_show{
+		border-top:4px solid #078d83;
+	}
+	.hot_model_menu_name_show{
+		background-color:#ffffff;
+	}
+	.layer_block{
+		width:95%;
+		overflow: hidden;
+		margin:2em auto 0em;
+	}
+	.layer_block_btn{
+		float:left;
+		display: block;
+		width:32%;
+		height:2.4em;
+		line-height:2.4em;
+		color:#565656;
+		font-size:1.5em;
+		font-family:"Microsoft YaHei","å¾®è½¯é›…é»‘","SimHei","é»‘ä½“";
+		border:1px solid #dddddd;
+		background-color:#ffffff;
+		border-radius:5px;
+		-webkit-border-radius:5px;
+		-moz-border-radius:5px;
+		text-align: center;
+		/*margin:0 1.2%;*/
+	}
+	.layer_block_btn_range{
+		margin:0 1.5%;
+	}
+	/*å¼¹å±‚ï¼ˆç”¨é€”ï¼‰ */
+	.truck_range_cnt_range{
+		display: block;
+		position: absolute;
+		top: 5em;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 18;
+		background-color: #fff;
+		overflow: scroll;
+		background-color:#fcfcfc;
+	}
+	.truck_range_cnt_uses{
+		display: block;
+		position: absolute;
+		top:5em;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 18;
+		background-color: #fff;
+		/*overflow: scroll;*/
+	}
+	.truck_opacity_layer{
+		display: block;
+		width: 100%;
+		height: 100%;
+		background: #000;
+		opacity: 0.7;
+		float: left;
+		overflow: hidden;
+	}
+	
+	.truck_range_cnt_uses_show{
+		display: inline-block;
+		right: 0%;
+		transition: all .3s;
+		box-sizing: border-box;
+		overflow: scroll;
+		-webkit-overflow-scrolling: touch;
+		overflow: auto;
+	}
+	
+	
+	.hot_model_range{
+		display: block;
+		width: 100%;
+		height: 100%;
+		left: 100%;
+		z-index: 18;
+		transition: all .3s;
+		overflow: hidden;
+		position: absolute;
+		overflow: auto;
+	}
+	.hot_model_range_show{
+		left: 0%;
+		transition: all .3s;
+		box-sizing: border-box;
+		overflow: scroll;
+		-webkit-overflow-scrolling: touch;
+		overflow: auto;
+		top:-5em;
+	}
+	.truck_range_block_show{
+		left: 0%;
+		transition: all .3s;
+		box-sizing: border-box;
+		overflow: scroll;
+		-webkit-overflow-scrolling: touch;
+		overflow: auto;
+	}
+	.brand_right{
+		display: block;
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		z-index: 40;
+		left: 100%;
+		top:5em;
+	}
+	.brand_right_show{
+		left: 0%;
+		transition: all .3s;
+		box-sizing: border-box;
+	}
+	.manual_btn{
+		background-image: url(http://p.yunshuren.com/images/manual_ico.png);
+		background-repeat: no-repeat;
+		background-size: 25%;
+		background-position: 9% 50%;
+		text-indent: 9%;
+		width: 1.6em;
+		font-size: 1.8em;
+		height: 1.6em;
+	}
+	.manual_btn>img {
+		display: none;
+	}
+	.brand_menu_cur{
+		position: absolute;
+		left: 0;
+		bottom: 0em;
+		display: block;
+		width: 183px;
+		height: 0.2em;
+		background: #01a8a1;
+		width:3em;
+		left:3.2em;
+	}
+	.dealers_servicecomp_block{
+		width:95%;
+		overflow: hidden;
+		margin: 1.4em auto;
+		border-bottom: 0.16em solid #e6e6e6;
+	}
+	.dealers_servicecomp_title {
+		font: 1.3em/2.5em "å®‹ä½“";
+		font-weight: 600;
+	}
+	.dealers_servicecomp_details ul li{
+		font: 1.3em/2.5em "åŽæ–‡ç»†é»‘";
+	}
+	.dealers_sc_contactblock{
+		float: left;
+		width: 36%;
+		color: #fff;
+		height: 2.4em;
+		line-height: 2.4em;
+		font-weight: 600;
+		font-family: "åŽæ–‡ç»†é»‘";
+		background: #00ac9c;
+		border-radius: 0.3em;
+		margin: 0.48em 0 1.4em 0;
+	}
+	.tele_img{
+		background: url('../images/dealers_tele.png') no-repeat 40% 50%;
+		width: 25%;
+		height: 2.4em;
+		background-size: 55%;
+		float: left;
+	}
+	.dealers_sc_contactblock a{
+		display: block;
+		float: left;
+		margin: 0.05em 0.3em 0 0.2em;
+		color: #ffffff!important;
+	}
+	.hot_model_vote_btn{
+		float: right;
+		margin-left: 1.5em;
+	}
+	.hot_model_supportbtn, .hot_model_opposebtn{
+		display: block;
+		float: left;
+		margin-right: 10px;
+		line-height: 2em;
+		font-size: 1.8em;
+		font-family: "Arial";
+	}
+	.hot_model_supportbtn{
+		color: #ff8903;
+	}
+	.hot_model_supportbtn img, .hot_model_opposebtn img{
+		width: 2em;
+		height: 2em;
+		float: left;
+	}
+	.choose_brand_top{
+		width:100%;
+		background-color:#fcfcfc;
+		border-bottom:1px solid #b0b0b0;
+		overflow: hidden;
+		
+		height:5em;
+	}
+	.choose_brand_top_show{
+		position: fixed;
+		z-index: 100;
+		top: 0;
+		left: 0;
+		transition: all .3s;
+	}
+	.choose_brand_top_title{
+		width: 35%;
+		line-height: 2.5em;
+		color: #18a092;
+		font-size: 2em;
+		font-family: "åŽæ–‡ç»†é»‘";
+		margin: 0 auto;
+	}
+	.back_icon_img{
+		display: block;
+		width: 5em;
+		height: 5em;
+		float: left;
+	}
+	.back_icon_img > img{
+		width: 50%;
+		height: 50%;
+		margin: 28% 0 20% 20%;
+	}
+	.reuse_content_block_details_list_howotitle{
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.album_btn{
+		width:100%;
+		margin-bottom:0.5em;
+		overflow: hidden;
+	}
+}
+
+
+@media all and (max-width:720px){
+	.main{
+		width:100%;
+	}
+	.reuse_brand_block{
+		width: 100%;
+		overflow: hidden;
+	}
+	.reuse_brand_top_menu{
+		height:auto;
+		background-color:#fff;
+	}
+	.reuse_brand_titlemark_bg{
+		width:100%;
+		height:auto;
+		background-color:#fff;
+		overflow: hidden;
+	}
+	.reuse_brand_titlemark_logoarea{
+		float:left;
+		width:6.2em;
+		font-size:1.4em;
+	}
+	.reuse_brand_titlemark_logoimg{
+		display: block;
+		float:left;
+		width:5.5em;
+		overflow: hidden;
+	}
+	.reuse_brand_titlemark_logoimg img{
+		margin:0.9em auto;
+	}
+	.reuse_brand_titlemark_logoimg + span{
+		float: left;
+		background-color: #d9d9d9;
+		width: 0.2em;
+		height: 3.5em;
+		line-height: 5.5em;
+		margin: 1em 0.2em;
+	}
+	.reuse_brand_titlemark_bg > .reuse_brand_morebrand{
+		display:none;
+	}
+	.reuse_brand_titlemark{
+		display: block;
+		float:left;
+		line-height: 5.5em;
+		color: #078d83;
+		font-size: 1.4em;
+		font-family: "Microsoft YaHei","å¾®è½¯é›…é»‘","SimHei","é»‘ä½“";
+	}
+	.rss_brand_num{
+		display: block;
+		float: left;
+		padding: 0 0%;
+		color: #a4a4a4;
+		font-size: 1.3em;
+		font-family: "å®‹ä½“";
+		line-height: 5.9em;
+	}
+	.reuse_rss_brand_title{
+		float: right;
+		display: block;
+		width: 6em;
+		/*height: 6em;*/
+		margin-right: 0em;
+		font-size:1.2em;
+	}
+	.reuse_rss_brand_title img {
+		width: 100%;
+		margin: 37% 0;
+	}
+	.reuse_brand_morebrand{
+		display: block;
+		float:right;
+		color:#ffffff;
+		line-height: 36px;
+		font-size:12px;
+		font-family: "å®‹ä½“";
+		padding-right:15px;
+		margin-right:5px;
+		background:url("../images/album_menu_icon.png") no-repeat 100% 50%;
+	}
+	.brand_menu_green_box{
+		background-color: #f2f2f2;
+		border-top:1px solid #d9d9d9;
+		position: relative;
+	}
+	a.bmg_menu_item{
+		color: #7c7c7c;
+	}
+	li.bmg_menu{
+		margin:0 0.45em;
+	}
+	li.bmg_menu,li.bmg_menu_h3{
+		float:left;
+	}
+	li.bmg_menu_hide{
+		display: none;
+	}
+	a.bmg_menu_item{
+		width:auto;
+		height:2.2em;
+		line-height: 2.2em;
+		font-family:"Microsoft YaHei","å¾®è½¯é›…é»‘","SimHei","é»‘ä½“";
+	}
+	.bmg_menu_item_line{
+		display: none;
+	}
+	.reuse_brand_center{
+		display: none;
+	}
+	/*.reuse_brand_center_img{
+		display: block;
+		width: 120px;
+		height: 120px;
+		float: left;
+		margin: 15px 10px;
+	}*/
+	/*.reuse_brand_center_right{
+		width: 503px;
+		float: left;
+		overflow: hidden;
+		margin: 10px 10px 0 10px;
+	}*/
+	/*.reuse_brand_center_brief{
+		width: 505px;
+		font-size: 12px;
+		color: #969696;
+		font-family: "å®‹ä½“";
+		line-height: 25px;
+	}*/
+	.reuse_brand_center_readdetails{
+		display: block;
+		width: 36px;
+		line-height: 1.9em;
+		float: right;
+		color: #089a97;
+		font-size: 12px;
+		font-family: "Microsoft YaHei","å¾®è½¯é›…é»‘","SimHei","é»‘ä½“";
+	}
+	.reuse_brand_center_readmore{
+		display: block;
+		line-height: 2.1em;
+		float: right;
+		color: #089a97;
+		font-size: 1.6em;
+		font-family: "Microsoft YaHei","å¾®è½¯é›…é»‘","SimHei","é»‘ä½“";
+		background-size:10%;
+	}
+	.truck_range_block{
+		width:100%;
+		height:100%;
+		overflow: hidden;
+	}
+	.truck_range_block > .hot_model_title_bg{
+		display: none;
+	}
+	.truck_range_block .hot_model_title_bg .hot_model_menu ,.truck_range_block .hot_model_title_bg .hot_model_menu_name{
+		width:155px;
+	}
+	.truck_range_cnt_list{
+		width:100%;
+		overflow: hidden;
+	}
+	.truck_range_cnt_list_title{
+		text-indent:1em;
+		line-height:2.5em;
+		color:#575757;
+		font-size:1.6em;
+		font-family:"åŽæ–‡ç»†é»‘";
+		background-color:#f2f2f2;
+		border-top:1px solid #dadada;
+		border-bottom:1px solid #dadada;
+	}
+	.stop_produce_area{
+		display:block;
+		width:100%;
+		overflow:hidden;
+	}
+	.stop_produce_title{
+		height:2.5em;
+		line-height:2.5em;
+		font-size:1.6em;
+		text-indent:2%;
+		color:#a8a8a8;
+		font-family:"åŽæ–‡ç»†é»‘";
+		background:#f2f2f2;
+	}
+	.truck_range_cnt_list_name_area{
+		width:100%;
+		overflow: hidden;
+		background-color:#ffffff;
+	}
+	.truck_range_cnt_list_name{
+		display:block;
+		float:left;
+		width:100%;
+		height:2.8em;
+		line-height: 2.8em;
+		color:#888888;
+		font-size:1.6em;
+		font-family:"åŽæ–‡ç»†é»‘";
+		overflow:hidden;
+		text-indent:1em;
+	}
+	.truck_range_cnt_range .truck_range_cnt_list_name{
+		border-bottom:1px solid #dadada;
+	}
+	.truck_range_morelink{
+		display: none;
+	}
+	.truck_range_morelink_series_uses{
+		position: relative;
+		height: 4em;
+		margin-top: 2em;
+		border-top: 1px solid #d9d9d9;
+	}
+	.truck_range_morelink a{
+		display: none;
+	}
+	.truck_range_morelink_series_uses a{
+		position: absolute;
+		top: -2em;
+		right: 5%;
+		float: left;
+		display: block;
+		line-height: 3.8em;
+		color: #089a97;
+		font-size: 1.8em;
+		font-family: "å®‹ä½“";
+		background-color: #ffffff;
+	}
+	.truck_attentrate_block{
+		display: none;
+	}
+	.recommend_dealer_block{
+		display: block;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top:0%;
+		left: 100%;
+		z-index: 18;
+		transition: all .3s;
+		overflow: auto;
+	}
+	.recommend_dealer_cnt{
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 18;
+		background-color: #fff;
+		transition: all .3s;
+		overflow: scroll;
+	}
+	.truck_attentrate_block > .hot_model_title_bg{
+		display: none;
+	}
+	.truck_attentrate_block .hot_model_menu{
+		width:310px;
+		border-top:4px solid #078d83;
+	}
+	.truck_attentrate_block .hot_model_menu > .hot_model_menu_name{
+		width:210px;
+		text-indent:10px;
+		text-align: left;
+	}
+	.truck_attentrate_cnt_item{
+		display: block;
+		width:310px;
+		height:48px;
+		line-height:48px;
+		color:#888888;
+		font-size:14px;
+		font-family:"å®‹ä½“";
+		border-top:1px solid #d9d9d9;
+		overflow: hidden;
+	}
+	.truck_attentrate_cnt_rate,.truck_attentrate_cnt_rategray{
+		display: block;
+		float:left;
+		width:15px;
+		height:15px;
+		line-height:15px;
+		background-color:#ff8a00;
+		color:#ffffff;
+		text-align:center;
+		margin: 17px 9px 17px 6px;
+		font-size:12px;
+	}
+	.truck_attentrate_cnt_rategray{
+		background-color: #d7d7d7;
+		color:#808080;
+	}
+	.truck_attentrate_block .reuse_brand_center_readmore{
+		display: none;
+	}
+	.recommend_dealer_list{
+		width:100%;
+		border-bottom:1px solid #d9d9d9;
+		overflow: hidden;
+	}
+	.recommend_dealer_list_name,.recommend_dealer_list_tele,.recommend_dealer_list_contacts{
+		width: 100%;
+		line-height: 2.5em;
+		color: #5b5b5b;
+		font-size: 1.6em;
+		font-family: "åŽæ–‡ç»†é»‘";
+		font-weight: 500;
+		text-indent: 5%;
+	}
+	.hot_model_cnt_price span, .recommend_dealer_list_tele span {
+		color: #ff7800;
+		font-size: 1.4em;
+		font-family: "Arial";
+		padding:0 1%;
+	}
+	.hot_model_block,.brand_activity_model{
+		width:100%;
+		background-color:#ffffff;
+		margin-top:20px;
+		overflow: hidden;
+	}
+	.hot_model_title_bg{
+		width:100%;
+		background-color:#f2f2f2;
+		/*height:4.5em;*/
+		overflow: hidden;
+	}
+	.hot_model_block .hot_model_morelink .reuse_brand_center_readmore{
+		display: none;
+	}
+	.hot_model_menu,.hot_model_morelink{
+		width:50%;
+		/*height: 4.2em;*/
+		float: left;
+		border-top: 4px solid #ddd;
+	}
+	.hot_model_menu_first{
+		display: none;
+		width:5%;
+		height: 100%;
+		float: left;
+		border-top: 4px solid #ddd;
+	}
+	.hot_model_menu_name{
+		display: block;
+		width:100%;
+		height: 100%;
+		line-height: 2.2em;
+		font-size: 2em;
+		font-family: "Microsoft YaHei","å¾®è½¯é›…é»‘","SimHei","é»‘ä½“";
+		text-align: center;
+		float: left;
+	}
+	.hot_model_morelink{
+		display:none;
+		width: 35%;
+		float: right;
+	}
+	.hot_model_cnt_list:first-child{
+		border:0;
+	}
+	.hot_model_cnt_list{
+		float:left;
+		width:100%;
+		overflow: hidden;
+		background-color:#fff;
+		border-top:1px solid #d9d9d9;
+	}
+	.hot_model_cnt_title{
+		float:left;
+		display:inline-block;
+		text-indent:3%;
+		width:100%;
+		height:2.8em;
+		line-height:2.8em;
+		color:#262626;
+		font-size:2em;
+		font-family:"åŽæ–‡ç»†é»‘";
+		overflow:hidden;
+	}
+	.tip_stop_produce{
+		display:inline;
+		color:#ff8a00;
+		font-size:1.2em!important;
+		font-family:"åŽæ–‡ç»†é»‘";
+	}
+	.hot_model_cnt_price,.hot_model_cnt_typestyle{
+		width:100%;
+		text-indent: 3%;
+		height:2em;
+		line-height: 2em;
+		color:#686868;
+		font-size:1.6em;
+		font-family:"å®‹ä½“";
+		overflow: hidden;
+	}
+	.hot_model_cnt_typestyle span{
+		color: #1a9e89;
+		font-size: 1.4em;
+		font-family: "Arial";
+		padding:0 1%;
+	}
+	.hot_model_cnt_img{
+		width:95%;
+		margin:2% 2.5%;
+		overflow: hidden;
+	}
+	.hot_model_cnt_img_link{
+		display: block;
+		width:100%;
+		overflow: hidden;
+	}
+	.hot_model_cnt_btn{
+		display: block;
+		width:92%;
+		overflow: hidden;
+		margin:0 auto;
+		margin-bottom:3em;
+	}
+	.hot_model_cnt_btn_agency,.hot_model_cnt_btn_dealer,.hot_model_cnt_btn_model{
+		display: block;
+		float:left;
+		width:31%;
+		height:2.5em;
+		line-height:2.5em;
+		font-size:1.8em;
+		font-family:"å®‹ä½“";
+		margin:0 1%;
+	}
+	.hot_model_cnt_btn_agency{
+		color: #fff;
+		background-color: #0a8c80;
+		background-image: url(../images/plus.png);
+		background-repeat: no-repeat;
+		background-size: 25%;
+		border: 1px solid #0a8c80;
+		background-position: 17% 50%;
+		text-indent: 13%;
+	}
+	.hot_model_cnt_btn_dealer{
+		color:#fff;
+		background-color: #ff8a00;
+		background-image: url(../images/trollers.png);
+		background-repeat: no-repeat;
+		background-size: 25%;
+		background-position: 9% 50%;
+		border: 1px solid #ff8a00;
+		text-indent: 12%;
+	}
+	.hot_model_cnt_btn_model{
+		color:#00a99d;
+		border:1px solid #e3e3e3;
+		background-color: #f6f6f6;
+		background-image: url(../images/truck_pic.png);
+		background-repeat: no-repeat;
+		background-size: 25%;
+		background-position: 17% 50%;
+		text-indent: 13%;
+	}
+	.four_btn a{
+		background-position: 9% 50%;
+		text-indent: 9%;
+	}
+	.hot_model_cnt_btn_agency>img,.hot_model_cnt_btn_dealer>img,.hot_model_cnt_btn_model>img{
+		display: inline-block;
+		float:left;
+		width: 1.6em;
+		height: 1.6em;
+	}
+	.hot_model_cnt_btn_dealer>img{
+		display: none;
+	}
+	.hot_model_cnt_btn_agency>img{
+		display: none;
+	}
+	.hot_model_cnt_btn_model>img{
+		display: none;
+	}
+	.reuse_content_block_details_list_howotitle{
+		display: block;
+		width:100%;
+		height:2em;
+		line-height: 1.6em;
+		color:#262626;
+		font-size: 1.6em;
+		font-family: "Microsoft YaHei","å¾®è½¯é›…é»‘","SimHei","é»‘ä½“";
+		font-weight: 500;
+		word-break: break-all;
+		overflow: hidden;
+	}
+	.reuse_content_block_details{
+		width:95%;
+		margin:0 auto;
+		margin-top:2em;
+	}
+	.reuse_news_block {
+		display: none;
+	}
+	.reuse_container_block{
+		width:323px;
+	}
+	.brand_icon{
+		display: block;
+		width: 45px;
+		height: 41px;
+		float: right;
+		background: url("../images/title_right_icon.png") no-repeat;
+		background-size: 100%;
+	}
+	.reuse_container_block_icon_hover {
+		display: block;
+		width: 45px;
+		height: 41px;
+		float: right;
+		background: url("../images/title_right_icon_hover.png") no-repeat;
+		background-size: 100%;
+	}
+	.truck_range_cnt_list_name:hover,.truck_range_morelink a:hover,.truck_attentrate_cnt_item:hover,.hot_model_cnt_title:hover{
+		color:#00a99d;
+	}
+	.hot_model_menu_show{
+		border-top:4px solid #078d83;
+	}
+	.hot_model_menu_name_show{
+		background-color:#ffffff;
+	}
+	.layer_block{
+		width:95%;
+		overflow: hidden;
+		margin:2em auto 0em;
+	}
+	.layer_block_btn{
+		float:left;
+		display: block;
+		width:31.5%;
+		height:2.5em;
+		line-height:2.5em;
+		color:#565656;
+		font-size:1.6em;
+		font-family:"Microsoft YaHei","å¾®è½¯é›…é»‘","SimHei","é»‘ä½“";
+		border:1px solid #dddddd;
+		background-color:#ffffff;
+		border-radius:5px;
+		-webkit-border-radius:5px;
+		-moz-border-radius:5px;
+		text-align: center;
+		/*margin:0 1.2%;*/
+	}
+	.layer_block_btn_range{
+		margin:0 1.7%;
+	}
+	/*å¼¹å±‚ï¼ˆç”¨é€”ï¼‰ */
+	.truck_range_cnt_range{
+		display: block;
+		position: absolute;
+		/*top: 0;*/
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 18;
+		background-color: #fff;
+		overflow: scroll;
+		/*transition: all .3s;
+		overflow: scroll;*/
+	}
+	.truck_range_cnt_uses{
+		display: block;
+		position: absolute;
+		top:4em;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 18;
+		background-color: #fff;
+		/*overflow: scroll;*/
+		/*transition: all .3s;
+		overflow: scroll;*/
+	}
+	.truck_opacity_layer{
+		display: block;
+		width: 100%;
+		height: 100%;
+		background: #000;
+		opacity: 0.7;
+		float: left;
+		overflow: hidden;
+	}
+	
+	.truck_range_cnt_uses_show{
+		display: inline-block;
+		right: 0%;
+		transition: all .3s;
+		box-sizing: border-box;
+		overflow: scroll;
+		-webkit-overflow-scrolling: touch;
+		overflow: auto;
+	}
+	
+	
+	.hot_model_range{
+		display: block;
+		width: 100%;
+		height: 100%;
+		left: 100%;
+		z-index: 18;
+		transition: all .3s;
+		overflow: hidden;
+		position: absolute;
+		overflow: auto;
+		background-color:#fcfcfc;
+	}
+	.hot_model_range_show{
+		left: 0%;
+		transition: all .3s;
+		box-sizing: border-box;
+		overflow: scroll;
+		-webkit-overflow-scrolling: touch;
+		overflow: auto;
+		top:-5.5em;
+	}
+	.truck_range_block_show{
+		left: 0%;
+		transition: all .3s;
+		box-sizing: border-box;
+		overflow: scroll;
+		-webkit-overflow-scrolling: touch;
+		overflow: auto;
+	}
+	.brand_right{
+		display: block;
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		z-index: 40;
+		left: 100%;
+		top:5.5em;
+		
+	}
+	.brand_right_show{
+		left: 0%;
+		transition: all .3s;
+		box-sizing: border-box;
+		
+	}
+	
+	.brand_menu_cur{
+		position: absolute;
+		left: 0;
+		bottom: 1px;
+		display: block;
+		width: 3.6em;
+		height: 4px;
+		left:4em;
+		background: #01a8a1;
+	}
+	.choose_brand_top{
+		/*position: fixed;
+		width:100%;
+		top:0;
+		left:100%;*/
+		background-color:#fcfcfc;
+		border-top:1px solid #b0b0b0;
+		border-bottom:1px solid #b0b0b0;
+		overflow: hidden;
+		transition: all .3s;
+		display: block;
+		width:100%;
+		height:4em;
+	}
+	.choose_brand_top_show{
+		position: fixed;
+		z-index: 100;
+		top: 0;
+		left: 0;
+		transition: all .3s;
+	}
+	.truck_range_search_list{
+		/*position: absolute;
+		top: 5em;
+		left: 0;
+		width: 100%;
+		height: 100%;*/
+		
+		
+		/*width: 30%;
+		line-height: 2.4em;
+		color: #18a092;
+		font-size: 2.2em;
+		font-family: "åŽæ–‡ç»†é»‘";
+		margin: 0 auto;*/
+	}
+	.choose_brand_top_title{
+		width:28%;
+		line-height:2.8em;
+		color:#18a092;
+		font-size:1.6em;
+		font-family:"åŽæ–‡ç»†é»‘";
+		margin:0 auto;
+	}
+	.back_icon_img{
+		display: block;
+		width: 4em;
+		height: 4em;
+		float: left;
+	}
+	.back_icon_img > img{
+		display: block;
+		width: 50%;
+		height: 50%;
+		margin: 1em auto;
+	}
+	.album_btn{
+		width:100%;
+		margin-bottom:1em;
+		overflow: hidden;
+	}
+	.brand_activity_model .reuse_content_block_details_list{
+		
+		width:49%;
+	}
+	.hot_model_cnt_btn a{
+		height:2.5em ;
+		line-height: 2.5em;
+	}
+}

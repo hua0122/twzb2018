@@ -1,0 +1,202 @@
+<script type="text/javascript">
+    // borwserRedirect
+    (function browserRedirect(){
+      var sUserAgent = navigator.userAgent.toLowerCase();
+      var bIsIpad = sUserAgent.match(/ipad/i) == 'ipad';
+      var bIsIphone = sUserAgent.match(/iphone os/i) == 'iphone os';
+      var bIsMidp = sUserAgent.match(/midp/i) == 'midp';
+      var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == 'rv:1.2.3.4';
+      var bIsUc = sUserAgent.match(/ucweb/i) == 'web';
+      var bIsCE = sUserAgent.match(/windows ce/i) == 'windows ce';
+      var bIsWM = sUserAgent.match(/windows mobile/i) == 'windows mobile';
+      var bIsAndroid = sUserAgent.match(/android/i) == 'android';
+
+      if(bIsIpad || bIsIphone || bIsMidp || bIsUc7 || bIsUc || bIsCE || bIsWM || bIsAndroid ){
+        window.location.href = '{APP_PATH}index.php?m=content&c=index&a=show&catid={$catid}&id={$id}';
+      }
+    })();
+ </script>
+{template "content","header"}
+		{php $comment_tag = pc_base::load_app_class("comment_tag", "comment"); $comment_total = $comment_tag->count(array('commentid'=>'content_'.$catid.'-'.$id.'-'.$modelid));}
+								
+		<div id="club_detail">
+		<div class="section">
+			<div class="container sec_cont">
+				<div class="title_position">
+				<a href="{siteurl($siteid)}">首页</a> {catpos($catid)}<a > 正文</a>				
+				</div>
+				<div class="detail">
+					<div class="per_infor">
+						<h3>{$title}</h3>
+						<div class="basic">
+						{php $posdb = pc_base::load_model('position_data_model'); $pos = $posdb->get_all(array('catid'=>$catid,'id'=>$id)); }
+							{if $pos}	 
+							<span style="background:none;border-radius: 20px;border: 1px solid #ccc;padding-left:5px;padding-right:5px;"><?php  if($pos) foreach($pos as $v){ if($v[posid]==1){echo "原创";}elseif($v[posid]==2){echo "头条";}else{echo "热门";} };?></span>
+							{/if}
+							<span style="background:none;padding-left:0px;">发布时间：{$inputtime}</span>
+							<i id="hits"> </i>
+							<span>{if $comment_total}{$comment_total}{else}0{/if}</span>
+							<p class="copyfrom">来源：{if $copyfrom} {$copyfrom} {else} 环球商用车 {/if}</p>
+						</div>
+						
+						{php $db = pc_base::load_model('member_model'); $_r = $db->get_one(array('username'=>$username)); $userid = $_r[userid];}
+					
+						{php if($userid > 11){ $avatar= get_memberavatar($userid+1,'','90'); }else{ $avatar= get_memberavatar($userid,'','90'); }}	
+						
+						
+						
+						
+							<div class="head">
+								<a href="{APP_PATH}index.php?m=content&c=index&a=show_memberdetail&uid={$userid}" style="border:none;width:auto;height:auto;"><img src="{$avatar}" height=90 width=90 style="border-radius: 50%;" onerror="this.src='{APP_PATH}images/index_publis_head.png'" alt="{$title}"></a>
+							</div>
+							<p><a href="{APP_PATH}index.php?m=content&c=index&a=show_memberdetail&uid={$userid}" style="border:none;width:52px;height:auto;">{$username}</a></p>
+							
+							{php $uid=param::get_cookie('_userid');}
+							{php $caredb = pc_base::load_model('careinfo_model'); $care = $caredb->get_one(array('uid'=>$userid,'userid'=>$uid));}
+							{if $care}
+							<a href="javascript:;">已关注</a>
+							{else}
+							<a href="javascript:;" id="addcare" onclick="addcare('{$userid}','{$uid}')">加关注</a>
+							{/if}
+						
+						
+					</div>
+					<div class="desc">
+						{$content}
+					</div>
+					<div class="share" style="float:right;width:400px;">
+					{php $db = pc_base::load_model('dianzan_model'); $_r = $db->get_all(array('catid'=>$catid,'wid'=>$id)); }
+						
+						<span style="float:left;" id="dianzan" onclick="dianzan('{$catid}','{$id}','{$userid}')">{count($_r)}</span>
+						
+						<p class="bdsharebuttonbox" style="width:55px;float:left;margin-top: -5px;"><a href="#" class="bds_more" data-cmd="more">分享</a> </p>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["weixin","tsina","sqq"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["weixin","tsina","sqq"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+	  
+						
+						<span class="share-sc" id='favorite' style="float:left;background:none;margin-top: -10px;">
+										<a href="javascript:;" onclick="add_favorite('{addslashes($title)}');" style="background:url(images/video_detail_sc.png);height:22px;width:22px;display:block;"><p style="margin-top:10px;width: 65px;text-align:left;">收藏</p></a>
+									</span>
+					</div>
+					
+					<div style="clear:both;"></div>
+					<div class="page">
+						{pc:get sql="SELECT * FROM newt_page WHERE catid=5" return="data"}
+					 {loop $data $val}
+					 {$val['content']}
+					 {/loop}
+					 {/pc}
+						<div class="inner">
+							<div id="pages" class="text-c">{$pages}</div>
+						</div>
+					</div>
+				
+				</div>
+				
+				{if $allow_comment && module_exists('comment')}
+      <iframe src="{APP_PATH}index.php?m=comment&c=index&a=init&commentid={id_encode("content_$catid",$id,$siteid)}&iframe=1" width="100%" height="100%" id="comment_iframe" frameborder="0" scrolling="no"></iframe>
+      <!--<div class="box">
+        		<h5>评论排行</h5>
+				 {pc:comment action="bang" siteid="$siteid" cache="3600"}
+            	<ul class="content list blue f14 row-2">
+				{loop $data $r}
+                	<li>·<a href="{$r[url]}" target="_blank">{str_cut($r[title], 40)}</a><span>({$r[total]})</span></li>
+					{/loop}
+                </ul>
+				{/pc}
+        </div>-->
+        {/if}
+		
+		
+		
+				
+				
+				<div class="relate_article relate" style="min-height:300px;">
+					<h5 >相关文章</h5>
+					<ul>
+						{pc:content action="relation" relation="$relation" id="$id" catid="$catid" num="3" keywords="$rs[keywords]"}
+						{if $data}
+						{loop $data $r}
+						{php $db = pc_base::load_model('hits_model');   $_r = $db->get_one(array('hitsid'=>'c-'.$modelid.'-'.$r[id])); $views = $_r[views]; }
+						{php $comment_tag = pc_base::load_app_class("comment_tag", "comment"); $comment_total = $comment_tag->count(array('commentid'=>'content_'.$catid.'-'.$r[id].'-'.$modelid));}
+						{php list($copyfrom) = explode('|', $r['copyfrom'])}
+
+						{php $db = pc_base::load_model('position_data_model'); $_r = $db->get_all(array('catid'=>$r[catid],'id'=>$r[id])); $posid[] = $_r[posid];}
+								 
+						<li>
+							<div class="imgbox">
+								<img src="{$r[thumb]}" alt="{$r[title]}">
+							</div>
+							<div class="right">
+								<h6>{$r[title]}<?php  if($_r) foreach($_r as $v){ if($v[posid]==1){echo "<i>原创</i>";}elseif($v[posid]==2){echo "<i>头条</i>";}else{echo "<i>热门</i>";} };?></h6>
+								<p>
+								{$r[description]}<a href="{$r[url]}">[详细]</a></p>
+								<div class="timebox">
+						
+									<span class="time"> {date("Y-m-d H:i",$r[updatetime])}</span>
+									<span class="user"> 作者：{$r[username]}</span>
+									<span class="from"> 来源：{if $copyfrom} {$copyfrom} {else} 环球商用车 {/if}</span>
+									<i class="repeat">{if $comment_total}{$comment_total}{else}0{/if}</i>
+									<i class="seen">{$views}</i>
+								</div>
+							</div>
+						</li>
+						{/loop}
+						{/if}
+						{/pc}
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+{template "content","footer"}
+<script>
+function add_favorite(title) {
+		$.getJSON('{APP_PATH}api.php?op=add_favorite&title='+encodeURIComponent(title)+'&url='+encodeURIComponent(location.href)+'&'+Math.random()+'&callback=?', function(data){
+			if(data.status==1)	{
+				$("#favorite p").html('收藏成功');
+			} else {
+				alert('请登录');
+			}
+		});
+	}
+	
+	
+
+	
+function dianzan(catid,id,userid){
+		
+		
+			var catid=catid;
+			var wid=id;
+			$.post("{APP_PATH}index.php?m=content&c=rss&a=dianzan",{catid:catid,wid:wid,userid:userid},function(data){
+				
+				$("#dianzan").html("点赞成功");
+			});
+		
+	
+
+}
+
+function addcare(uid,userid){
+	//当前用户id  userid
+	//被关注用户id  uid
+	if(userid){
+	
+		$.post("{APP_PATH}index.php?m=content&c=rss&a=addcare",{uid:uid,userid:userid},function(data){
+				
+				$("#addcare").html("已关注");
+				$("#addcare").attr('onclick','');
+			});
+	
+	}else{
+		alert('请登录');
+				location.href="{APP_PATH}index.php?m=member&c=index&a=login";
+	}
+	
+
+}
+
+
+</script>
+</script>
+<script language="JavaScript" src="{APP_PATH}api.php?op=count&id={$id}&modelid={$modelid}"></script>

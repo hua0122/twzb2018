@@ -1,0 +1,127 @@
+#news_detail section .news-infor h3{
+    margin-bottom: 0.14rem;
+}
+.gouche .news-infor	.price{
+    font-size: 0.24rem;
+    padding-bottom: 0.14rem;
+}
+.gouche .news-infor	.price span{
+    color: #dc311b;
+    font-size: 0.34rem;
+    font-weight: 800;
+
+}
+.gouche .xinxi{
+    padding:0.1rem;
+    overflow: hidden;
+    padding-bottom: 0.14rem;
+    border-bottom: 1px solid #eaeaea;
+}
+.gouche .xinxi span{
+    font-size: 0.14rem;
+    display: block;
+    width:50%;
+    float: left;
+    margin-top: 0.14rem;
+}
+.gouche .xinxi .first{
+    font-size: 0.24rem;
+    width:100%;
+    font-weight: 800;
+}
+section h3.title:before
+{
+    background:#dc311b;
+}
+.relate-article{
+    padding: 0 0.1rem;
+}
+.relate-article ul li{
+    margin-top: 0.1rem;
+}
+.relate-article ul li img{
+    width:49%;
+}
+.relate-article .cs{
+    float: left;
+    width:30%;
+}
+.relate-article .td{
+    float: left;
+    width:30%;
+}
+section.another-style nav .nav-inner{
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px solid #efefef;
+    text-align: left;
+    padding-top:0.1rem;
+    position: relative;
+    z-index: 2;
+    padding-left: 0.1rem;
+}
+section.another-style nav .nav-inner h3{
+    font-size:0.24rem;
+    color:#3c4f60;
+    position: absolute;
+    top:0.1rem;
+    left: 0;
+    padding-left:0.14rem;
+    height: 0.6rem;
+    line-height: 0.55rem;
+}
+section.another-style nav .nav-inner h3:before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top:-0.08rem;
+    width: 0.08rem;
+    height: 0.08rem;
+    border-radius: 50%;
+    background: #3c4f60;
+}
+section.another-style nav ul{
+    display:inline-block;
+}
+section.another-style nav ul li{
+    float: left;
+    margin-right: 0.52rem;
+    padding:0 2px;
+    border-bottom: none;
+    line-height: 0.25rem;
+    height: 100%;
+    position: relative;
+    border-left: 0.05rem solid #ddd;
+    padding-left: 0.1rem;
+}
+section.another-style nav ul li:before{
+    content: '';
+    position: absolute;
+    right: -0.26rem;
+    top:50%;
+    width:3px ;
+    height:0.24rem ;
+    margin-top:-0.14rem;
+    background: none;
+}
+section.another-style nav ul li:last-child:before{
+    display: none;
+}
+section.another-style nav ul li:last-child{
+    margin-right: 0;
+}
+section.another-style nav ul li a{
+    font-size:0.24rem;
+    color:#3c3c3c;
+}
+section.another-style nav ul li.active{
+    border-color:#dc311b;
+}
+section .nav-item:first-child {
+    display: block;
+}
+section .nav-item {
+    display: none;
+    padding-left: 0.2rem;
+}

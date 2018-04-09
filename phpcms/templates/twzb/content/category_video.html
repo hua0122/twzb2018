@@ -1,0 +1,160 @@
+<script type="text/javascript">
+    // borwserRedirect
+    (function browserRedirect(){
+      var sUserAgent = navigator.userAgent.toLowerCase();
+      var bIsIpad = sUserAgent.match(/ipad/i) == 'ipad';
+      var bIsIphone = sUserAgent.match(/iphone os/i) == 'iphone os';
+      var bIsMidp = sUserAgent.match(/midp/i) == 'midp';
+      var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == 'rv:1.2.3.4';
+      var bIsUc = sUserAgent.match(/ucweb/i) == 'web';
+      var bIsCE = sUserAgent.match(/windows ce/i) == 'windows ce';
+      var bIsWM = sUserAgent.match(/windows mobile/i) == 'windows mobile';
+      var bIsAndroid = sUserAgent.match(/android/i) == 'android';
+
+      if(bIsIpad || bIsIphone || bIsMidp || bIsUc7 || bIsUc || bIsCE || bIsWM || bIsAndroid ){
+        window.location.href = '{APP_PATH}index.php?m=content&c=index&a=lists&catid={$catid}';
+      }
+    })();
+ </script>
+{template "content","header"}
+	<link rel="stylesheet" href="{APP_PATH}depend/videoCT.css">
+	
+	<div id="video">
+		<div class="section">
+			<div class="container sec_cont">
+				<div class="menu">
+					{pc:content action="category" catid="9" num="7" siteid="$siteid" order="listorder ASC"}
+					{loop $data $r}
+					<div {if $catid==$r[catid]} class="active" {/if}><a href="{$r[url]}" >{$r[catname]}</a></div>
+					{/loop}
+					{/pc}
+				</div>
+				<div class="itembox">
+					<div class="item">
+						<div class="top">
+							<div class="big videoBox">
+							{pc:content action="lists" catid="$catid" num="1" siteid="$siteid" order="inputtime desc"}
+								{loop $data $r}
+								{php $db = pc_base::load_model('hits_model');   $_r = $db->get_one(array('hitsid'=>'c-'.$modelid.'-'.$r[id])); $views = $_r[views]; }
+								{php $comment_tag = pc_base::load_app_class("comment_tag", "comment"); $comment_total = $comment_tag->count(array('commentid'=>'content_'.$catid.'-'.$r[id].'-'.$modelid));}
+							
+								<a href="{$r[url]}">
+									<img src="{$r[thumb]}" alt="">
+									<div class="infor">
+										<p>{$r[title]}</p>
+										<div class="timebox">
+											<span class="time">{date("m-d H:i",$r[inputtime])}</span>
+											<span class="user">作者：{$r[username]}</span>
+											<span class="from">来源：{$r[copyfrom]}</span>
+											<span class="repeat">{if $comment_total}{$comment_total}{else}0{/if}</span>
+											<span class="seen">{$views}</span>
+										</div>
+									</div>
+									<i></i>
+								</a>
+								{/loop}
+							{/pc}
+							</div>
+							<div class="small smallBox">
+								<ul>
+								{pc:content action="lists" catid="$catid" num="4" start="1" siteid="$siteid" order="updatetime desc"}
+									{loop $data $r}
+									<li class="videoBox">
+										<a href="{$r[url]}">
+											<img src="{$r[thumb]}" alt="{$r[title]}">
+											<h4 class="infor">{$r[title]}</h4>
+											<i></i>
+										</a>
+									</li>
+									{/loop}
+							{/pc}
+								</ul>
+							</div>
+						</div>
+						<div class="bottom smallBox">
+							<ul>
+							{pc:content action="lists" catid="$catid" num="8" start="5" siteid="$siteid" order="inputtime desc" page="$page"}
+									{loop $data $r}
+									{php $db = pc_base::load_model('hits_model');   $_r = $db->get_one(array('hitsid'=>'c-'.$modelid.'-'.$r[id])); $views = $_r[views]; }
+									{php $comment_tag = pc_base::load_app_class("comment_tag", "comment"); $comment_total = $comment_tag->count(array('commentid'=>'content_'.$catid.'-'.$r[id].'-'.$modelid));}
+							
+								<li class="videoBox" {if $n==4||$n==8} style="margin-right:0px;" {/if}>
+									<a href="{$r[url]}">
+										<img src="{$r[thumb]}" alt="{$r[title]}">
+										<i></i>
+									</a>
+									<div class="infor active">
+										<p>{$r[title]}</p>
+										<div class="timebox">
+											<span class="time">{date("Y-m-d H:i",$r[inputtime])}</span>
+											<span class="repeat">{if $comment_total}{$comment_total}{else}0{/if}</span>
+											<span class="seen">{$views}</span>
+										</div>
+									</div>
+								</li>
+								{/loop}
+							{/pc}
+							</ul>
+						</div>
+						<div class="page" id="pages">
+							{$pages}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{template "content","footer"}
+	<script type="text/javascript">
+	require.config({
+		"baseUrl":"js",
+		"paths":{
+			"vue":"vue.min",
+			"swiper":"swiper.min",
+			"videoCt":"../depend/videoCT",
+			"jquery":"jquery.min"
+		},
+		shim:{
+			"videoCt":{
+				deps: ['jquery'],
+　　　　　　	exports: ''
+			}
+		}
+	});
+	require(['vue',"videoCt","jquery"],function(Vue,videoCt,$){
+		let vm = new Vue({
+			el:"#video",
+			data:{
+				menu:['试驾','访谈','新闻快报'],
+				index:1,
+				item:[[8],[12],[4]],
+			},
+			computed:{
+				
+			},
+			mounted:function(){
+				this.$nextTick(function(){
+
+				});
+			},
+			methods:{
+				itemSwitch:function(index){
+					this.index = index+1;
+				},
+				video:function(index){
+					switch(index%4){
+						case 0:
+							return './video/justin.mp4';
+						case 1:
+							return './video/taylor.mp4';
+						case 2:
+							return './video/what.mp4';
+						case 3:
+							return './video/Diamonds.mp4';
+					}
+				}
+			}
+		});
+	});
+	</script>
+</body>
+</html>

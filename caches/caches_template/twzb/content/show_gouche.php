@@ -1,0 +1,302 @@
+<?php defined('IN_PHPCMS') or exit('No permission resources.'); ?><script type="text/javascript">
+    // borwserRedirect
+    (function browserRedirect(){
+      var sUserAgent = navigator.userAgent.toLowerCase();
+      var bIsIpad = sUserAgent.match(/ipad/i) == 'ipad';
+      var bIsIphone = sUserAgent.match(/iphone os/i) == 'iphone os';
+      var bIsMidp = sUserAgent.match(/midp/i) == 'midp';
+      var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == 'rv:1.2.3.4';
+      var bIsUc = sUserAgent.match(/ucweb/i) == 'web';
+      var bIsCE = sUserAgent.match(/windows ce/i) == 'windows ce';
+      var bIsWM = sUserAgent.match(/windows mobile/i) == 'windows mobile';
+      var bIsAndroid = sUserAgent.match(/android/i) == 'android';
+
+      if(bIsIpad || bIsIphone || bIsMidp || bIsUc7 || bIsUc || bIsCE || bIsWM || bIsAndroid ){
+        window.location.href = '<?php echo APP_PATH;?>index.php?m=content&c=index&a=show&catid=<?php echo $catid;?>&id=<?php echo $id;?>';
+      }
+    })();
+ </script>
+<style>
+.gouche .detail{
+	border: 1px solid #ddd;
+	min-height: 600px;
+	border-top:none;
+}
+.gouche .detail .car-top .img-left{
+	padding: 20px;
+	float: left;
+
+}
+.gouche .detail .car-top .img-left img{
+	width:585px;
+	height:425px;
+}
+.gouche .detail .car-top .tit-right{
+	float:right;
+	width:570px;
+
+}
+.gouche .detail .car-top .tit-right .tit{
+	height:110px;
+	border-left:1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	padding: 20px;
+	font-weight: 800;
+	line-height: 30px;
+
+}
+.gouche .detail .car-top .tit-right .price{
+	border-left:1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	height:60px;
+	padding: 20px;
+}
+.gouche .detail .car-top .tit-right .price span{
+	color: #d03b3d;
+	font-weight: 800;
+	margin-left: 10px;
+	font-size: 18px;
+
+}
+.gouche .detail .car-top .tit-right .xinxi{
+	border-left:1px solid #ddd;
+	height:300px;
+	padding-top: 20px;
+	padding-left: 20px;
+}
+.gouche .detail .car-top .tit-right .xinxi span{
+	width:250px;
+	height:40px;
+	display: block;
+	float: left;
+
+}
+.gouche .detail .car-top .tit-right .xinxi .first{
+	width: 500px;
+	height:60px;
+}
+.gouche .detail .pic{
+	height:60px;
+	border-bottom: 1px solid #ddd;
+	border-top: 1px solid #ddd;
+	padding-left: 20px;
+	padding-top: 20px;
+	font-weight: 800;
+
+}
+.clear{clear: both}
+.gouche .detail .pic span{
+	border-left: 5px solid #d03b3d;
+	padding-left: 10px;
+}
+.gouche .detail .pic-content{
+	margin: 10px;
+}
+.gouche .detail .pic-content img{
+	margin: 1px;
+}
+.gouche .cs{
+	border-top: solid 1px #ddd;
+}
+.cs .pub_l .menu_item li{
+	float: left;
+	width:85px;
+	text-align: center;
+	line-height:18px ;
+	font-size:14px;
+	color:#4f4f4f;
+	cursor: pointer;
+	position: relative;
+	margin-right:5px;
+	padding:0px;
+	border-left: 5px solid #ddd;
+	font-weight: 800;
+}
+.cs.pub_l .menu_item li:before{
+	content: '';
+	position: absolute;
+	right: 0;
+	top:9px;
+	width: 1px;
+	height: 15px;
+	background: #b5b5b5;
+}
+.cs.pub_l .menu_item li:last-child:before,#index .pub_l .menu_item li.active:before,#index .pub_l .menu_item li:hover:before{
+	background: transparent;
+}
+.cs .pub_l .menu_item li.active,#index .pub_l .menu_item li:hover{
+	border-left: 5px solid #d03b3d;
+	color:#4f4f4f;
+}
+.cs .pub_l .detail{
+	width: 100%;
+	height: 275px;
+	border:1px solid #dcdcdc;
+	border-top:none;
+	position: relative;
+}
+.cs .pub_l .detail .item{
+	position: absolute;
+	top:0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	border-top: 1px solid #dcdcdc;
+}
+.cs .pub_l .detail .item.active{
+	display: block;
+}
+.cs .pub_l .detail .item li{
+	width: 131px;
+	height: 131px;
+
+	overflow: hidden;
+	display: -webkit-flex;
+	display: flex;
+	float:left;
+}
+.cs .pub_l .detail .item li:last-child{
+	border-bottom: none;
+}
+.cs .pub_l .detail .item li .head{
+	width: 100px;
+	height: 100px;
+	overflow: hidden;
+	border-radius:50%;
+	border:#ddd 1px solid;
+	margin-left: 15px;
+	margin-top: 20px;
+}
+.cs .pub_l .detail .item li .head img{
+	display: block;
+	width:89px;
+	margin:10px auto;
+}
+.cs .pub_l .detail li .head a{
+	display: block;
+	margin:0 auto;
+	width:50px;
+	height: 18px;
+	border:1px solid #d03b3d;
+	border-radius: 18px;
+	font-size:12px;
+	text-align: center;
+	line-height: 18px;
+	color:#d03b3d;
+}
+.cs .pub_l .detail li .head a:hover{
+	background: #d03b3d;
+	color:#fff;
+}
+
+.cs .pub_l .detail .item{
+	padding: 10px;
+}
+
+
+</style>
+
+<?php include template("content","header"); ?>
+
+		<div id="club_detail">
+		<div class="section gouche">
+			<div class="container sec_cont">
+				<div class="title_position">
+				<a href="<?php echo siteurl($siteid);?>">首页</a> <?php echo catpos($catid);?><a > 详情</a>
+				</div>
+				<div class="detail">
+					<div class="car-top">
+						<div class="img-left"><img src="<?php echo $thumb;?>" /> </div>
+						<div class="tit-right">
+							<div class="tit"><?php echo $title;?></div>
+							<div class="price">报价：<span><?php if($price) { ?>￥ <?php echo $price;?><?php } else { ?>暂无报价<?php } ?></span></div>
+							<div class="xinxi">
+								<span class="first">基本信息：</span>
+
+								<span>驱动形式：<?php echo $qd;?></span>
+								<span>总质量：<?php echo $zl;?></span>
+								<span>发动机：<?php echo $fdj;?></span>
+								<span>排放标准：<?php echo $bz;?></span>
+								<span>最大马力：<?php echo $ml;?></span>
+								<span>变速箱：<?php echo $bsx;?></span>
+							</div>
+						</div>
+
+					</div>
+					<div class="clear"></div>
+					<div class="pic"><span>实拍图</span></div>
+
+					<div class="pic-content">
+						<?php $n=1; if(is_array($pics)) foreach($pics AS $pic_k => $r) { ?>
+						<img src="<?php echo thumb($r[url], 585, 425, 0);?>" alt="<?php echo $r['alt'];?>" rel="<?php echo $r['url'];?>"/>
+						<?php $n++;}unset($n); ?>
+
+					</div>
+					<div class="clear"></div>
+					<div class="cs">
+
+						<div class="pub_l">
+							<div class="menu_item more" style="height: 60px;padding-left: 20px;padding-top: 20px;">
+								<ul>
+
+									<li class="active"  style="width:105px;">参数展示</li>
+									<li style="width:105px;">车型特点</li>
+
+
+								</ul>
+							</div>
+
+							<div class="detail" style="border:none;">
+
+								<div  class="item active">
+									<?php echo $cs;?>
+
+								</div>
+								<div  class="item">
+									<?php echo $content;?>
+
+								</div>
+
+
+						</div>
+					</div>
+
+
+					</div>
+				
+				</div>
+
+		
+
+			</div>
+		</div>
+<?php include template("content","footer"); ?>
+
+			<script type="text/javascript" src="<?php echo APP_PATH;?>js/swiper.min.js"></script>
+			<script type="text/javascript">
+                new Swiper('.swiper-container', {
+                    //pagination: '.swiper-pagination',
+                    paginationClickable: true,
+                    nextButton: '.swiper-button-next',
+                    prevButton: '.swiper-button-prev',
+                    spaceBetween: 30
+                });
+                var caverling = {
+                    init:function(){
+                        this.djlp();
+
+                    },
+                    djlp:function(){
+                        //独家辣评 车辆报告 经典回顾 行业动态的切换
+                        $(".cs .pub_l .menu_item li").on("click",function(){
+                            var index = $(this).index();
+                            $(".cs .pub_l .menu_item li").removeClass("active");
+                            $(this).addClass("active");
+                            $(".cs .pub_l .detail .item").removeClass("active");
+                            $(".cs .pub_l .detail .item").eq(index).addClass("active");
+                        });
+                    }
+                }
+                caverling.init();
+                </script>

@@ -1,0 +1,162 @@
+<?php 
+$sitelist  = getcache('sitelist','commons');
+$default_style = $sitelist[$siteid]['default_style'];
+include template('content','car_top',$default_style."_wap");
+?>
+
+	<div id="club">
+		<section style="margin-top:1.94rem" class="another-style">
+			<div class="recommend">
+				<div class="title-box">
+					<div>
+						<h3>推荐</h3>
+						<span>Recommend</span>
+					</div>
+				</div>
+				<a href="{APP_PATH}index.php?m=member&c=index&a=login" class="join">立即加入</a>
+				<ul>
+				{pc:get sql="SELECT newt_member.*,newt_member_kache.gongsi,newt_member_kache.jial,newt_member_kache.licheng,newt_member_kache.cjs,newt_member_kache.xjs,newt_member_kache.zhiye,newt_member_kache.guanzhu,newt_member_kache.pro,newt_member_kache.jingli,newt_member_kache.luxian,newt_member_kache.rongyu,newt_member_kache.xuanyan FROM newt_member left join newt_member_kache on  newt_member.userid=newt_member_kache.userid where groupid =4 order by regdate desc" num="4" return="data"}
+								 
+								 {loop $data $v}
+								 {php  $img=get_memberavatar($v[userid],'','90')}
+								 
+								
+								 
+								 {php $db = pc_base::load_model('dianzan_model'); $dz = $db->get_all(array('userid'=>$v[userid])); }
+								 {php $caredb = pc_base::load_model('careinfo_model'); $care = $caredb->get_all(array('uid'=>$v[userid])); }
+					<li>
+						<a href="{APP_PATH}index.php?m=content&c=index&a=show_memberdetail&uid={$v[userid]}">
+							<img src="{$img}" alt="{$v[username]}" onerror="src='images/club_head.jpg'">
+							<p class="username">{if $v['nickname']} {$v['nickname']} {else} {$v[username]}{/if}</p>
+							{php $uid=param::get_cookie('_userid');}
+											{php $caredb = pc_base::load_model('careinfo_model'); $iscare = $caredb->get_one(array('uid'=>$v[userid],'userid'=>$uid));}
+											{if $iscare}
+											<span data-userid="{$uid}" data-uid="{$v[userid]}" class="active addcare" >已关注</span>
+											{else}
+											<span  data-userid="{$uid}" data-uid="{$v[userid]}" class="active">加关注</span>
+											{/if}
+							
+							
+							<p>{$v[xuanyan]}</p>
+							
+							{pc:get sql="SELECT * FROM newt_news WHERE catid in(29,30) and username='$v[username]'" return="data"}
+										
+							{php $db = pc_base::load_model('dianzan_model'); $dz = $db->get_all(array('userid'=>$v[userid])); }
+							<dl>
+								<dd class="fans">粉丝:{count($care)}</dd>
+								<dd class="works">作品:{count($data)}</dd>
+								<dd class="up" data-uid="{$v[userid]}">{count($dz)}</dd>
+							</dl>
+						</a>
+					</li>
+					
+							{/loop}
+							{/pc}
+					
+					
+				</ul>
+			</div>
+			<div class="all">
+				<div class="title-box">
+					<div>
+						<h3>全部</h3>
+						<span>Recommend</span>
+					</div>
+				</div>
+				<ul>
+					{pc:get sql="SELECT newt_member.*,newt_member_kache.gongsi,newt_member_kache.jial,newt_member_kache.licheng,newt_member_kache.cjs,newt_member_kache.xjs,newt_member_kache.zhiye,newt_member_kache.guanzhu,newt_member_kache.pro,newt_member_kache.jingli,newt_member_kache.luxian,newt_member_kache.rongyu,newt_member_kache.xuanyan FROM newt_member left join newt_member_kache on  newt_member.userid=newt_member_kache.userid where groupid =4 order by regdate desc" num="8" return="data"}
+								 
+								 {loop $data $v}
+								 {php  $img=get_memberavatar($v[userid],'','90')}
+								 
+								
+								 
+								 {php $db = pc_base::load_model('dianzan_model'); $dz = $db->get_all(array('userid'=>$v[userid])); }
+								 {php $caredb = pc_base::load_model('careinfo_model'); $care = $caredb->get_all(array('uid'=>$v[userid])); }
+					<li>
+						<a href="{APP_PATH}index.php?m=content&c=index&a=show_memberdetail&uid={$v[userid]}">
+							<img src="{$img}" alt="{$v[username]}" onerror="src='images/club_head.jpg'">
+							<p class="username">{if $v['nickname']} {$v['nickname']} {else} {$v[username]}{/if}</p>
+							{php $uid=param::get_cookie('_userid');}
+											{php $caredb = pc_base::load_model('careinfo_model'); $iscare = $caredb->get_one(array('uid'=>$v[userid],'userid'=>$uid));}
+											{if $iscare}
+											<span data-userid="{$uid}" data-uid="{$v[userid]}" class="active addcare" >已关注</span>
+											{else}
+											<span  data-userid="{$uid}" data-uid="{$v[userid]}" class="active">加关注</span>
+											{/if}
+											
+							<p>{$v[xuanyan]}</p>
+							
+							{pc:get sql="SELECT * FROM newt_news WHERE catid in(29,30) and username='$v[username]'" return="data"}
+										
+							{php $db = pc_base::load_model('dianzan_model'); $dz = $db->get_all(array('userid'=>$v[userid])); }
+							<dl>
+								<dd class="fans">粉丝:{count($care)}</dd>
+								<dd class="works">作品:{count($data)}</dd>
+								<dd class="up" data-uid="{$v[userid]}">{count($dz)}</dd>
+							</dl>
+						</a>
+					</li>
+					
+							{/loop}
+							{/pc}
+				</ul>
+			</div>	
+
+		</section>
+	</div>
+	
+</body>
+</html>
+<script>
+$(function(){
+	$("#club li span").click(function(){
+		var $userid=$(this).data('userid');
+		if($userid){
+			
+			
+			if($(this).attr('class')=="focus addcare"){
+				$(this).html('加关注');
+				
+				var uid=$(this).data('uid');//被关注用户id  uid
+				$.post("index.php?m=content&c=rss&a=delcare",{uid:uid},function(data){
+					
+					$(this).removeClass('addcare');
+				});
+				location.reload();
+			}else{
+				$(this).html("已关注");
+				var uid=$(this).data('uid');//被关注用户id  uid
+				
+				$.post("index.php?m=content&c=rss&a=addcare",{uid:uid},function(data){
+					$(this).addClass('addcare');
+				});
+				location.reload();
+			}
+		
+		}else{
+			
+			location.href="index.php?m=member&c=index&a=login";
+		}
+	
+
+	});
+
+	$(".up").click(function(){
+		var userid=$(this).data('uid');
+		
+		var catid=0;
+		var wid=0;
+		$.post("index.php?m=content&c=rss&a=dianzan",{catid:catid,wid:wid,userid:userid},function(data){
+				
+				$("#dianzan").html("点赞成功");
+				location.reload();
+			});
+	
+	});
+
+
+});
+
+	</script>
+

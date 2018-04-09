@@ -1,0 +1,84 @@
+
+<?php 
+$sitelist  = getcache('sitelist','commons');
+$default_style = $sitelist[$siteid]['default_style'];
+include template('content','top',$default_style."_wap");
+?>
+
+	<div id="news_list_news">
+	
+		
+		
+		<section style="margin-top:1.74rem;padding-bottom: 1.18rem;" class="another-style">
+			<nav>
+				<div class="nav-inner">
+					<ul>
+					
+						<li class="active" ><a>搜索列表</a></li>
+					
+						
+					</ul>
+				</div>
+			</nav>
+			<div class="article">
+			
+				<div class="nav-item">
+					<ul>
+					{loop $result $r1}
+								{php $db = pc_base::load_model('hits_model');   $_r = $db->get_one(array('hitsid'=>'c-'.$modelid.'-'.$r1[id])); $views = $_r[views]; }
+								{php $comment_tag = pc_base::load_app_class("comment_tag", "comment"); $comment_total = $comment_tag->count(array('commentid'=>'content_'.$catid.'-'.$r1[id].'-'.$modelid));}
+							
+								{php list($copyfrom) = explode('|', $r1['copyfrom'])}		
+								{php $posdb = pc_base::load_model('position_data_model'); $pos = $posdb->get_all(array('catid'=>$r1[catid],'id'=>$r1[id])); }
+								
+						<li>
+							<a href="{$r1[url]}">
+								
+								<dl>
+									<dd><img src="{$r1[thumb]}" alt="{$r1[title]}"></dd>
+									<dd style="width:60%;"><h3 style="overflow:inherit">{$r1[title]}</h3></dd>
+									<dd style="width:60%;">
+									<p style="color:#666">{str_cut($r1[description],80,"...")}</p>
+									<dd>
+									<dd style="width:60%;">
+									<div class="tags" style="float:right;">
+										
+									<?php  
+									if($pos) 
+									foreach($pos as $v){ 
+									if($v[posid]==1)
+									{echo "<div class='yc'>原创</div>";}
+									elseif($v[posid]==2)
+									{echo "<div class='tt'>头条</div>";}
+									else{echo "<div class='hot'>热门</div>";} 
+									};?>
+									
+									</div>
+									</dd>
+								</dl>
+								<div class="article-time">
+									<span class="time"> {date("m-d",$r1[updatetime])} </span>
+									<span class="seen">{$views}</span>
+									<span class="repeat">{if $comment_total}{$comment_total}{else}0{/if}</span>
+									<span class="user" style="margin-right: 0.16rem;">  作者：{$r1[username]}</span>
+									<span class="from"> 来源：{$copyfrom}</span>
+								</div>
+							</a>
+						</li>
+						{/loop}
+					{/pc}
+						
+						
+					</ul>
+				</div>
+				
+			
+			</div>
+		</section>
+	
+	
+<?php 
+$sitelist  = getcache('sitelist','commons');
+$default_style = $sitelist[$siteid]['default_style'];
+include template('content','footer',$default_style."_wap");
+?>

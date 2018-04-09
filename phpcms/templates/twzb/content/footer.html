@@ -1,0 +1,75 @@
+<div class="footer">
+			<div class="container cont">
+				<div class="copyright">
+					<ul>
+					{pc:content action="category" catid="32" num="7" siteid="$siteid" order="listorder ASC"}
+					{loop $data $r}
+						<li><a href="{$r[url]}" style="color:#fff;">{$r[catname]}</a></li>
+					{/loop}
+					{/pc}
+						
+					</ul>
+					
+{pc:get sql="SELECT * FROM newt_page WHERE catid=4" return="data"}
+					 {loop $data $val}
+					 {$val['content']}
+					 {/loop}
+					 {/pc}
+				</div>
+				<div class="ewm">
+					{pc:get sql="SELECT * FROM newt_page WHERE catid=5" return="data"}
+					 {loop $data $val}
+					 {$val['content']}
+					 {/loop}
+					 {/pc}
+				</div>
+			</div>
+		</div>
+		
+		
+			</div>
+	
+	<style>
+	#club_detail .per_infor .copyfrom a{border:none;display: inherit;}
+	.xuanfukuang{position: fixed;top:50%;right:0px;border:1px solid #ccc;}
+	.xuanfukuang .jiaru{text-align:center;margin-bottom:10px;border-bottom:1px solid #ccc;padding:10px;}
+	</style>
+	<!--右侧悬浮返回顶部-->
+	<div class="xuanfukuang">
+		<div class="jiaru">
+			<a href="{$CATEGORYS[77][url]}">
+				<img src="{APP_PATH}images/buy-car.jpg" />
+				<p style="font-size:14px;">我要买车</p>
+			</a>
+
+		</div>
+
+		<div class="jiaru">
+			<a href="{APP_PATH}index.php?m=member&c=index&a=login"> 
+				<img src="{APP_PATH}images/join.jpg" />
+				<p style="font-size:14px;">加入车友会</p>
+			</a>
+		
+		</div>
+		
+		<div class="jiaru">
+			<a href="{$CATEGORYS[8][url]}"> 
+				<img src="{APP_PATH}images/twzb.jpg" />
+				<p style="font-size:14px;">图文直播</p>
+			</a>
+		
+		</div>
+		
+		<div class="jiaru" style="border-bottom:none;">
+			<a href="#"> 
+				<img src="{APP_PATH}images/fanhui.jpg" />
+				<p style="font-size:14px;">返回顶部</p>
+			</a>
+		
+		</div>
+		
+		
+	</div>
+	
+</body>
+</html>

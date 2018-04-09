@@ -1,0 +1,126 @@
+<?php 
+$sitelist  = getcache('sitelist','commons');
+$default_style = $sitelist[$siteid]['default_style'];
+include template('content','header',$default_style."_wap");
+?>
+	<div id="news_detail">
+		
+		<section style="padding-top:0.82rem;padding-bottom: 0.7rem;">
+			<div class="news-infor">
+			
+				
+			
+				<div class="author-infor">
+					<img src="{$thumb}" onerror="this.src='{APP_PATH}phpcms/templates/twzb_wap/images/news_detail_head.png'" alt="{$title}">
+					<div class="infor-name">
+						<div class="name">
+							<span>{$title}</span>
+							
+							<!--<a href="javascript:;">已关注</a>-->
+							
+						</div>
+						<div class="time-seen">
+							<span class="time"> {$inputtime} </span>
+							<span class="seen" id="hits"></span>
+							<span class="from"> 来源：{if $copyfrom} {$copyfrom} {else} 环球商用车 {/if}</span>
+						</div>
+					</div>
+				</div>
+				<ul>
+					<li class="imgli">
+						<p>{$content}</p>
+					</li>
+					
+				</ul>
+			</div>
+			
+			<div class="relate-article">
+				<h3 class="title">相关文章</h3>
+				<ul>
+				{pc:get sql="SELECT * FROM newt_news WHERE keywords like '%$title%' and catid not in(14,16,44) order by inputtime desc" return="data"}
+							{if $data}
+							{loop $data $r}
+							{php $db = pc_base::load_model('hits_model');   $_r = $db->get_one(array('hitsid'=>'c-1-'.$r[id])); $views = $_r[views]; }
+							{php $comment_tag = pc_base::load_app_class("comment_tag", "comment"); $comment_total = $comment_tag->count(array('commentid'=>'content_'.$r[catid].'-'.$r[id].'-'.$modelid));}
+							{php list($copyfrom) = explode('|', $r['copyfrom'])}
+							
+							{php $posdb = pc_base::load_model('position_data_model'); $pos = $posdb->get_all(array('catid'=>$r[catid],'id'=>$r[id])); }
+							
+					<li>
+						<a href="{$r[url]}">
+							<img src="{$r[thumb]}" alt="{$r[title]}">
+							<div class="desc">
+								<h5>{$r[title]}</h5>
+								<div class="time-seen">
+									<span class="time">{date("m-d H:i",$r[inputtime])}</span>
+									<span class="seen">{$views}</span>
+									<span class="repeat">{if $comment_total}{$comment_total}{else}0{/if}</span>
+								</div>
+								<div class="tags">
+									<?php  
+									if($pos) 
+									foreach($pos as $v){ 
+									if($v[posid]==1)
+									{echo "<div class='yc'>原创</div>";}
+									elseif($v[posid]==2)
+									{echo "<div class='tt'>头条</div>";}
+									else{echo "<div class='hot'>热门</div>";} 
+									};?>
+								</div>
+							</div>
+						</a>
+					</li>
+							{/loop}
+						{/if}
+					{/pc}
+					
+				</ul>
+			</div>
+		</section>
+	</div>
+
+<?php 
+$sitelist  = getcache('sitelist','commons');
+$default_style = $sitelist[$siteid]['default_style'];
+include template('content','menu',$default_style."_wap");
+?>
+	<script type="text/javascript">
+		$(function(){
+			CommonFun.init();	
+			var caverling = {
+				init:function(){
+					this.hideComment();
+					this.loadMoreComment();
+				},
+				hideComment:function(){
+					$("section .comment-box dl i.up").on("click",function(){
+						$(this).parents("dl").hide();
+					})
+				},
+				loadMoreComment:function(){
+					$("section .comment-box ul i.down").on("click",function(){
+						var html = '';
+						for(var i=0;i<3;i++){
+							html += '<li>\
+								<img src="images/news_detail_comment_item.png" alt="">\
+								<div class="desc">\
+									<div class="name-time">\
+										<span>飞天HIPPOP</span>\
+										<span>3小时前</span>\
+									</div>\
+									<p>我有一个大胆的想法。随即大货车穿越两车之间，直接悲 剧了</p>\
+								</div>\
+							</li>';
+						}
+						$(this).parents("ul").append(html);
+					})
+				}
+			}
+			caverling.init();
+			
+			$(".imgli img").attr('style','width:100%;height:auto;');
+			
+		})
+	</script>
+	
+	<script language="JavaScript" src="{APP_PATH}api.php?op=count&id={$id}&modelid={$modelid}"></script>

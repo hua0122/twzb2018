@@ -1,0 +1,146 @@
+<title>图文直播 - {L('member','','member').L('manage_center')}</title>
+<link href="{CSS_PATH}reset.css" rel="stylesheet" type="text/css" />
+<link href="{CSS_PATH}member.css" rel="stylesheet" type="text/css" />
+<link href="{CSS_PATH}table_form.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{JS_PATH}jquery.min.js"></script>
+<script type="text/javascript" src="{JS_PATH}member_common.js"></script>
+{if isset($show_validator)}
+<script type="text/javascript" src="{JS_PATH}formvalidator.js" charset="UTF-8"></script>
+<script type="text/javascript" src="{JS_PATH}formvalidatorregex.js" charset="UTF-8"></script>
+{/if}
+
+<?php 
+$sitelist  = getcache('sitelist','commons');
+$default_style = $sitelist[1]['default_style'];
+include template('content','header',$default_style."_wap");
+?>
+<div id="memberArea" style="margin-top:1rem;width:auto;">
+	
+	<div class="col-auto">
+		<div class="col-1 " style="border:none;background:none;">
+			<h5 class="title">{L('modify').L('avatar')}</h5>
+			<div class="content">
+				
+				<script language="javascript" type="text/javascript" src="{$phpsso_api_url}/statics/js/swfobject.js"></script>
+				<script type="text/javascript">
+					var flashvars = {
+						'upurl':"{$upurl}&callback=return_avatar&"
+					}; 
+					var params = {
+						'align':'middle',
+						'play':'true',
+						'loop':'false',
+						'scale':'showall',
+						'wmode':'window',
+						'devicefont':'true',
+						'id':'Main',
+						'bgcolor':'#ffffff',
+						'name':'Main',
+						'allowscriptaccess':'always'
+					}; 
+					var attributes = {
+						
+					}; 
+					swfobject.embedSWF("{$phpsso_api_url}/statics/images/main.swf", "myContent", "490", "434", "9.0.0","{$phpsso_api_url}/statics/images/expressInstall.swf", flashvars, params, attributes);
+
+					function return_avatar(data) {
+						if(data == 1) {
+							window.location.reload();
+						} else {
+							alert('failure');
+						}
+					}
+				</script> 
+				<!--
+				<ul class="col-right col-avatar" id="avatarlist">
+				  {loop $avatar $k $v}
+					<li>
+						<img src="{$v}" height="{$k}" width="{$k}" onerror="this.src='{$phpsso_api_url}/statics/images/member/nophoto.gif'"><br />
+						{L('avatar')}{$k} x {$k}
+					</li>
+				  {/loop}
+				</ul>-->
+			
+				<div class="col-auto">
+					<div id="myContent"> 
+					<form action="{APP_PATH}index.php?m=member&c=index&a=upload_avatar" method="post" id="myform" enctype="multipart/form-data">
+						<input type="hidden" name="uid" value="{$memberinfo[userid]}" />
+						<label for="" style="float:left;width:20%;">头像</label>
+						<div class="input-box imgs" style="height:90px;">
+							<img src="{$avatar[90]}" onerror="this.src='{$phpsso_api_url}/statics/images/member/nophoto.gif'" width="90" height="90">
+							<input type="file" name="face" accept="image/*" style="display: none;"/>
+						</div>
+						<input name="dosubmit" type="submit" id="dosubmit" value="保存" class="buttonbtn">
+						
+					</form>
+					</div>
+				</div>
+			</div>
+			<!--<span class="o1"></span><span class="o2"></span><span class="o3"></span><span class="o4"></span>-->
+		</div>
+	</div>
+</div>
+<div class="clear"></div>
+<style>
+.buttonbtn {
+
+display: block;
+    border: none;
+    outline: none;
+    background: #dc321b;
+    width: 100%;
+    height: 0.74rem;
+    line-height: 0.74rem;
+    text-align: center;
+    font-size: 0.3rem;
+    color: #ffffff;
+    -webkit-appearance: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+</style>
+<link rel='stylesheet' type='text/css' href='phpcms/templates/twzb_wap/css/mdialog.css'>
+<script type='text/javascript' src='phpcms/templates/twzb_wap/js/zepto.min.js'></script>
+<script type='text/javascript' src='phpcms/templates/twzb_wap/js/mdialog.js'></script>
+
+
+    <script type="text/javascript">
+
+        $(function () {
+            //member.info.setinfo();
+            //city.change.exec();
+            $(".imgs").find("img").click(function () {
+                var li = $(this).next();
+                li.click();
+                li.on("change", function () {
+                    var objUrl = getObjectURL(this.files[0]);
+                    if (objUrl) {
+                        $(this).prev().attr("src", objUrl);
+                    }
+                });
+            })
+        })
+
+        function getObjectURL(file) {
+            var url = null;
+            if (window.createObjectURL != undefined) {
+                url = window.createObjectURL(file);
+            } else if (window.URL != undefined) {
+                url = window.URL.createObjectURL(file);
+            } else if (window.webkitURL != undefined) {
+                url = window.webkitURL.createObjectURL(file);
+            }
+            return url;
+        }
+		
+		$("#dosubmit").click(function(){
+		
+			new TipBox({type:'success',str:'操作成功',hasBtn:true});
+			location.reload();
+			//location.href='index.php?m=member';
+		});
+
+        
+
+    </script>

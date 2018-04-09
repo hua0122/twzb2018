@@ -1,0 +1,144 @@
+<?php 
+$sitelist  = getcache('sitelist','commons');
+$default_style = $sitelist[$siteid]['default_style'];
+include template('content','car_top',$default_style."_wap");
+?>
+	<div id="club_story">
+		
+		<section style="margin-top:1.74rem">
+			<div class="mui-slider banner-box">
+			  	<div class="mui-slider-group mui-slider-loop">
+				{pc:content action="lists" catid="38" num="1" siteid="$siteid" order="updatetime desc"}
+								{loop $data $r}
+				<div class="mui-slider-item mui-slider-item-duplicate" ><a {if $r[islink]}href="{$r[url]}"{/if}><img src="{$r[thumb]}" /></a></div>
+								{/loop}
+				{/pc}
+				
+				{pc:content action="lists" catid="38" num="4" siteid="$siteid" order="updatetime desc"}
+								{loop $data $r}
+									<div class="mui-slider-item"><a {if $r[islink]}href="{$r[url]}"{/if}><img src="{$r[thumb]}" /></a></div>
+								{/loop}
+				{/pc}
+				
+				{pc:content action="lists" catid="38" num="1" start="3" siteid="$siteid" order="updatetime desc"}
+								{loop $data $r}
+				<div class="mui-slider-item mui-slider-item-duplicate" ><a {if $r[islink]}href="{$r[url]}"{/if}><img src="{$r[thumb]}" /></a></div>
+								{/loop}
+				{/pc}
+								
+				</div>
+			    <div class="mui-slider-indicator">
+				{pc:content action="lists" catid="38" num="4" siteid="$siteid" order="updatetime desc"}
+								{loop $data $r}
+				 	<div {if $n==1}class="mui-indicator mui-active" {else} class="mui-indicator" {/if} ></div>
+					{/loop}
+				{/pc}
+					
+			    </div>
+
+			</div>
+			<div class="recommend">
+				<div class="title-box">
+					<div>
+						<h3>推荐</h3>
+						<span>Recommend</span>
+					</div>
+					<i></i>
+				</div>
+				<ul>
+				{pc:get sql="SELECT newt_member.*,newt_member_kache.gongsi,newt_member_kache.jial,newt_member_kache.licheng,newt_member_kache.cjs,newt_member_kache.xjs,newt_member_kache.zhiye,newt_member_kache.guanzhu,newt_member_kache.pro,newt_member_kache.jingli,newt_member_kache.luxian,newt_member_kache.rongyu,newt_member_kache.xuanyan FROM newt_member left join newt_member_kache on  newt_member.userid=newt_member_kache.userid where groupid =4 order by regdate desc" num="4" return="data"}
+								 
+								 {loop $data $v}
+								 {php  $img=get_memberavatar($v[userid],'','90')}
+					<li>
+						<a href="{APP_PATH}index.php?m=content&c=index&a=show_memberdetail&uid={$v[userid]}"><img src="{$img}" alt="{$v[nickname]}" onerror="src='images/club_head.jpg'"></a>
+						<div class="name">
+							<h4><a href="{APP_PATH}index.php?m=content&c=index&a=show_memberdetail&uid={$v[userid]}">{if $v['nickname']} {$v['nickname']} {else} {$v[username]}{/if}</a></h4>
+							{php $uid=param::get_cookie('_userid');}
+											{php $caredb = pc_base::load_model('careinfo_model'); $iscare = $caredb->get_one(array('uid'=>$v[userid],'userid'=>$uid));}
+											{if $iscare}
+											<span data-userid="{$uid}" data-uid="{$v[userid]}" class="focus addcare ">已关注</span>
+											{else}
+											<span data-userid="{$uid}" data-uid="{$v[userid]}" class="focus">加关注</span>
+											{/if}
+							
+				
+							
+						</div>
+					</li>
+					{/loop}
+					{/pc}
+				</ul>
+			</div>
+			<dl>
+			{pc:content action="lists" catid="$catid" num="12" siteid="$siteid" order="updatetime desc" page="$page"}
+								{loop $data $r}
+								{php $db = pc_base::load_model('hits_model');   $_r = $db->get_one(array('hitsid'=>'c-'.$modelid.'-'.$r[id])); $views = $_r[views]; }
+								{php $comment_tag = pc_base::load_app_class("comment_tag", "comment"); $comment_total = $comment_tag->count(array('commentid'=>'content_'.$catid.'-'.$r[id].'-'.$modelid));}
+								
+								{php list($copyfrom) = explode('|', $r['copyfrom'])}
+								
+								 {php $dzdb = pc_base::load_model('dianzan_model'); $dz = $dzdb->get_all(array('catid'=>$r[catid],'wid'=>$r[id])); }
+				<dd>
+					<a href="{$r[url]}">
+						<img src="{$r[thumb]}" alt="{$r[title]}">
+						<div class="car-infor">
+							<h5>{$r[title]}</h5>
+							<div class="from-seen-repeat">
+								<span class="from">来源：{if $copyfrom} {$copyfrom} {else} 环球商用车 {/if}</span>
+								<span class="repeat">{if $comment_total}{$comment_total}{else}0{/if}</span>
+								<span class="seen">{$views}</span>
+							</div>
+						</div>
+					</a>
+				</dd>
+				{/loop}
+				{/pc}
+			</dl>
+		</section>
+	</div>
+	<script type="text/javascript" src="{APP_PATH}phpcms/templates/twzb_wap/js/mui.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var gallery = mui('.mui-slider');
+			gallery.slider({
+			  interval:5000//自动轮播周期，若为0则不自动播放，默认为0；
+			});
+		})
+		
+		
+$(".name .focus").click(function(){
+	var $userid=$(this).data('userid');
+	if($userid){
+		
+		
+		if($(this).attr('class')=="focus addcare"){
+			$(this).html('加关注');
+			
+			var uid=$(this).data('uid');//被关注用户id  uid
+			$.post("index.php?m=content&c=rss&a=delcare",{uid:uid},function(data){
+				
+				$(this).removeClass('addcare');
+			});
+			location.reload();
+		}else{
+			$(this).html("已关注");
+			var uid=$(this).data('uid');//被关注用户id  uid
+			
+			$.post("index.php?m=content&c=rss&a=addcare",{uid:uid},function(data){
+				$(this).addClass('addcare');
+			});
+			location.reload();
+		}
+	
+	}else{
+		
+		location.href="index.php?m=member&c=index&a=login";
+	}
+	
+
+});
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<script type="text/javascript">
+    // borwserRedirect
+    (function browserRedirect(){
+      var sUserAgent = navigator.userAgent.toLowerCase();
+      var bIsIpad = sUserAgent.match(/ipad/i) == 'ipad';
+      var bIsIphone = sUserAgent.match(/iphone os/i) == 'iphone os';
+      var bIsMidp = sUserAgent.match(/midp/i) == 'midp';
+      var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == 'rv:1.2.3.4';
+      var bIsUc = sUserAgent.match(/ucweb/i) == 'web';
+      var bIsCE = sUserAgent.match(/windows ce/i) == 'windows ce';
+      var bIsWM = sUserAgent.match(/windows mobile/i) == 'windows mobile';
+      var bIsAndroid = sUserAgent.match(/android/i) == 'android';
+
+      if(bIsIpad || bIsIphone || bIsMidp || bIsUc7 || bIsUc || bIsCE || bIsWM || bIsAndroid ){
+        window.location.href = '{APP_PATH}index.php?m=content&c=index&a=lists&catid={$catid}';
+      }
+    })();
+ </script>
+{template "content","top"}
+<link rel="stylesheet" href="{APP_PATH}css/swiper.min.css">
+		<div class="section">
+			<div class="container sec_cont">
+				<div class="recommend" >
+					<h2>推荐</h2>
+					<div class="bannerbox swiper-container">
+						<div class="swiper-wrapper">
+						
+							
+							<div class="swiper-slide">
+								<ul class="desc">
+								{pc:get sql="SELECT newt_member.*,newt_member_kache.gongsi,newt_member_kache.jial,newt_member_kache.licheng,newt_member_kache.cjs,newt_member_kache.xjs,newt_member_kache.zhiye,newt_member_kache.guanzhu,newt_member_kache.pro,newt_member_kache.jingli,newt_member_kache.luxian,newt_member_kache.rongyu,newt_member_kache.xuanyan FROM newt_member left join newt_member_kache on  newt_member.userid=newt_member_kache.userid where groupid =4 order by regdate desc" num="4" return="data"}
+								 
+								 {loop $data $v}
+								 {php  $img=get_memberavatar($v[userid]+1,'','90')}
+								 
+								
+								 
+								 {php $db = pc_base::load_model('dianzan_model'); $dz = $db->get_all(array('userid'=>$v[userid])); }
+								 {php $caredb = pc_base::load_model('careinfo_model'); $care = $caredb->get_all(array('uid'=>$v[userid])); }
+								 
+
+								 
+								
+									<li>
+										<div class="head">
+											<a href="{APP_PATH}index.php?m=content&c=index&a=show_memberdetail&uid={$v[userid]}"><img src="{$img}" alt="{$v[username]}" onerror="src='{APP_PATH}images/club_head.jpg'"></a>
+										</div>
+										<h5><a href="{APP_PATH}index.php?m=content&c=index&a=show_memberdetail&uid={$v[userid]}">{if $v['nickname']} {$v['nickname']} {else} {$v[username]}{/if}</a></h5>
+										<p>{$v[xuanyan]}</p>		
+									
+											{php $uid=param::get_cookie('_userid');}
+											{php $caredb = pc_base::load_model('careinfo_model'); $iscare = $caredb->get_one(array('uid'=>$v[userid],'userid'=>$uid));}
+											{if $iscare}
+											<a href="javascript:;" data-userid="{$uid}" data-uid="{$v[userid]}" class="focus addcare" >已关注</a>
+											{else}
+											<a href="javascript:;" data-userid="{$uid}" data-uid="{$v[userid]}" class="focus">加关注</a>
+											{/if}
+										
+										{pc:get sql="SELECT * FROM newt_news WHERE catid in(29,30) and username='$v[username]'" return="data"}
+										
+										{php $db = pc_base::load_model('dianzan_model'); $dz = $db->get_all(array('userid'=>$v[userid])); }
+										<div class="thumbs_up">
+											<div class="per"><i></i><span>{count($care)}</span></div>
+											<div class="up" style="text-align: center;"><a class="inner"><i class="dianzan" data-uid="{$v[userid]}"></i><span>{count($dz)}</span></a></div>
+											<div class="share"><span>{count($data)}</span><i></i></div>
+										</div>
+									</li>
+									{/loop}
+								 {/pc}
+									
+								</ul>
+							</div>
+							
+							<div class="swiper-slide">
+								<ul class="desc">
+								{pc:get sql="SELECT newt_member.*,newt_member_kache.gongsi,newt_member_kache.jial,newt_member_kache.licheng,newt_member_kache.cjs,newt_member_kache.xjs,newt_member_kache.zhiye,newt_member_kache.guanzhu,newt_member_kache.pro,newt_member_kache.jingli,newt_member_kache.luxian,newt_member_kache.rongyu,newt_member_kache.xuanyan FROM newt_member left join newt_member_kache on  newt_member.userid=newt_member_kache.userid where groupid =4 order by regdate desc" start="4" num="4" return="data"}
+								 
+								 {loop $data $v}
+								 {php  $img=get_memberavatar($v[userid]+1,'','90')}
+								 
+								 {php $db = pc_base::load_model('dianzan_model'); $dz = $db->get_all(array('userid'=>$v[userid])); }
+								 {php $caredb = pc_base::load_model('careinfo_model'); $care = $caredb->get_all(array('uid'=>$v[userid])); }
+								 
+
+								 
+								
+									<li>
+										<div class="head">
+											<a href="{APP_PATH}index.php?m=content&c=index&a=show_memberdetail&uid={$v[userid]}"><img src="{$img}" alt="{$v[username]}" onerror="src='{APP_PATH}images/club_head.jpg'"></a>
+										</div>
+										<h5><a href="{APP_PATH}index.php?m=content&c=index&a=show_memberdetail&uid={$v[userid]}">{if $v['nickname']} {$v['nickname']} {else} {$v[username]}{/if}</a></h5>
+										<p>{$v[xuanyan]}</p>		
+									
+											{php $uid=param::get_cookie('_userid');}
+											{php $caredb = pc_base::load_model('careinfo_model'); $iscare = $caredb->get_one(array('uid'=>$v[userid],'userid'=>$uid));}
+											{if $iscare}
+											<a href="javascript:;" data-userid="{$uid}" data-uid="{$v[userid]}" class="focus addcare" >已关注</a>
+											{else}
+											<a href="javascript:;" data-userid="{$uid}" data-uid="{$v[userid]}" class="focus">加关注</a>
+											{/if}
+										
+										{pc:get sql="SELECT * FROM newt_news WHERE catid in(29,30) and username='$v[username]'" return="data"}
+										{php $db = pc_base::load_model('dianzan_model'); $dz = $db->get_all(array('userid'=>$v[userid])); }
+										
+										<div class="thumbs_up">
+											<div class="per"><i></i><span>{count($care)}</span></div>
+											<div class="up" style="text-align: center;"><a class="inner"><i class="dianzan" data-uid="{$v[userid]}"></i><span>{count($dz)}</span></a></div>
+											<div class="share"><span>{count($data)}</span><i></i></div>
+										</div>
+									</li>
+									{/loop}
+								 {/pc}
+									
+								</ul>
+							</div>
+							
+						</div>
+						<div class="swiper-button-next" style="right: 30px"></div>
+				        <div class="swiper-button-prev" style="left:30px"></div>
+					</div>
+				</div>
+				<div class="all">
+					<h2>全部</h2>
+					<div>
+						<ul class="desc">
+							{pc:get sql="SELECT newt_member.*,newt_member_kache.gongsi,newt_member_kache.jial,newt_member_kache.licheng,newt_member_kache.cjs,newt_member_kache.xjs,newt_member_kache.zhiye,newt_member_kache.guanzhu,newt_member_kache.pro,newt_member_kache.jingli,newt_member_kache.luxian,newt_member_kache.rongyu,newt_member_kache.xuanyan FROM newt_member left join newt_member_kache on  newt_member.userid=newt_member_kache.userid where groupid =4 order by regdate desc" num="8" page="$page" return="data"}
+								 
+								 {loop $data $v}
+								 {php  $img=get_memberavatar($v[userid]+1,'','90')}
+								
+								 {php $db = pc_base::load_model('dianzan_model'); $dz = $db->get_all(array('userid'=>$v[userid])); }
+								 {php $caredb = pc_base::load_model('careinfo_model'); $care = $caredb->get_all(array('uid'=>$v[userid])); }
+								 
+								  
+									<li {if $n==4||$n==8} style="margin-right:0px;" {/if}>
+										<div class="head">
+											<a href="{APP_PATH}index.php?m=content&c=index&a=show_memberdetail&uid={$v[userid]}"><img src="{$img}" alt="{$v[username]}" onerror="src='{APP_PATH}images/club_head.jpg'"></a>
+										</div>
+										<h5><a href="{APP_PATH}index.php?m=content&c=index&a=show_memberdetail&uid={$v[userid]}">{if $v['nickname']} {$v['nickname']} {else} {$v[username]}{/if}</a></h5>
+										<p>{$v[xuanyan]}</p>		
+											{php $uid=param::get_cookie('_userid');}
+											{php $caredb = pc_base::load_model('careinfo_model'); $iscare = $caredb->get_one(array('uid'=>$v[userid],'userid'=>$uid));}
+											{if $iscare}
+											<a href="javascript:;" data-userid="{$uid}" data-uid="{$v[userid]}" class="focus addcare ">已关注</a>
+											{else}
+											<a href="javascript:;" data-userid="{$uid}" data-uid="{$v[userid]}" class="focus">加关注</a>
+											{/if}
+											
+											
+											{pc:get sql="SELECT * FROM newt_news WHERE catid in(29,30) and username='$v[username]'" return="data"}
+											
+											{php $db = pc_base::load_model('dianzan_model'); $dz = $db->get_all(array('userid'=>$v[userid])); }
+										
+										<div class="thumbs_up">
+											<div class="per"><i></i><span>{count($care)}</span></div>
+											<div class="up" style="text-align: center;"><i class="dianzan" data-uid="{$v[userid]}"></i><span>{count($dz)}</span></div>
+											<div class="share"><span>{count($data)}</span><i></i></div>
+										</div>
+									</li>
+									{/loop}
+								 {/pc}
+						</ul>
+					</div>
+					<div class="page" id="pages">
+						{$pages}
+					</div>
+				</div>
+			</div>
+		</div>
+{template "content","footer"}
+<script type="text/javascript" src="{APP_PATH}js/swiper.min.js"></script>
+	<script type="text/javascript">
+		new Swiper('.swiper-container', {
+	        //pagination: '.swiper-pagination',
+	        paginationClickable: true,
+	        nextButton: '.swiper-button-next',
+	        prevButton: '.swiper-button-prev',
+	        spaceBetween: 95
+	    });
+		
+
+
+
+$(".desc li .focus").click(function(){
+	var $userid=$(this).data('userid');
+	if($userid){
+		
+		
+		if($(this).attr('class')=="focus addcare"){
+			$(this).html('加关注');
+			
+			var uid=$(this).data('uid');//被关注用户id  uid
+			$.post("{APP_PATH}index.php?m=content&c=rss&a=delcare",{uid:uid},function(data){
+				
+				$(this).removeClass('addcare');
+			});
+			location.reload();
+		}else{
+			$(this).html("已关注");
+			var uid=$(this).data('uid');//被关注用户id  uid
+			
+			$.post("index.php?m=content&c=rss&a=addcare",{uid:uid},function(data){
+				$(this).addClass('addcare');
+			});
+			location.reload();
+		}
+	
+	}else{
+		
+		location.href="{APP_PATH}index.php?m=member&c=index&a=login";
+	}
+	
+
+});
+
+		
+		$(".dianzan").click(function(){
+		 
+			var userid=$(this).data('uid');
+			var $t = $(this);
+			
+			var catid=0;
+			var wid=0;
+			$.post("{APP_PATH}index.php?m=content&c=rss&a=dianzan",{catid:catid,wid:wid,userid:userid},function(data){
+				
+				if(data.status){
+					
+					//点赞成功
+					$t.next().text(data.num);
+					$t.css("background","url('{APP_PATH}images/club_detail_up.png') no-repeat");
+				}
+				
+			},"json");
+		
+			
+		});
+
+	</script>

@@ -1,0 +1,159 @@
+<?php 
+include template('content','header',"twzb_wap");
+?>
+	<div id="news_detail">
+		
+		<section style="padding-top:0.82rem;padding-bottom: 0.7rem;">
+			<div class="news-infor">
+			
+				
+			
+				<div class="author-infor">
+					{if $m[groupid]==4}
+						<img src="{$img}" alt="{$m[nickname]}" onerror="src='images/club_head.jpg'">
+						{else}
+						<img src="{$img}" alt="{$m[nickname]}" onerror="src='images/index_publis_head.png'">
+						{/if}
+					<div class="infor-name">
+						<div class="name">
+							<span>{if $m[nickname]} {$m[nickname]}{else} {$m[username]} {/if}</span>
+							
+							{php $uid=param::get_cookie('_userid');}
+							{php $caredb = pc_base::load_model('careinfo_model'); $iscare = $caredb->get_one(array('uid'=>$m[userid],'userid'=>$uid));}
+											{if $iscare}
+											<a href="javascript:;" data-userid="{$uid}" data-uid="{$m[userid]}" class="focus addcare">已关注</a>
+											{else}
+											<a href="javascript:;" data-userid="{$uid}" data-uid="{$m[userid]}" class="focus">加关注</a>
+											{/if}
+							
+						</div>
+						
+						<div class="time-seen">
+							<!--<span class="time"> {$inputtime} </span>-->
+							<span class="seen" id="hits"></span>
+							<span class="from"> 来源：{if $copyfrom} {$copyfrom} {else} 环球商用车 {/if}</span>
+						</div>
+						
+					</div>
+				</div>
+				<ul>
+					<li class="imgli">
+						{if $m[groupid]==4}
+						<p>
+						所在城市：{$citypro}<br/>
+						职业：{$m_d[zhiye]}<br/>
+						所在公司：{$m_d[gongsi]}<br/>
+						关注信息：{$m_d[guanzhu]}<br/>
+						驾龄：{$m_d[jial]}年<br/>
+						驾驶累计里程：{$m_d[licheng]}公里<br/>
+						曾驾驶车辆：{$m_d[cjs]}<br/>
+						现驾驶车辆：{$m_d[xjs]}<br/>
+						主要运输路线：{$m_d[luxian]}<br/>
+						工作经历：{$m_d[jingli]}<br/>
+						获得荣誉：{$m_d[rongyu]}<br/>
+						个人宣言：{$m_d[xuanyan]}<br/>
+						</p>
+						{else}
+						<p>
+						所在城市：{$citypro}<br/>
+						职业：{$m_d[zhiye]}<br/>
+						所在公司：{$m_d[gongsi]}<br/>
+						关注信息：{$m_d[guanzhu]}<br/>
+						从业年限：{$m_d[nianxian]}<br/>
+						工作经历：{$m_d[jingli]}<br/>
+					
+						</p>
+						{/if}
+					</li>
+					
+				</ul>
+			</div>
+			
+			<div class="relate-article">
+				<h3 class="title">相关文章</h3>
+				<ul>
+				{pc:get sql="SELECT * FROM newt_news WHERE username='$m[username]' order by inputtime desc" return="data"}
+							{if $data}
+							{loop $data $r}
+							{php $db = pc_base::load_model('hits_model');   $_r = $db->get_one(array('hitsid'=>'c-1-'.$r[id])); $views = $_r[views]; }
+							{php $comment_tag = pc_base::load_app_class("comment_tag", "comment"); $comment_total = $comment_tag->count(array('commentid'=>'content_'.$r[catid].'-'.$r[id].'-'.$modelid));}
+							{php list($copyfrom) = explode('|', $r['copyfrom'])}
+							
+							{php $posdb = pc_base::load_model('position_data_model'); $pos = $posdb->get_all(array('catid'=>$r[catid],'id'=>$r[id])); }
+							
+					<li>
+						<a href="{$r[url]}">
+							<img src="{$r[thumb]}" alt="{$r[title]}">
+							<div class="desc">
+								<h5>{$r[title]}</h5>
+								<div class="time-seen">
+									<span class="time">{date("m-d H:i",$r[inputtime])}</span>
+									<span class="seen">{$views}</span>
+									<span class="repeat">{if $comment_total}{$comment_total}{else}0{/if}</span>
+								</div>
+								<div class="tags">
+									<?php  
+									if($pos) 
+									foreach($pos as $v){ 
+									if($v[posid]==1)
+									{echo "<div class='yc'>原创</div>";}
+									elseif($v[posid]==2)
+									{echo "<div class='tt'>头条</div>";}
+									else{echo "<div class='hot'>热门</div>";} 
+									};?>
+								</div>
+							</div>
+						</a>
+					</li>
+							{/loop}
+						{/if}
+					{/pc}
+					
+				</ul>
+			</div>
+		</section>
+	</div>
+
+<?php 
+include template('content','menu',"twzb_wap");
+?>
+	<script type="text/javascript">
+		$(function(){
+			CommonFun.init();	
+			var caverling = {
+				init:function(){
+					this.hideComment();
+					this.loadMoreComment();
+				},
+				hideComment:function(){
+					$("section .comment-box dl i.up").on("click",function(){
+						$(this).parents("dl").hide();
+					})
+				},
+				loadMoreComment:function(){
+					$("section .comment-box ul i.down").on("click",function(){
+						var html = '';
+						for(var i=0;i<3;i++){
+							html += '<li>\
+								<img src="images/news_detail_comment_item.png" alt="">\
+								<div class="desc">\
+									<div class="name-time">\
+										<span>飞天HIPPOP</span>\
+										<span>3小时前</span>\
+									</div>\
+									<p>我有一个大胆的想法。随即大货车穿越两车之间，直接悲 剧了</p>\
+								</div>\
+							</li>';
+						}
+						$(this).parents("ul").append(html);
+					})
+				}
+			}
+			caverling.init();
+			
+			$(".imgli img").attr('style','width:100%;height:auto;');
+			
+		})
+	</script>
+	
+	<script language="JavaScript" src="{APP_PATH}api.php?op=count&id={$id}&modelid={$modelid}"></script>

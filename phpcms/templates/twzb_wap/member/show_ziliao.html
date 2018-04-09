@@ -1,0 +1,55 @@
+<title>图文直播 - {L('member','','member').L('manage_center')}</title>
+<link href="{CSS_PATH}reset.css" rel="stylesheet" type="text/css" />
+<link href="{CSS_PATH}member.css" rel="stylesheet" type="text/css" />
+<link href="{CSS_PATH}table_form.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{JS_PATH}jquery.min.js"></script>
+<script type="text/javascript" src="{JS_PATH}member_common.js"></script>
+{if isset($show_validator)}
+<script type="text/javascript" src="{JS_PATH}formvalidator.js" charset="UTF-8"></script>
+<script type="text/javascript" src="{JS_PATH}formvalidatorregex.js" charset="UTF-8"></script>
+{/if}
+
+<?php 
+$sitelist  = getcache('sitelist','commons');
+$default_style = $sitelist[1]['default_style'];
+include template('content','header',$default_style."_wap");
+?>
+	<div id="person_infor" style="margin-top:1rem">
+		<div class="head">
+			<div class="head-img"><a href="{APP_PATH}index.php?m=member&c=index&a=account_manage_avatar&t=1"><img {if $avatar[90]} src="{$avatar[90]}"{else}src="{APP_PATH}statics/images/member/nophoto.gif"{/if}></a></div>
+			<div class="head-infor">
+				<h3>{if $memberinfo['nickname']} {$memberinfo['nickname']} {else} {$memberinfo['username']}{/if}</h3>
+				<a href="tel:{$memberinfo[mobile]}">{$memberinfo[mobile]}</a>
+			</div>
+		</div>
+		<ul>
+			<li>
+				<a href="{APP_PATH}index.php?m=member&c=index&a=account_manage_info&t=1" class="infor">
+					<span>修改信息</span>
+					<img src="{APP_PATH}phpcms/templates/twzb_wap/images/per_more_l.png" alt="">
+				</a>
+			</li>
+			<li>
+				<a href="{APP_PATH}index.php?m=member&c=index&a=account_manage_password&t=1" class="password">
+					<span>修改密码</span>
+					<img src="{APP_PATH}phpcms/templates/twzb_wap/images/per_more_l.png" alt="">
+				</a>
+			</li>
+		</ul>
+	</div>
+	<a href="{APP_PATH}index.php?m=member&c=index&a=logout" style="display: block;
+    border: none;
+    outline: none;
+    background: #465b70;
+    width: 100%;
+    height: 0.74rem;
+    line-height: 0.74rem;
+    text-align: center;
+    font-size: 0.3rem;
+    color: #ffffff;
+    -webkit-appearance: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;">退出登录</a>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<script type="text/javascript">
+    // borwserRedirect
+    (function browserRedirect() {
+        var sUserAgent = navigator.userAgent.toLowerCase();
+        var bIsIpad = sUserAgent.match(/ipad/i) == 'ipad';
+        var bIsIphone = sUserAgent.match(/iphone os/i) == 'iphone os';
+        var bIsMidp = sUserAgent.match(/midp/i) == 'midp';
+        var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == 'rv:1.2.3.4';
+        var bIsUc = sUserAgent.match(/ucweb/i) == 'web';
+        var bIsCE = sUserAgent.match(/windows ce/i) == 'windows ce';
+        var bIsWM = sUserAgent.match(/windows mobile/i) == 'windows mobile';
+        var bIsAndroid = sUserAgent.match(/android/i) == 'android';
+
+        if (bIsIpad || bIsIphone || bIsMidp || bIsUc7 || bIsUc || bIsCE || bIsWM || bIsAndroid) {
+            window.location.href = '{APP_PATH}index.php?m=content&c=index&a=lists&catid={$catid}';
+        }
+    })();
+</script>
+{template "content","header"}
+<link rel="stylesheet" type="text/css" href="{APP_PATH}css/gouche.css">
+
+<div id="news_list">
+    <div class="section">
+        <div class="container news_list_cont">
+            <div class="car-left">
+                <div class="brand">
+                    <div class="pub_l">
+                        <div class="menu_item more" style="height: 33px">
+                            <ul>
+                                {pc:content action="category" catid="72" num="7" siteid="$siteid" order="listorder ASC"}
+                                {loop $data $r}
+                                <li {if $n==1} class="active" {/if} style="width:105px;">{$r[catname]}</li>
+                                {/loop}
+                                {/pc}
+
+                            </ul>
+                        </div>
+
+                        <div class="detail">
+                            {php $index=1;}
+                            {pc:content action="category" catid="72" num="7" siteid="$siteid" order="listorder ASC"}
+                            {loop $data $r}
+                            <div  {if $index==1} class="item active" {else} class="item" {/if}>
+                                <ul>
+
+                                        {pc:content action="lists" catid="$r[catid]" num="14" siteid="$siteid" order="updatetime desc"}
+                                        {loop $data $r1}
+                                    <li class="hashead">
+                                        <div class="head">
+                                            <a {if $r1[islink]} href="{$r1[url]}" {/if} style="display:inline;border:none;"><img src="{$r1[thumb]}" alt=""></a>
+                                        </div>
+
+                                    </li>
+                                        {/loop}
+                                        {/pc}
+
+                                </ul>
+
+                            </div>
+                            {php $index++;}
+                            {/loop}
+                            {/pc}
+
+
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="tj_car">
+                    <div class="title">推荐车型</div>
+                    <div class="content">
+                        <ul>
+                            {pc:content action="lists" catid="$catid" num="6" siteid="$siteid" order="updatetime desc"}
+                            {loop $data $r}
+                            <li {if $n==3||$n==6}style="margin-right:0px;"{/if}>
+                                <a href="{$r[url]}">
+                                    <img src="{$r[thumb]}" />
+                                    <span class="tit">{$r[title]}</span>
+                                    <span class="price">参考价：{if $r[price]}￥{$r[price]}{else}暂无报价{/if}</span>
+                                </a>
+                            </li>
+                            {/loop}
+                            {/pc}
+
+
+                        </ul>
+
+                    </div>
+                    <div class="page" id="pages">
+                        {$pages}
+                    </div>
+                </div>
+            </div>
+            <div class="car-right">
+                <div class="brand_topbox hide_item">
+                    <div class="letter_check_box">
+                        <div class="letter_check_box_innerblock">
+                            <a href="javascript:;" letter="A" class="letter_check_box_each letter_check_box_each_effect">A</a>
+                            <a href="javascript:;" letter="B" class="letter_check_box_each">B</a>
+                            <a href="javascript:;" letter="C" class="letter_check_box_each">C</a>
+                            <a href="javascript:;" letter="D" class="letter_check_box_each">D</a>
+                            <a href="javascript:;" letter="E" class="letter_check_box_each">E</a>
+                            <a href="javascript:;" letter="F" class="letter_check_box_each">F</a>
+                            <a href="javascript:;" letter="G" class="letter_check_box_each">G</a>
+                            <a href="javascript:;" letter="H" class="letter_check_box_each">H</a>
+                            <!--<a letter="I" class="letter_check_box_nonclick clear_right">I</a>-->
+                            <a href="javascript:;" letter="I" class="letter_check_box_each">I</a>
+                            <a href="javascript:;" letter="J" class="letter_check_box_each">J</a>
+                            <a href="javascript:;" letter="K" class="letter_check_box_each">K</a>
+                            <a href="javascript:;" letter="L" class="letter_check_box_each">L</a>
+                            <a href="javascript:;" letter="M" class="letter_check_box_each">M</a>
+                            <a href="javascript:;" letter="N" class="letter_check_box_each">N</a>
+                            <a href="javascript:;" letter="O" class="letter_check_box_each">O</a>
+                            <a href="javascript:;" letter="P" class="letter_check_box_each">P</a>
+                            <a href="javascript:;" letter="Q" class="letter_check_box_each">Q</a>
+                            <a href="javascript:;" letter="R" class="letter_check_box_each">R</a>
+                            <a href="javascript:;" letter="S" class="letter_check_box_each">S</a>
+                            <a href="javascript:;" letter="T" class="letter_check_box_each">T</a>
+                            <a href="javascript:;" letter="U" class="letter_check_box_each">U</a>
+                            <a href="javascript:;" letter="V" class="letter_check_box_each">V</a>
+                            <a href="javascript:;" letter="W" class="letter_check_box_each">W</a>
+                            <a href="javascript:;" letter="X" class="letter_check_box_each">X</a>
+                            <a href="javascript:;" letter="Y" class="letter_check_box_each">Y</a>
+                            <a href="javascript:;" letter="Z" class="letter_check_box_each">Z</a>
+                        </div>
+                    </div>
+
+                    <div class="letter_check_box_scrollbox">
+
+                        {pc:get sql=" SELECT g.linkageid,count(*) as count FROM (SELECT a.arrchildid,a.linkageid,b.brand FROM newt_linkage a,newt_car b WHERE a.keyid = 3360 AND a.parentid = 0 AND FIND_IN_SET(b.brand, a.arrchildid)) g GROUP BY g.linkageid" return="data1"}
+
+                        {pc:get sql="SELECT * from newt_linkage where keyid =3360 and parentid =0 order by description asc " num="500" return="data"}
+
+                        {loop $data $r}
+                        {php foreach($data1 as $k=>$v){ if($r[linkageid]==$v[linkageid]) {$r[count]=$data1[$k][count]; }}}
+
+
+                        <div class="letter_check_box_scrollbox_item">
+                                    <ul>
+                                        <li><a class="item_fir_large_sign">&gt;</a></li>
+                                        <li><a class="{$r[description]} item_sec_item_sort">{$r[description]}</a></li>
+                                        <li class=""><a href="{APP_PATH}index.php?m=content&c=index&a=cx_list&id={$r[linkageid]}" target="_blank" class="item_third_item_name">{$r[name]}
+
+                                            <span class="item_fourth_amount">
+
+                                                        ({$r[count]})
+
+                                            </span>
+
+
+                                        </a></li>
+                                    </ul>
+                                </div>
+
+                            {/loop}
+                        {/pc}
+
+
+
+
+
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
+    </div>
+</div>
+{template "content","footer"}
+
+    <script type="text/javascript" src="{APP_PATH}js/swiper.min.js"></script>
+    <script type="text/javascript">
+        new Swiper('.swiper-container', {
+            //pagination: '.swiper-pagination',
+            paginationClickable: true,
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            spaceBetween: 30
+        });
+        var caverling = {
+            init:function(){
+                this.djlp();
+
+            },
+            djlp:function(){
+                //独家辣评 车辆报告 经典回顾 行业动态的切换
+                $(".brand .pub_l .menu_item li").on("click",function(){
+                    var index = $(this).index();
+                    $(".brand .pub_l .menu_item li").removeClass("active");
+                    $(this).addClass("active");
+                    $(".brand .pub_l .detail .item").removeClass("active");
+                    $(".brand .pub_l .detail .item").eq(index).addClass("active");
+                });
+            }
+        }
+        caverling.init();
+
+        //点击
+        $(document).ready(function(){
+            $(".letter_check_box_each").click(function(){
+                $(this).addClass("letter_check_box_each_effect");
+                $(this).siblings("a").removeClass("letter_check_box_each_effect");
+            });
+
+
+            $(".logistics_pagenum_defaultbtn").click(function(){
+                $(this).addClass("logistics_pagenum_defaultbtn_effect");
+                $(this).siblings("a").removeClass("logistics_pagenum_defaultbtn_effect");
+            });
+
+            $('.letter_check_box_scrollbox_item').mouseenter(function(){
+                $(this).find('li:eq(2)').addClass('scrollitem_options');
+                $(this).find('li:eq(2)>a').addClass('scrollitem_options_name');
+            }).mouseleave(function(){
+                $(this).find('li:eq(2)').removeClass('scrollitem_options');
+                $(this).find('li:eq(2)>a').removeClass('scrollitem_options_name');
+            }).click(function(){
+                var $li_index = $(this).find('li:eq(2)')
+                $li_index.addClass('scrollitem_options').siblings($li_index).removeClass('scrollitem_options');
+            });
+
+
+        });
+
+        //滑动
+        $(document).ready(function(){
+            $(".letter_check_box_each").click(function(){
+                var className = $(this).attr("letter");
+                var letterTop = $("."+className).offset().top;
+                var boxTop = $(".letter_check_box_scrollbox").offset().top;
+                var top = $(".letter_check_box_scrollbox").scrollTop() + letterTop - boxTop;
+                $(".letter_check_box_scrollbox").scrollTop(top);
+
+            });
+            $(".change_city_chooseByLetterItem").live("click",function(){
+                var className = $(this).html();
+                var letterTop = $(".p_"+className).offset().top;
+                var boxTop = $(".change_direct_province_blockContent").offset().top;
+                var top = $(".change_direct_province_blockContent").scrollTop() + letterTop - boxTop;
+                $(".change_direct_province_blockContent").scrollTop(top);
+
+            });
+            /*移动端 全部品牌 点击右侧字母索引 匹配 列表项*/
+            $('.choose_brand_letter_index_item').click(function(){
+                $('.choose_brand_letter_index .choose_brand_letter_index_item').removeClass("add_letter_index_bg");
+                $(this).addClass("add_letter_index_bg");
+                var className = $(this).attr("letter_index");
+                var letterTop = $("."+className).offset().top;
+                var boxTop = $(".choose_brand_box_right").offset().top;
+                var top = $(".choose_brand_box_right").scrollTop()+letterTop-boxTop;
+                $(".choose_brand_box_right").scrollTop(top);
+            })
+
+            /*移动端 全部品牌 右侧字母索引*/
+            var win_height = window.innerHeight;
+            var head_height = $('.header_box').height();
+            var main_height = win_height - head_height -26;
+            var each_height = main_height / 26 + "px";
+            $(".choose_brand_letter_index_item").css("height",each_height);
+            $(".choose_brand_letter_index_item").css("line-height",each_height);
+
+        });
+
+    </script>

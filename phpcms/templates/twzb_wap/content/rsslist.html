@@ -1,0 +1,56 @@
+<title>图文直播 - {L('member','','member').L('manage_center')}</title>
+<link href="{CSS_PATH}reset.css" rel="stylesheet" type="text/css" />
+<link href="{CSS_PATH}member.css" rel="stylesheet" type="text/css" />
+<link href="{CSS_PATH}table_form.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{JS_PATH}jquery.min.js"></script>
+<script type="text/javascript" src="{JS_PATH}member_common.js"></script>
+{if isset($show_validator)}
+<script type="text/javascript" src="{JS_PATH}formvalidator.js" charset="UTF-8"></script>
+<script type="text/javascript" src="{JS_PATH}formvalidatorregex.js" charset="UTF-8"></script>
+{/if}
+
+<?php 
+$sitelist  = getcache('sitelist','commons');
+$default_style = $sitelist[1]['default_style'];
+include template('content','header',$default_style."_wap");
+?>
+{php $db = pc_base::load_model('member_model'); $memberinfo = $db->get_one(array('userid'=>param::get_cookie('_userid'))); }
+
+<div id="subscribe" style="margin-top:1rem">
+		<div class="title">
+			<a href="index.php?m=content&c=rss&siteid=1">管理订阅</a>
+		</div>
+		<ul>
+		{php $db = pc_base::load_model('rss_model'); $rss = $db->get_all(array('userid'=>param::get_cookie('_userid'))); }
+		{php $ids = i_array_column($rss, 'catid'); $catids=implode(',',$ids);}
+							
+		{if !$catids}
+			<li>暂无订阅，请先到<a href="index.php?m=content&c=rss&siteid=1" style="display:inline;color:red">订阅管理</a>中去订阅！</li>
+		{else}					
+		{pc:get sql="SELECT * FROM newt_news WHERE catid in($catids) order by updatetime desc" num="5" page="$page" return="data"}
+								{loop $data $r}
+			<li>
+				<a href="{$r[url]}">
+					<div class="img-box">
+						<img src="{$r[thumb]}" alt="{$r[title]}">
+					</div>
+					<div class="infor-box">
+						<h3>{$r[title]}</h3>
+						<p>{$r[description]}</p>
+					</div>
+				</a>
+				<!--<span>删除</span>-->
+			</li>
+							{/loop}
+							{/pc}
+							{/if}
+		</ul>
+	</div>
+	
+
+
+<?php 
+$sitelist  = getcache('sitelist','commons');
+$default_style = $sitelist[1]['default_style'];
+include template('content','menu',$default_style."_wap");
+?>

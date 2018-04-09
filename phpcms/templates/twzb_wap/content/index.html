@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="content-Type" content="text/html;charset=utf-8">
+	<meta name="description" content="环球商用车">
+	<meta name="keywords" content="环球商用车">
+	<meta name="author" content="环球商用车">
+	<meta name="copyright" content="环球商用车">
+	<meta http-equiv="X-UA-Compatible" content="IE-11">
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no,maximum-scale=1.0,minimum-scale=1.0">
+	<title>{if isset($setting[meta_title]) && !empty($setting[meta_title])}{$setting[meta_title]}{/if}{$SEO['site_title']}</title>
+	<meta name="keywords" content="{$SEO['keyword']}">
+	<meta name="description" content="{$SEO['description']}">  
+	
+	<link rel="stylesheet" type="text/css" href="{APP_PATH}phpcms/templates/twzb_wap/css/mui.min.css">
+	<link rel="stylesheet" type="text/css" href="{APP_PATH}phpcms/templates/twzb_wap/css/common.css">
+	<link rel="stylesheet" type="text/css" href="{APP_PATH}phpcms/templates/twzb_wap/css/twzb.css">
+	<script type="text/javascript" src="{APP_PATH}phpcms/templates/twzb_wap/js/jquery.min.js"></script>
+	<script type="text/javascript" src="{APP_PATH}phpcms/templates/twzb_wap/js/setRootSize.js"></script>
+	<script type="text/javascript" src="{APP_PATH}phpcms/templates/twzb_wap/js/common.js"></script>
+	<script type="text/javascript">
+		var FontSize = new RootSize();
+	</script>
+</head>
+<body style="overflow-x: hidden;">
+	<div id="home">
+		<header>
+			<a href="{APP_PATH}index.php" class="header-logo">
+			
+			{pc:get sql="SELECT * FROM newt_page WHERE catid=2" return="data"}
+					 {loop $data $val}
+					 {$val['content']}
+					 {/loop}
+					 {/pc}
+			</a>
+			<ul>
+				<li><a href="{APP_PATH}index.php?m=member"><img style="width:0.26rem;margin-top:0.22rem" src="{APP_PATH}phpcms/templates/twzb_wap/images/per_per.png" alt=""></a></li>
+				<li><a class="menu-btn"><img style="width:0.33rem;margin-top:0.26rem" src="{APP_PATH}phpcms/templates/twzb_wap/images/per_more.png" alt=""></a></li>
+			</ul>
+		</header>
+		<section class="another-style" style="padding-top:0.82rem;padding-bottom: 0.91rem;overflow:hidden;">
+			<div class="mui-slider banner-box">
+			    <div class="mui-slider-group mui-slider-loop">
+				{pc:content action="lists" catid="38" num="1" start="1" siteid="$siteid" order="inputtime desc"}
+								{loop $data $r}
+				<div class="mui-slider-item mui-slider-item-duplicate" ><a {if $r[islink]}href="{$r[url]}"{/if}><img src="{$r[thumb]}" title="{$r[title]}"/></a></div>
+								{/loop}
+				{/pc}
+				{pc:content action="lists" catid="38" num="2" siteid="$siteid" order="inputtime desc"}
+								{loop $data $r}
+				<div class="mui-slider-item" ><a {if $r[islink]}href="{$r[url]}"{/if}><img src="{$r[thumb]}" title="{$r[title]}"/></a></div>
+								{/loop}
+				{/pc}
+				
+				{pc:content action="lists" catid="38" num="1" siteid="$siteid" order="inputtime desc"}
+								{loop $data $r}
+				<div class="mui-slider-item mui-slider-item-duplicate" ><a {if $r[islink]}href="{$r[url]}"{/if}><img src="{$r[thumb]}" title="{$r[title]}"/></a></div>
+								{/loop}
+				{/pc}
+				
+				
+				</div>
+			    <div class="mui-slider-indicator">
+				{pc:content action="lists" catid="38" num="2" siteid="$siteid" order="inputtime desc"}
+								{loop $data $r}
+				 	<div {if $n==1}class="mui-indicator mui-active" {else} class="mui-indicator" {/if} ></div>
+					{/loop}
+				{/pc}
+					
+			    </div>
+			</div>
+			<form action="{APP_PATH}index.php?m=content&c=index&a=search_list" method="post">
+			<div class="header-search">
+				<input type="text" placeholder="搜索卡车要闻" name="key">
+				<!--<i></i>-->
+				<input style="display: block;
+    position: absolute;
+    top: 50%;
+    left: 0.2rem;
+    width: 0.7rem;
+    height: 0.66rem;
+    background: url({APP_PATH}phpcms/templates/twzb_wap/images/interview_article_search.png) 0.3rem center no-repeat;
+    background-size: 0.31rem;
+    margin-top: -0.33rem;border-radius:none;border:none;" type="submit" value=""/>
+			</div>
+			
+			</form>
+			<div class="menu-item">
+				<ul>
+				<!--
+					<li>
+						<a href="{APP_PATH}index.php">
+							<img src="{APP_PATH}phpcms/templates/twzb_wap/images/nav_home.png" alt="首页">
+							<p>首页</p>
+						</a>
+					</li>
+				-->	
+				{pc:content action="category" catid="0" num="8" siteid="$siteid" order="listorder ASC"}
+						{loop $data $r}
+					<li>
+						<a href="{$r[url]}">
+							<img src="{APP_PATH}phpcms/templates/twzb_wap/images/nav_{$n}.png" alt="{$r[catname]}">
+							<p>{$r[catname]}</p>
+						</a>
+					</li>
+						{/loop}
+				{/pc}
+				<!--
+					<li>
+						<a href="{APP_PATH}index.php?m=member">
+							<img src="{APP_PATH}phpcms/templates/twzb_wap/images/nav_grzx.png" alt="个人中心">
+							<p>个人中心</p>
+						</a>
+					</li>
+				-->
+				
+				</ul>
+			</div>
+			<div class="news-latest">
+				<h3>最新动态</h3>
+				<div class="prompt-box">
+					<ul>
+					{pc:content action="lists" catid="6" num="4" siteid="$siteid" order="inputtime desc"}
+								{loop $data $r}
+								<li><a href="{$r[url]}">{$r[title]}</a></li>
+								{/loop}
+					{/pc}
+						
+					</ul>
+				</div>
+			</div>
+			<div class="news-information parent-item">
+				<nav>
+					<h4>新闻</h4>
+					<div class="nav-inner" style="text-align: right;">
+						<ul>
+						
+						
+							<li class="active"><a>{$CATEGORYS[47][catname]}</a></li>
+							<li><a>{$CATEGORYS[6][catname]}</a></li>
+							<li><a>{$CATEGORYS[43][catname]}</a></li>
+							<li><a>{$CATEGORYS[62][catname]}</a></li>
+							
+							
+						</ul>
+					</div>
+				</nav>
+				<div class="item">
+				
+					<dl class="per-item">
+					{pc:content action="lists" catid="47" num="4" siteid="$siteid" order="inputtime desc"}
+						{loop $data $r1}
+						{php $db = pc_base::load_model('hits_model');   $_r = $db->get_one(array('hitsid'=>'c-1-'.$r1[id])); $views = $_r[views]; }
+						{php $comment_tag = pc_base::load_app_class("comment_tag", "comment"); $comment_total = $comment_tag->count(array('commentid'=>'content_'.$r1[catid].'-'.$r1[id].'-1'));}
+						{php list($copyfrom) = explode('|', $r1['copyfrom'])}		
+						{php $posdb = pc_base::load_model('position_data_model'); $pos = $posdb->get_all(array('catid'=>$r1[catid],'id'=>$r1[id])); }
+						
+						{php $mdb = pc_base::load_model('member_model'); $_mr = $mdb->get_one(array('username'=>$r1[username])); $userid = $_mr[userid];}
+														
+						<dd>
+							<a href="{$r1[url]}">
+								<img src="{$r1[thumb]}" alt="{$r1[title]}">
+								<div class="news-desc">
+									<h5>{$r1[title]}</h5>
+									<div class="time-seen">
+										<span class="time">  {date("m-d",$r1[inputtime])} {date("H:i",$r1[inputtime])}</span>
+										<span class="seen">{$views}</span>
+										<span class="repeat">{if $comment_total}{$comment_total}{else}0{/if}</span>
+									</div>
+									<div class="author-from">
+										{if $userid}<span class="author"> 作者：{$r1[username]}</span>{/if}
+										<span class="from"> 来源：{if $copyfrom} {$copyfrom} {else} 环球商用车 {/if}</span>
+									</div>
+									<div class="tags">
+									
+									<?php  
+									if($pos) 
+									foreach($pos as $v){ 
+									if($v[posid]==1)
+									{echo "<div class='yc'>原创</div>";}
+									elseif($v[posid]==2)
+									{echo "<div class='tt'>头条</div>";}
+									else{echo "<div class='hot'>热门</div>";} 
+									};?>
+										
+									</div>
+								</div>
+							</a>
+						</dd>
+							{/loop}
+							{/pc}
+							
+						
+					</dl>
+					
+					<dl class="per-item">
+					{pc:content action="lists" catid="6" num="4" siteid="$siteid" order="inputtime desc"}
+						{loop $data $r1}
+						{php $db = pc_base::load_model('hits_model');   $_r = $db->get_one(array('hitsid'=>'c-1-'.$r1[id])); $views = $_r[views]; }
+						{php $comment_tag = pc_base::load_app_class("comment_tag", "comment"); $comment_total = $comment_tag->count(array('commentid'=>'content_'.$r1[catid].'-'.$r1[id].'-1'));}
+						{php list($copyfrom) = explode('|', $r1['copyfrom'])}		
+						{php $posdb = pc_base::load_model('position_data_model'); $pos = $posdb->get_all(array('catid'=>$r1[catid],'id'=>$r1[id])); }
+						
+						{php $mdb = pc_base::load_model('member_model'); $_mr = $mdb->get_one(array('username'=>$r1[username])); $userid = $_mr[userid];}
+														
+						<dd>
+							<a href="{$r1[url]}">
+								<img src="{$r1[thumb]}" alt="{$r1[title]}">
+								<div class="news-desc">
+									<h5>{$r1[title]}</h5>
+									<div class="time-seen">
+										<span class="time">  {date("m-d",$r1[inputtime])} {date("H:i",$r1[inputtime])}</span>
+										<span class="seen">{$views}</span>
+										<span class="repeat">{if $comment_total}{$comment_total}{else}0{/if}</span>
+									</div>
+									<div class="author-from">
+										{if $userid}<span class="author"> 作者：{$r1[username]}</span>{/if}
+										<span class="from"> 来源：{if $copyfrom} {$copyfrom} {else} 环球商用车 {/if}</span>
+									</div>
+									<div class="tags">
+									
+									<?php  
+									if($pos) 
+									foreach($pos as $v){ 
+									if($v[posid]==1)
+									{echo "<div class='yc'>原创</div>";}
+									elseif($v[posid]==2)
+									{echo "<div class='tt'>头条</div>";}
+									else{echo "<div class='hot'>热门</div>";} 
+									};?>
+										
+									</div>
+								</div>
+							</a>
+						</dd>
+							{/loop}
+							{/pc}
+							
+						
+					</dl>
+					
+					<dl class="per-item">
+					{pc:content action="lists" catid="43" num="4" siteid="$siteid" order="inputtime desc"}
+						{loop $data $r1}
+						{php $db = pc_base::load_model('hits_model');   $_r = $db->get_one(array('hitsid'=>'c-1-'.$r1[id])); $views = $_r[views]; }
+						{php $comment_tag = pc_base::load_app_class("comment_tag", "comment"); $comment_total = $comment_tag->count(array('commentid'=>'content_'.$r1[catid].'-'.$r1[id].'-1'));}
+						{php list($copyfrom) = explode('|', $r1['copyfrom'])}		
+						{php $posdb = pc_base::load_model('position_data_model'); $pos = $posdb->get_all(array('catid'=>$r1[catid],'id'=>$r1[id])); }
+						
+						{php $mdb = pc_base::load_model('member_model'); $_mr = $mdb->get_one(array('username'=>$r1[username])); $userid = $_mr[userid];}
+														
+						<dd>
+							<a href="{$r1[url]}">
+								<img src="{$r1[thumb]}" alt="{$r1[title]}">
+								<div class="news-desc">
+									<h5>{$r1[title]}</h5>
+									<div class="time-seen">
+										<span class="time">  {date("m-d",$r1[inputtime])} {date("H:i",$r1[inputtime])}</span>
+										<span class="seen">{$views}</span>
+										<span class="repeat">{if $comment_total}{$comment_total}{else}0{/if}</span>
+									</div>
+									<div class="author-from">
+										{if $userid}<span class="author"> 作者：{$r1[username]}</span>{/if}
+										<span class="from"> 来源：{if $copyfrom} {$copyfrom} {else} 环球商用车 {/if}</span>
+									</div>
+									<div class="tags">
+									
+									<?php  
+									if($pos) 
+									foreach($pos as $v){ 
+									if($v[posid]==1)
+									{echo "<div class='yc'>原创</div>";}
+									elseif($v[posid]==2)
+									{echo "<div class='tt'>头条</div>";}
+									else{echo "<div class='hot'>热门</div>";} 
+									};?>
+										
+									</div>
+								</div>
+							</a>
+						</dd>
+							{/loop}
+							{/pc}
+							
+						
+					</dl>
+					
+					<dl class="per-item">
+					{pc:content action="lists" catid="62" num="4" siteid="$siteid" order="inputtime desc"}
+						{loop $data $r1}
+						{php $db = pc_base::load_model('hits_model');   $_r = $db->get_one(array('hitsid'=>'c-1-'.$r1[id])); $views = $_r[views]; }
+						{php $comment_tag = pc_base::load_app_class("comment_tag", "comment"); $comment_total = $comment_tag->count(array('commentid'=>'content_'.$r1[catid].'-'.$r1[id].'-1'));}
+						{php list($copyfrom) = explode('|', $r1['copyfrom'])}		
+						{php $posdb = pc_base::load_model('position_data_model'); $pos = $posdb->get_all(array('catid'=>$r1[catid],'id'=>$r1[id])); }
+						
+						{php $mdb = pc_base::load_model('member_model'); $_mr = $mdb->get_one(array('username'=>$r1[username])); $userid = $_mr[userid];}
+														
+						<dd>
+							<a href="{$r1[url]}">
+								<img src="{$r1[thumb]}" alt="{$r1[title]}">
+								<div class="news-desc">
+									<h5>{$r1[title]}</h5>
+									<div class="time-seen">
+										<span class="time">  {date("m-d",$r1[inputtime])} {date("H:i",$r1[inputtime])}</span>
+										<span class="seen">{$views}</span>
+										<span class="repeat">{if $comment_total}{$comment_total}{else}0{/if}</span>
+									</div>
+									<div class="author-from">
+										{if $userid}<span class="author"> 作者：{$r1[username]}</span>{/if}
+										<span class="from"> 来源：{if $copyfrom} {$copyfrom} {else} 环球商用车 {/if}</span>
+									</div>
+									<div class="tags">
+									
+									<?php  
+									if($pos) 
+									foreach($pos as $v){ 
+									if($v[posid]==1)
+									{echo "<div class='yc'>原创</div>";}
+									elseif($v[posid]==2)
+									{echo "<div class='tt'>头条</div>";}
+									else{echo "<div class='hot'>热门</div>";} 
+									};?>
+										
+									</div>
+								</div>
+							</a>
+						</dd>
+							{/loop}
+							{/pc}
+							
+						
+					</dl>
+					
+							
+				
+				
+				</div>
+			</div>
+			<div class="interview parent-item">
+				<nav>
+					<h4>一线调查</h4>
+					<div class="nav-inner">
+						<ul>
+							<li class="active">
+								<a>卡车一线</a>
+							</li>
+							<li>
+								<a>客车一线</a>
+							</li>
+						</ul>
+					</div>
+					<a href="{$CATEGORYS[7][url]}" class="more">更多</a>
+				</nav>
+				<div class="interview-detail">
+					<div class="mui-slider per-item">
+					    <div class="mui-slider-group">
+						    <div class="mui-slider-item">
+								<ul>
+								{pc:content action="lists" catid="16" num="4" siteid="$siteid" order="inputtime desc"}
+											{loop $data $r}
+									<li>
+										<a href="{$r[url]}">
+											<img src="{$r[thumb]}" alt="{$r[title]}">
+											<p>{$r[title]}</p>
+										</a>
+									</li>
+									
+											{/loop}
+								{/pc}
+									
+								</ul>
+						    </div>
+							
+							{pc:content action="lists" catid="16" num="4" start="4" siteid="$siteid" order="inputtime desc"}
+									{if $data}
+						    <div class="mui-slider-item">
+								<ul>
+									{loop $data $r}
+									<li>
+										<a href="{$r[url]}">
+											<img src="{$r[thumb]}" alt="{$r[title]}">
+											<p>{$r[title]}</p>
+										</a>
+									</li>
+									{/loop}
+								
+									
+								</ul>
+						    </div>
+								{/if}
+							{/pc}
+						    {pc:content action="lists" catid="16" num="4" start="8" siteid="$siteid" order="inputtime desc"}
+									{if $data}
+						    <div class="mui-slider-item">
+								<ul>
+									{loop $data $r}
+									<li>
+										<a href="{$r[url]}">
+											<img src="{$r[thumb]}" alt="{$r[title]}">
+											<p>{$r[title]}</p>
+										</a>
+									</li>
+									{/loop}
+								
+									
+								</ul>
+						    </div>
+							{/if}
+							{/pc}
+					   	</div>
+					 	<div class="mui-slider-indicator">
+						 	<div class="mui-indicator mui-active"></div>
+							<div class="mui-indicator"></div>
+							<div class="mui-indicator"></div>
+					    </div>
+					</div>
+					<div class="mui-slider per-item">
+					    <div class="mui-slider-group">
+						    <div class="mui-slider-item">
+								<ul>
+									{pc:content action="lists" catid="14" num="4" siteid="$siteid" order="inputtime desc"}
+											{loop $data $r}
+									<li>
+										<a href="{$r[url]}">
+											<img src="{$r[thumb]}" alt="{$r[title]}">
+											<p>{$r[title]}</p>
+										</a>
+									</li>
+									
+											{/loop}
+								{/pc}
+								</ul>
+						    </div>
+						    {pc:content action="lists" catid="14" num="4" start="4" siteid="$siteid" order="inputtime desc"}
+									{if $data}
+						    <div class="mui-slider-item">
+								<ul>
+									{loop $data $r}
+									<li>
+										<a href="{$r[url]}">
+											<img src="{$r[thumb]}" alt="{$r[title]}">
+											<p>{$r[title]}</p>
+										</a>
+									</li>
+									{/loop}
+								
+									
+								</ul>
+						    </div>
+							{/if}
+							{/pc}
+							
+							 {pc:content action="lists" catid="14" num="4" start="8" siteid="$siteid" order="inputtime desc"}
+									{if $data}
+						    <div class="mui-slider-item">
+								<ul>
+									{loop $data $r}
+									<li>
+										<a href="{$r[url]}">
+											<img src="{$r[thumb]}" alt="{$r[title]}">
+											<p>{$r[title]}</p>
+										</a>
+									</li>
+									{/loop}
+								
+									
+								</ul>
+						    </div>
+							{/if}
+							{/pc}
+					   	</div>
+					 	<div class="mui-slider-indicator">
+						 	<div class="mui-indicator mui-active"></div>
+							<div class="mui-indicator"></div>
+							<div class="mui-indicator"></div>
+					    </div>
+					</div>
+				</div>
+			</div>
+			<div class="video parent-item">
+				<nav>
+					<h4>视频播报</h4>
+					<div class="nav-inner">
+						<ul>
+						{pc:content action="category" catid="9" num="3" siteid="$siteid" order="listorder ASC"}
+									{loop $data $r}
+									<li {if $n==1} class="active" {/if}>{$r[catname]}</li>
+									{/loop}
+						{/pc}
+							
+						</ul>
+					</div>
+					<a href="{$CATEGORYS[9][url]}" class="more">更多</a>
+				</nav>
+				<div class="video-detail">
+				{pc:content action="category" catid="9" num="3" siteid="$siteid" order="listorder ASC"}
+									{loop $data $r}
+					<div class="video-item per-item">
+						<dl>
+						
+						{pc:content action="lists" catid="$r[catid]" num="6" siteid="$siteid" order="inputtime desc"}
+								{loop $data $r}
+								{php $db = pc_base::load_model('hits_model');   $_r = $db->get_one(array('hitsid'=>'c-1-'.$r[id])); $views = $_r[views]; }
+								{php $comment_tag = pc_base::load_app_class("comment_tag", "comment"); $comment_total = $comment_tag->count(array('commentid'=>'content_'.$r[catid].'-'.$r[id].'-1'));}
+								{php list($copyfrom) = explode('|', $r['copyfrom'])}
+								
+										
+							<dd>	
+								<a href="{$r[url]}">
+									<div class="video-infor">
+										<img src="{$r[thumb]}" alt="{$r[title]}">
+										<i></i>
+										<div class="infor-desc">
+											
+											<!--<div class="author-from">
+												<span class="author"> 作者：{$r[username]}</span>
+												<span class="from"> 来源：{$copyfrom}</span>
+											</div>-->
+											<h5 style="color:#fff;">{$r[title]}</h5>
+										</div>
+									
+										
+									
+									</div>
+									<div class="time-seen" style="color:#3c4f60">
+													<span class="time">发布时间：{date("m-d",$r[inputtime])} {date("H:i",$r[inputtime])}<br/></span>
+													<span class="seen">浏览：{$views} &nbsp;&nbsp;&nbsp;</span>
+													<span class="repeat">评论：{if $comment_total}{$comment_total}{else}0{/if}</span>
+									</div>
+								</a>
+							</dd>
+							{/loop}
+						{/pc}
+							
+							
+						</dl>
+						
+					</div>
+					{/loop}
+				{/pc}
+				</div>
+			</div>
+		</section>
+	
+<?php 
+$sitelist  = getcache('sitelist','commons');
+$default_style = $sitelist[$siteid]['default_style'];
+include template('content','footer',$default_style."_wap");
+?>
+	
+	
+	<script type="text/javascript" src="{APP_PATH}phpcms/templates/twzb_wap/js/mui.min.js"></script>
+	<script type="text/javascript">
+		CommonFun.init();
+		$(function(){
+			var caverling = {
+				init:function(){
+					this.navSwitch();
+					this.promptLoop();
+					this.bannerInit();
+				},
+				navSwitch:function(){
+					$("#home section nav li").on("click",function(){
+						$(this).parents("nav").find("li").removeClass("active");
+						$(this).addClass("active");
+						var index = $(this).index();
+						$(this).parents(".parent-item").find(".per-item").hide();
+						$(this).parents(".parent-item").find(".per-item").eq(index).show();
+					})
+				},
+				promptLoop:function(){
+					var $liArr = $("#home .news-latest .prompt-box ul li");
+					if($liArr.length > 1){
+						setInterval(function(){
+							$("#home .news-latest .prompt-box ul").animate({"margin-top":'-0.6rem'},1000,function(){
+								var $first = $("#home .news-latest .prompt-box ul li").first();
+								var $last = $("#home .news-latest .prompt-box ul li").last();
+								$first.insertAfter($last);
+								$("#home .news-latest .prompt-box ul").css({'margin-top':0});
+							});
+						},4000);
+					}
+				},
+				bannerInit:function(){
+					mui('.banner-box').slider({
+					  interval:5000//自动轮播周期，若为0则不自动播放，默认为0；
+					});
+				}
+			}
+			caverling.init();
+
+		})
+
+	</script>
+
+	

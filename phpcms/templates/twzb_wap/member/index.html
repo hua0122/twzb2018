@@ -1,0 +1,112 @@
+<title>图文直播 - {L('member','','member').L('manage_center')}</title>
+<link href="{CSS_PATH}reset.css" rel="stylesheet" type="text/css" />
+<link href="{CSS_PATH}member.css" rel="stylesheet" type="text/css" />
+<link href="{CSS_PATH}table_form.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="{JS_PATH}member_common.js"></script>
+{if isset($show_validator)}
+<script type="text/javascript" src="{JS_PATH}formvalidator.js" charset="UTF-8"></script>
+<script type="text/javascript" src="{JS_PATH}formvalidatorregex.js" charset="UTF-8"></script>
+{/if}
+
+<?php 
+$sitelist  = getcache('sitelist','commons');
+$default_style = $sitelist[1]['default_style'];
+include template('content','header',$default_style."_wap");
+?>
+<div id="person_center">
+<section style="padding-top:0.82rem;padding-bottom: 0.91rem;">
+			<div class="head">
+				<div class="head-img"><a href="{APP_PATH}index.php?m=member&c=index&a=account_manage_avatar&t=1"><img src="{$avatar[90]}" onerror="this.src='{$phpsso_api_url}/statics/images/member/nophoto.gif'"></a></div>
+				<div class="head-infor">
+					<h3>{if $memberinfo['nickname']} {$memberinfo['nickname']} {else} {$memberinfo['username']}{/if}</h3>
+					<?php 
+					$linkagelist = getcache(1, 'linkage');
+					
+					
+		
+					$citypro=$this->_get_linkage_fullname($memberinfo[pro],$linkagelist);
+					
+					
+		
+					?>
+					<span>{$citypro}</span>
+					<a href="tel:{$memberinfo[mobile]}">{$memberinfo[mobile]}</a>
+				</div>
+			</div>
+			<div class="switch">
+				<ul>
+					<li>
+						<a href="{APP_PATH}index.php?m=member&c=index&a=favorite&t=2">
+							<img style="width: 0.45rem;" src="{APP_PATH}phpcms/templates/twzb_wap/images/per_collect.png" >
+							<p>我的收藏</p>
+						</a>
+					</li>
+					<li>
+						<a href="{APP_PATH}index.php?m=content&c=rss&a=rsslist&siteid=1">
+							<img style="width: 0.42rem;margin-top:0.01rem" src="{APP_PATH}phpcms/templates/twzb_wap/images/per_dy.png" alt="">
+							<p>我的订阅</p>
+						</a>
+					</li>
+					<li>
+						<a href="{APP_PATH}index.php?m=member&c=index&a=commentlist">
+							<img style="width: 0.46rem;margin-top:0.02rem" src="{APP_PATH}phpcms/templates/twzb_wap/images/per_comment.png" alt="">
+							<p>我的评论</p>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="publish">
+				<ul>
+					<li>
+						<a href="{APP_PATH}index.php?m=member&c=index&a=show_ziliao" class="grzl">
+							<span>个人资料</span>
+							<img src="{APP_PATH}phpcms/templates/twzb_wap/images/per_more_l.png" alt="">
+						</a>
+					</li>
+					<li>
+						<a href="{APP_PATH}index.php?m=member&c=index&a=tousu" class="tsjy">
+							<span>投诉建议</span>
+							<img src="{APP_PATH}phpcms/templates/twzb_wap/images/per_more_l.png" alt="">
+						</a>
+					</li>
+					{if $memberinfo[groupid]==2}
+						
+						{else}
+					<li>
+						<a href="{APP_PATH}index.php?m=member&c=content&a=published" class="wdfb">
+							<span>我的发表</span>
+							<img src="{APP_PATH}phpcms/templates/twzb_wap/images/per_more_l.png" alt="">
+						</a>
+					</li>
+					{/if}
+					
+				</ul>
+			</div>
+		</section>
+		
+<?php 
+$sitelist  = getcache('sitelist','commons');
+$default_style = $sitelist[1]['default_style'];
+include template('member','footer',$default_style."_wap");
+?>
+</div>
+
+
+
+<script type="text/javascript" src="{JS_PATH}cookie.js"></script>
+<script language="JavaScript">
+<!--
+$(document).ready(function() {
+	var announcement = getcookie('announcement_{$memberinfo[userid]}_{$announceid}');
+	if(announcement==null || announcement=='') {
+		$("#announcement").fadeIn("slow");
+	}
+});
+//-->
+</script>
+
+<style>
+.content{overflow:hidden;}
+.content .xinxi{float:left;width:300px;margin-top:20px;}
+</style>

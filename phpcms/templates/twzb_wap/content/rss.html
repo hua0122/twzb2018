@@ -1,0 +1,89 @@
+<?php 
+$sitelist  = getcache('sitelist','commons');
+$default_style = $sitelist[1]['default_style'];
+include template('content','header',$default_style."_wap");
+?>
+<div id="subscribe_admin" style="margin-top:1rem">
+
+<div class="title" style="width: 100%;
+    height: 0.82rem;
+    border-bottom: 1px solid #dbdbdb;
+    background: #fff;
+    line-height: 0.82rem;
+    padding-right: 0.2rem;">
+			<a href="index.php?m=content&c=rss&a=rsslist&siteid=1" style="float: right;font-size: 0.28rem;color: #383838;height: 0.82rem;line-height:0.82rem;">订阅列表</a>
+		</div>
+
+{php $db = pc_base::load_model('rss_model'); $rss = $db->get_all(array('userid'=>param::get_cookie('_userid'))); }
+{php $ids = i_array_column($rss, 'catid');}
+							
+			
+		{pc:content action="category" catid="0" siteid="$this->siteid" order="listorder ASC"}
+		{loop $data $r}
+		<div class="category" style="margin-top:0.3rem">
+			<ul>
+				<li><span class="active">{$r[catname]}</span></li>
+				
+			</ul>
+			
+		</div>
+		<div class="brand rss">
+			<ul>
+			{pc:content action="category" catid="$r[catid]" siteid="$this->siteid" order="listorder ASC"}
+
+									{loop $data $v}
+									
+									{if in_array($v[catid], $ids)}
+										<li ><a data-catid='{$v[catid]}' class="addrss active">{$v[catname]}</a></li>
+									{else}
+										<li ><a data-catid='{$v[catid]}' class='addrss'>{$v[catname]}</a></li>
+									{/if}
+
+									{/loop}
+								{/pc}
+	
+			</ul>
+		</div>
+		<div style="clear:both"></div>
+		{/loop}
+		{/pc}
+						
+		
+	</div>
+
+
+<script type="text/javascript">
+$(".rss li a").click(function(){
+	
+	if($(this).attr('class')=="addrss active"){
+		$(this).removeClass('active');
+		var catid=$(this).data('catid');
+		$.post("index.php?m=content&c=rss&a=del",{catid:catid},function(data){
+			
+			
+		});
+	}else{
+		$(this).addClass('active');
+		var catid=$(this).data('catid');
+		
+		$.post("index.php?m=content&c=rss&a=add",{catid:catid},function(data){
+			
+			
+		});
+	}
+	
+
+});
+
+
+</script>
+
+
+
+
+
+<?php 
+$sitelist  = getcache('sitelist','commons');
+$default_style = $sitelist[1]['default_style'];
+include template('content','menu',$default_style."_wap");
+?>

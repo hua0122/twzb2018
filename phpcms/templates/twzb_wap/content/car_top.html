@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="content-Type" content="text/html;charset=utf-8">
+	<meta name="description" content="重庆纽腾网络科技公司">
+	<meta name="keywords" content="重庆纽腾网络科技公司">
+	<meta name="author" content="重庆纽腾网络科技公司">
+	<meta name="copyright" content="重庆纽腾网络科技公司">
+	<meta http-equiv="X-UA-Compatible" content="IE-11">
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no,maximum-scale=1.0,minimum-scale=1.0">
+	<title>{if isset($setting[meta_title]) && !empty($setting[meta_title])}{$setting[meta_title]}{/if}{$SEO['site_title']}</title>
+	<meta name="keywords" content="{$SEO['keyword']}">
+	<meta name="description" content="{$SEO['description']}">
+	<link rel="stylesheet" type="text/css" href="{APP_PATH}phpcms/templates/twzb_wap/css/mui.min.css">
+	<link rel="stylesheet" type="text/css" href="{APP_PATH}phpcms/templates/twzb_wap/css/common.css">
+	<link rel="stylesheet" type="text/css" href="{APP_PATH}phpcms/templates/twzb_wap/css/twzb.css">
+	<script type="text/javascript" src="{APP_PATH}phpcms/templates/twzb_wap/js/jquery.min.js"></script>
+	<script type="text/javascript" src="{APP_PATH}phpcms/templates/twzb_wap/js/setRootSize.js"></script>
+	<script type="text/javascript" src="{APP_PATH}phpcms/templates/twzb_wap/js/common.js"></script>
+	<script type="text/javascript">
+		var FontSize = new RootSize();
+	</script>
+</head>
+<body>
+
+		<header class="another-style" style="height: 1.94rem">
+			<nav style="margin-bottom: 0.22rem;">
+				<div class="nav-left">
+					<a href="{APP_PATH}index.php">
+						<img src="{APP_PATH}phpcms/templates/twzb_wap/images/home_focus.png" alt="">
+						<p>首页</p>
+					</a>
+				</div>
+				<div class="nav-right">
+				<a href="{$CATEGORYS[15][url]}">
+						<img src="{APP_PATH}phpcms/templates/twzb_wap/images/club_article.png" alt="{$r[catname]}">
+						<p>车友</p>
+					</a>
+				{pc:content action="category" catid="15" num="2" siteid="$siteid" order="listorder ASC"}
+						{loop $data $r}
+					<a href="{$r[url]}">
+						<img src="{APP_PATH}phpcms/templates/twzb_wap/images/club_{$n}.png" alt="{$r[catname]}">
+						<p>{$r[catname]}</p>
+					</a>
+					{/loop}
+				{/pc}
+					
+					
+					
+				</div>
+			</nav>
+			<form action="{APP_PATH}index.php?m=content&c=index&a=search_list" method="post">
+			<div class="header-search">
+				<input type="text" placeholder="搜索" name="key">
+				<!--<i></i>-->
+				<input style="display: block;
+    position: absolute;
+    top: 50%;
+    left: 0.2rem;
+    width: 0.7rem;
+    height: 0.66rem;
+    background: url({APP_PATH}phpcms/templates/twzb_wap/images/interview_article_search.png) 0.3rem center no-repeat;
+    background-size: 0.31rem;
+    margin-top: -0.33rem;border-radius:none;border:none;" type="submit" value=""/>
+			</div>
+			</form>
+		</header>

@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name=renderer content=webkit>
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+	<meta charset="UTF-8">
+	<meta http-equiv="content-Type" content="text/html;charset=utf-8">
+	<title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+	<meta name="keywords" content="{$SEO['keyword']}">
+	<meta name="description" content="{$SEO['description']}">  
+
+	<meta name="author" content="重庆纽腾网络科技公司">
+	<meta name="copyright" content="重庆纽腾网络科技公司">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="stylesheet" type="text/css" href="{APP_PATH}css/common.css">
+	<link rel="stylesheet" type="text/css" href="{APP_PATH}css/twzb.css">
+	<script type="text/javascript" src="{APP_PATH}js/jquery.min.js"></script>
+	
+
+</head>
+<body style="background: #f7f7f7;">
+	<div id="club">
+		<div class="header" style="background: #fff">
+			<div class="welcome">
+				<div class="cont container">
+					<h3><a href="{APP_PATH}index.php" style="color:#fff">图文直播首页</a></h3>
+					<div class="group" style="background:#465b70">
+					<script type="text/javascript">document.write('<iframe src="{APP_PATH}index.php?m=member&c=index&a=mini&forward='+encodeURIComponent(location.href)+'&siteid={get_siteid()}" allowTransparency="true"  width="500" height="60" frameborder="0" scrolling="no" style="background:#465b70"></iframe>')</script>
+						
+					</div>
+				</div>
+			</div>
+			<div class="search container">
+				<a href="{APP_PATH}" class="logo">
+				{pc:get sql="SELECT * FROM newt_page WHERE catid=2" return="data"}
+					 {loop $data $val}
+					 {$val['content']}
+					 {/loop}
+					 {/pc}
+				</a>
+				<div class="input">
+					<form action="{APP_PATH}index.php?m=content&c=index&a=search_list
+" method="post">
+
+						<div class="in">
+							<span>搜索</span>
+							<input type="text" name="key">
+							
+							<input class="button" type="submit" value=""/>
+						</div>
+					</form>
+					{pc:get sql="SELECT * FROM newt_page WHERE catid=37" return="data"}
+					 {loop $data $val}
+					 {$val['content']}
+					 {/loop}
+					 {/pc}
+					
+				</div>
+				<div class="ewm">
+					{pc:get sql="SELECT * FROM newt_page WHERE catid=3" return="data"}
+					 {loop $data $val}
+					 {$val['content']}
+					 {/loop}
+					 {/pc}
+				</div>
+			</div>
+			<div class="nav">
+				<ul class="container">
+					<li><a {if $catid==15}class="active"{/if} href="{$CATEGORYS[15][url]}">首页</a></li>
+					{pc:content action="category" catid="15" num="8" siteid="$siteid" order="listorder ASC"}
+						{loop $data $r}
+					<li ><a {if $catid==$r[catid]} class="active" {/if} href="{$r[url]}" title="{$r[catname]}" >{$r[catname]}</a></li>
+						{/loop}
+					{/pc}
+					{php $uid=param::get_cookie('_userid');}
+				{php $db = pc_base::load_model('member_model'); $memberinfo = $db->get_one(array('userid'=>param::get_cookie('_userid'))); }
+				{if $uid}
+				
+				{else}
+					<li><a href="{APP_PATH}index.php?m=member&c=index&a=login">我要加入</a></li>
+				{/if}
+				</ul>
+			</div>
+		</div>
+		
+		<script>
+		$(function(){
+				$('.ewm').click(function(){
+					alert(111);
+				});
+		})
+		
+		</script>

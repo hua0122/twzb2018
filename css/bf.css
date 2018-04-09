@@ -1,0 +1,56 @@
+#video_detail .user .user-head{
+	width: 100%;
+	padding:20px 0 12px 32px ;
+	border-bottom: 1px solid #ddd;
+	display: -webkit-flex;
+	display: flex;
+}
+#video_detail .user .user-head .head-box{
+	width: 88px;
+	height: 88px;
+	margin-right:10px;
+}
+#video_detail .user-head .head-box img{
+	display: block;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+#video_detail .user .head-infor{
+	width: 100%;
+	overflow: hidden;
+}
+#video_detail .user .head-infor .infor-name{
+	width: 100%;
+	height: 20px;
+	margin-top:20px;
+}
+#video_detail .head-infor .infor-name h5{
+	font-size:16px;
+	color:#3c3c3c;
+	line-height: 20px;
+	float: left;
+}
+#video_detail .head-infor .infor-name a{
+	display: block;
+	width:52px;
+	height: 100%;
+	border:1px solid #d03b3d;
+	font-size:12px;
+	color:#d03b3d;
+	cursor: pointer;
+	border-radius: 20px;
+	line-height: 18px;
+	text-align: center;
+	float: left;
+	margin-left:10px;
+}
+#video_detail .head-infor .infor-name a:hover{
+	background: #d03b3d;
+	color:#fff;
+}
+#video_detail .head-infor p{
+	font-size:14px;
+	color:#3c3c3c;
+	margin-top:10px;
+}

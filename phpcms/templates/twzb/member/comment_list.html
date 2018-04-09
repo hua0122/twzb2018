@@ -1,0 +1,68 @@
+{template 'member', 'header'}
+
+<div id="memberArea" >
+{template "member","left"}
+<div id="comment">
+<div class="sec_cont">
+<div class="re_desc_box" style="width:100%">
+				
+					<h3>我的评论</h3>
+					<div class="inner_box">
+						
+						<div class="comment_desc">
+							
+							{php $userid=param::get_cookie('_userid');}
+							{pc:get sql="SELECT * FROM newt_comment_data_1 WHERE userid=$userid" return="data" num="10" page="$page"}
+								 {loop $data $val}
+								
+									{php $comment_db = pc_base::load_model('comment_model');}
+									{php $comment_info = $comment_db->get_one(array('commentid'=>$val['commentid']));}
+									
+									{php $avatar= get_memberavatar($userid,'','90');}	
+									
+									
+									<div class="item">
+							
+							
+										<div class="lz">
+											<div class="lz_head">
+												<!--<div class="img"><img src="images/comment_lz_head.png" alt=""></div>-->
+												<div class="time">
+													<h6><a href="{$comment_info['url']}">{$comment_info['title']}</a></h6>
+													<span>{date("Y-m-d H:i:s",$val[creat_at])}</span>
+												</div>
+											</div>
+											<!--<p>[汽车之家 新闻]  日前，我们从官方获悉，康迪K17A-S纯电动车型将于8月3日正式上市，新车将基于现款康迪K17A进行调整</p>
+											<i :class="{'active':repeatFlag}" @click="repeat(0)"></i>-->
+										</div>
+										<div class="cz">
+											<div class="img"><img src="{$avatar}" alt="{$val[username]}"></div>
+											<div class="cz_words"><span>{$val[username]}：</span><p>{$val[content]}</p></div>
+										</div>
+										
+										
+										
+										
+									</div>
+									
+									
+								 {/loop}
+								 {/pc}
+							
+					
+   
+							
+							
+						</div>
+						<div class="page">
+							{$pages}
+						</div>
+					</div>
+				
+				</div>
+</div>
+</div>
+
+
+</div>
+{template "content","footer"}
